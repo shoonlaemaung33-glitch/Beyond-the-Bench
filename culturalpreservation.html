@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Preservation Page | Beyond The Bench</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png"
+        type="image/x-icon">
+
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet">
+
+
+    <script src="https://kit.fontawesome.com/89a27aa0d6.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="culturalpreservation.css">
+    <link rel="stylesheet" href="timeline.css">
+    <link rel="stylesheet" href="footer.css">
+
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="auth.css">
+
+    <!--Animation on scroll-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+<body>
+
+   <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png" alt="Logo" class="logo">
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#navOffcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Offcanvas -->
+            <div class="offcanvas offcanvas-end" id="navOffcanvas">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold">Beyond The Bench</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto gap-lg-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="parkrevitilization.html">Park
+                                Revitalization</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link  active" href="#" role="button" data-bs-toggle="dropdown">
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="enviromental_awaraness.html">Environmental
+                                        Awareness</a></li>
+                                <li><a class="dropdown-item active" href="culturalpreservation.html">Cultural Preservation</a>
+                                </li>
+                                <li><a class="dropdown-item" href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown">
+                                Community Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="combinedfinal.html">Fun Quizzes</a></li>
+                                <li><a class="dropdown-item" href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a class="dropdown-item" href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.html">About Us</a>
+                        </li>
+                    </ul>
+
+                    <!-- User Profile or Sign In Button -->
+                    <div id="userNavSection">
+                        <!-- This will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration/Login Modal -->
+    <div class="modal fade" id="NavModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Welcome to Beyond The Bench</h5>
+                    <button type="button" class="btn-close nav-btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Tabs for Login/Register -->
+                    <ul class="nav nav-tabs mb-4" id="authTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
+                                type="button" role="tab">Sign In</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register"
+                                type="button" role="tab">Register</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="authTabsContent">
+                        <!-- Login Tab -->
+                        <div class="tab-pane fade show active" id="login" role="tabpanel">
+                            <form id="loginForm" class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="loginEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword"
+                                        placeholder="Enter your password" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your password.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                            </form>
+                            <div class="text-center mt-3">
+                                <a href="#" class="text-decoration-none" id="forgotPassword">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <!-- Register Tab -->
+                        <div class="tab-pane fade" id="register" role="tabpanel">
+                            <form id="registerForm" class="needs-validation" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="John"
+                                            required minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid first name (min 2 characters).
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Doe" required
+                                            minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid last name (min 2 characters).
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Email address *</label>
+                                    <input type="email" class="form-control" id="registerEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">Password *</label>
+                                    <input type="password" class="form-control" id="registerPassword"
+                                        placeholder="At least 8 characters" required minlength="8">
+                                    <div class="password-strength">
+                                        <div class="strength-bar" id="passwordStrength"></div>
+                                    </div>
+                                    <div class="strength-text" id="strengthText">Password strength: None</div>
+                                    <small class="form-text text-muted">Must contain uppercase, lowercase, and
+                                        numbers</small>
+                                    <div class="invalid-feedback">
+                                        Password must be at least 8 characters with uppercase, lowercase, and numbers.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password *</label>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        placeholder="Re-enter password" required>
+                                    <div class="invalid-feedback">
+                                        Passwords do not match.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Choose an Avatar *</label>
+                                    <div class="avatar-selection">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=b6e3f4"
+                                            class="avatar-option" data-avatar="avatar1" alt="Avatar 1">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jane&backgroundColor=c0aede"
+                                            class="avatar-option" data-avatar="avatar2" alt="Avatar 2">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mike&backgroundColor=d1d4f9"
+                                            class="avatar-option" data-avatar="avatar3" alt="Avatar 3">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah&backgroundColor=ffd5dc"
+                                            class="avatar-option" data-avatar="avatar4" alt="Avatar 4">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&backgroundColor=ffdfbf"
+                                            class="avatar-option" data-avatar="avatar5" alt="Avatar 5">
+                                    </div>
+                                    <input type="hidden" id="selectedAvatar" required>
+                                    <div class="invalid-feedback">
+                                        Please select an avatar.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="termsAgreement" required>
+                                    <label class="form-check-label" for="termsAgreement">
+                                        I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and
+                                        <a href="#" class="text-decoration-none">Privacy Policy</a> *
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree to the terms and conditions.
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                                <p class="text-muted small mt-3">* Required fields</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reset Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotPasswordForm">
+                        <div class="mb-3">
+                            <label for="resetEmail" class="form-label">Enter your email address</label>
+                            <input type="email" class="form-control" id="resetEmail" placeholder="name@example.com"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Reset Link</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Hero Section-->
+    <section class="hero-section-culturepreserve">
+        <div class="container py-5 mb-2">
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-3 col-3 image-wrapper position-relative">
+                    <a href="#culturallyrichparks"> <img
+                            src="https://i.pinimg.com/736x/0d/ad/b8/0dadb8110e8a472a526e12a600531c01.jpg" alt=""
+                            style="width: 260px; height: 200px;" class="hero-img">
+                        <span class="tag">Culturally Rich Parks In Myanmar</span></a>
+
+                </div>
+                <div class="col-lg-3 col-5 text-center">
+                    <h1 class="hero-title mt-5">Cultural Preservation</h1>
+                </div>
+                <div class="col-lg-3 col-3 image-wrapper position-relative">
+                    <a href="#festivalsinlocalparks">
+                        <img src="https://i.pinimg.com/736x/75/ae/26/75ae26e134643ac5bf5582241ded4afd.jpg" alt=""
+                            style="width: 260px; height: 200px;" class="hero-img">
+                        <span class="tag">Cultural Festivals In Parks</span>
+                    </a>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-3 col-4 image-wrapper position-relative">
+                    <img src="https://i.pinimg.com/736x/12/5e/00/125e00b2ab501dc2bd5902f58ba97e77.jpg" alt=""
+                        style="width: 260px; height: 200px;" class="hero-img2">
+                    <span class="tag-custom">Kaloweik Palace</span>
+                </div>
+                <div class="col-lg-3 col-4 image-wrapper position-relative">
+                    <a href="#culturalfunfacts">
+                        <img src="https://i.pinimg.com/736x/21/62/fd/2162fd515f4eb7cf4634bedef30d8212.jpg" alt=""
+                            style="width: 260px; height: 200px;" class="hero-img4">
+                        <span class="tag">Cultural Fun Facts</span>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-4 image-wrapper position-relative">
+                    <img src="https://i.pinimg.com/736x/d8/3e/ca/d83eca7b2385585287fc068419b3bf79.jpg" alt=""
+                        style="width: 260px; height: 200px;" class="hero-img3">
+                    <span class="tag">Kaloweik Palace</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accordion: Culturally rich parks -->
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
+        <path fill="#F8FCF5" fill-opacity="1"
+            d="M0,128L48,122.7C96,117,192,107,288,112C384,117,480,139,576,165.3C672,192,768,224,864,218.7C960,213,1056,171,1152,154.7C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+        </path>
+    </svg>
+
+    <div class="container-fluid py-5 cultural-park" id="culturallyrichparks">
+        <div class="container">
+            <h1 class="ms-1 cultural-park-title fw-bold mb-3" data-aos="fade-up" data-aos-duration="500"
+                style="color: var(--turquiose);">Major
+                Culturally Rich Parks in Myanmar</h1>
+            <p class="ms-1 mb-5" data-aos="fade-up" data-aos-duration="600" style="color: var(--turquiose);">
+                The parks of Yangon function as both recreational spaces and cultural landscapes, offering
+                insights into the city’s history, social life, and public traditions. Their design, location, and daily
+                use
+                highlight how urban nature connects with cultural expression in Myanmar’s largest city.
+            </p>
+
+            <div class="container horizontal-accordion">
+                <div class="accordion-item-horizontal active kandawgyi">
+                    <div class="accordion-body">
+                        <h2 class="fw-bold mb-4">Kandawgyi Park</h2>
+                        <div class="park-map-horizontal mb-2">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15278.512653704616!2d96.15224915541991!3d16.795165299999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1ed8c7c64cf8b%3A0x2a626d9770fe7346!2sKandawgyi%20park!5e0!3m2!1sen!2smm!4v1765548276096!5m2!1sen!2smm"
+                                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <p>Kandawgyi Nature Park sits along Natmauk Rd beside Kandawgyi Lake in
+                            Yangon, with shaded pathways, open lawns, and a peaceful environment
+                            for walking, jogging, and picnics.</p>
+
+                        <h5 class="park-subtitle fw-bold">Cultural Significance</h5>
+                        <ul class="features-list">
+                            <li>The name "Kandawgyi" means "Great Royal Lake."</li>
+                            <li>Karaweik Hall, located on the eastern shore,
+                                is a palace-shaped replica of a traditional royal barge and reflects Burmese
+                                architecture
+                                and cultural identity. The park is a hub for festivals and community events, especially
+                                during</li>
+                        </ul>
+
+                        <h5 class="park-subtitle fw-bold">Key Features</h5>
+                        <ul class="features-list">
+                            <li>Kandawgyi Lake: scenic water body ideal for walking and boat rides</li>
+                            <li>Karaweik Palace: ornate traditional barge and photo landmark</li>
+                            <li>Boardwalks & jogging paths with views of Shwedagon Pagoda</li>
+                            <li>Nearby Yangon Zoo & Aquarium for educational visits</li>
+                            <li>Open lawns for picnics, relaxation, and outdoor activities</li>
+                        </ul>
+
+                        <h5 class="park-subtitle fw-bold">Environmental Elements</h5>
+                        <p>Urban sanctuary with lush greenery, ornamental gardens, and diverse bird life,
+                            offering a calm escape from the city.</p>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item-horizontal thakinmya">
+                    <div class="accordion-body">
+                        <h2 class="fw-bold mb-4">Thakhin Mya Park</h2>
+                        <div class="park-map-horizontal mb-2">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.941066827502!2d96.13582740000001!3d16.779607400000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb740a2ba721%3A0xa502f27430962cfb!2sThakhin%20Mya%20Park!5e0!3m2!1sen!2smm!4v1765618717103!5m2!1sen!2smm"
+                                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <p>Thakin Mya Park is a calm green space along Aung Yadana Street in
+                            Yangon, offering walking paths, picnic areas, and recreational lawns
+                            for locals and visitors.</p>
+
+                        <h5 class="park-subtitle fw-bold">Cultural Significance</h5>
+                        <p>Named after independence hero Thakin Mya, the park is a community hub for
+                            gatherings, outdoor art, and leisure activities.</p>
+
+                        <h5 class="park-subtitle fw-bold">Key Features</h5>
+                        <ul class="features-list">
+                            <li>Lush green gardens and lawns</li>
+                            <li>Walking paths, benches, and shaded rest areas</li>
+                            <li>Ideal for jogging, picnics, and photography</li>
+                        </ul>
+
+                        <h5 class="park-subtitle fw-bold">Environmental Elements</h5>
+                        <p>Expansive lawns, vibrant plant life, and well-maintained gardens provide a
+                            peaceful retreat from the city.</p>
+                    </div>
+                </div>
+
+                <!-- PARK 3: U Ottama Park -->
+                <div class="accordion-item-horizontal uottama">
+                    <div class="accordion-body">
+                        <h2 class="fw-bold mb-4">U Ottama Park</h2>
+                        <div class="park-map-horizontal mb-2">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15278.698046497932!2d96.1305811554199!3d16.792861699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb22684e6de9%3A0x53ffc0faead5ac2b!2sU%20Ottama%20Park!5e0!3m2!1sen!2smm!4v1765618846487!5m2!1sen!2smm"
+                                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+
+                        <p>U Ottama Park is a smaller landscaped green space near the south
+                            gateway of Shwedagon Pagoda, with peaceful gardens, shaded areas,
+                            and water features.</p>
+
+                        <h5 class="park-subtitle fw-bold">Cultural Significance</h5>
+                        <p>Named to honor the monk U Ottama, a leader in Myanmar's nationalist movement
+                            against British rule.</p>
+
+                        <h5 class="park-subtitle fw-bold">Key Features</h5>
+                        <ul class="features-list">
+                            <li>Scenic walking paths with gardens and benches</li>
+                            <li>Calm leisure spaces and shaded picnic spots</li>
+                            <li>Close to Shwedagon Pagoda — good for tourists and visitors</li>
+                        </ul>
+
+                        <h5 class="park-subtitle fw-bold">Environmental Elements</h5>
+                        <p>Shade trees, greenery, and calm water features make it a quiet urban retreat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Timeline - Festivals in local parks | Cultural Preservation-->
+    <section class="festivals container-fluid py-3" id="festivalsinlocalparks">
+        <div class="container text mb-5 col-lg-12 col-9 ms-5">
+            <h1 class="ms-2 mb-2 fw-bold" style="color: var(--turquiose);">Cultural Festivals In Parks</h1>
+        </div>
+
+        <div class="container py-5 timeline">
+
+            <div class="timeline-line"></div>
+
+            <!--Timeline items-->
+
+            <!--1-->
+            <section class="timeline-row">
+                <h1 class="timeline-number">01</h1>
+                <div class="timeline-img-right timeline-img" data-aos="fade-right" data-aos-delay="300"
+                    data-aos-duration="1000">
+                    <p class="timeline-fes-title">Shwedagon Pagoda Festival</p>
+                    <img src="https://admin.tourism.gov.mm/storage/Festival/01K35WXCRWECYPQHNJN1MY8XRC.jpg" alt="">
+                </div>
+
+                <div class="timeline-content-left timeline-content" data-aos="fade-left" data-aos-delay="300"
+                    data-aos-duration="1000">
+                    <h5 class="fw-bold">Feb/Mar</h5>
+                    <p>A major religious and cultural gathering around Yangon’s most sacred pagoda. People light
+                        candles, enjoy traditional performances, visit food stalls, and the surrounding lawn/park areas
+                        become lively spaces for community celebration and culture exchange.</p>
+                    <button type="button" class="btn btn-secondary"><a
+                            href="https://tourism.gov.mm/en/festivals/shwedagon-pagoda-festival"
+                            style="text-decoration: none;">Read more</a></button>
+                </div>
+            </section>
+
+            <!--2-->
+            <section class="timeline-row">
+                <h1 class="timeline-number reverse">02</h1>
+                <div class="timeline-img-left timeline-img" data-aos="fade-right" data-aos-delay="300"
+                    data-aos-duration="1000">
+                    <p class="timeline-fes-title reverse">Thingyan Water Festival</p>
+                    <img src="https://b-cdn.springnest.com/media/img/td/yangon-water-festival1d89e197.jpg?aspect_ratio=1200%3A630&width=1200"
+                        alt="">
+                </div>
+
+                <div class="timeline-content timeline-content-right" data-aos="fade-left" data-aos-delay="300"
+                    data-aos-duration="1000">
+                    <h5 class="fw-bold">April</h5>
+                    <p>It’s Myanmar’s biggest and most iconic festival, celebrating the Burmese New Year with joy,
+                        traditions, locals at parks and squares like Maha Bandoola and Kandawgyi getting soaked
+                        together.</p>
+                    <button type="button" class="btn btn-secondary"><a
+                            href="https://www.indochinaodysseytours.com/myanmar/thingyan-new-year-festival.html"
+                            style="text-decoration: none;">Read more</a></button>
+                </div>
+            </section>
+
+            <!--3-->
+            <section class="timeline-row">
+                <h1 class="timeline-number">03</h1>
+                <div class="timeline-img-right timeline-img" data-aos="fade-right" data-aos-delay="300"
+                    data-aos-duration="1000">
+                    <p class="timeline-fes-title">Thadingyut Festival (Festival of Lights)</p>
+                    <img src="https://cdn.digitalagencybangkok.com/file/client-cdn/gnlm/wp-content/uploads/2024/10/17.10.2024.01_07_14_11.Still031.jpg"
+                        alt="">
+                </div>
+
+                <div class="timeline-content-left timeline-content" data-aos="fade-left" data-aos-delay="300"
+                    data-aos-duration="1000">
+                    <h5 class="fw-bold">October</h5>
+                    <p>Known as the Festival of Lights, this celebration marks the end of Buddhist Lent. Streets, parks,
+                        and pagoda grounds (like Shwedagon Pagoda in Yangon) glow with lanterns, electric lights, and
+                        fireworks. It’s all about local gatherings, family, food stalls, and community spirit.</p>
+                    <button type="button" class="btn btn-secondary"><a
+                            href="https://en.wikipedia.org/wiki/Thadingyut_Festival" style="text-decoration: none;">Read
+                            more</a></button>
+                </div>
+            </section>
+
+            <!--4-->
+            <section class="timeline-row">
+                <h1 class="timeline-number reverse">04</h1>
+                <div class="timeline-img-left timeline-img" data-aos="fade-right" data-aos-delay="300"
+                    data-aos-duration="1000">
+                    <p class="timeline-fes-title reverse">Tazaungdaing Festival</p>
+                    <img src="https://ik.imagekit.io/tvlk/blog/2023/03/Tazaungdaing_shutterstock_1465494386-Copy.jpg"
+                        alt="">
+                </div>
+
+                <div class="timeline-content timeline-content-right" data-aos="fade-left" data-aos-delay="300"
+                    data-aos-duration="1000">
+                    <h5 class="fw-bold">November</h5>
+                    <p>A joyful celebration of light and community marking the end of the monsoon season. Pagodas and
+                        public spaces (often near Yangon parks and shrine grounds) glow with colorful lanterns,
+                        candlelight, and gatherings. It’s a time for merit-making, traditional robe-weaving
+                        competitions, and shared festivities that bring families and neighborhoods together.</p>
+                    <button type="button" class="btn btn-secondary"><a
+                            href="https://en.wikipedia.org/wiki/Tazaungdaing_festival"
+                            style="text-decoration: none;">Read more</a></button>
+                </div>
+            </section>
+        </div>
+    </section>
+
+  <!--Cultural Fun Facts-->
+<section class="funfacts container-fluid py-5" style="background-color: white;" id="culturalfunfacts">
+    <h2 class="fw-bold cultural-title">Cultural Fun Facts</h2>
+
+    <div class="row mt-4 justify-content-center">
+        <!-- Card 1 -->
+        <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center mb-4">
+            <div class="flippycard">
+                <div class="flippycard-inner">
+                    <!-- Front Cover -->
+                    <div class="cover p-3">
+                        <div class="flippycard-outside-element text-center">
+                            <h2 class="fw-bold">Did you know?</h2>
+                            <small style="display:block; margin-top:10px; color: #D8EB8E;">Myanmar’s national parks protect wildlife and sacred sites.</small>
+                        </div>
+                    </div>
+                    <!-- Inside Page -->
+                    <div class="inside">
+                        <p class="flippycard-inside-element">
+                            Beyond urban parks, Myanmar’s national parks protect wildlife and sacred landscapes. Places like Alaungdaw Kathapa and Inlay Lake offer cultural experiences linked to pilgrimage, biodiversity, and local ethnic communities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center mb-4">
+            <div class="flippycard">
+                <div class="flippycard-inner">
+                    <div class="cover p-3">
+                        <div class="flippycard-outside-element text-center">
+                            <h2 class="fw-bold">Did you know?</h2>
+                            <small style="display:block; margin-top:10px; color: #D8EB8E;">Maha Bandula Park is named after a famous Burmese general.</small>
+                        </div>
+                    </div>
+                    <div class="inside">
+                        <p class="flippycard-inside-element">
+                            Maha Bandula Park hosts the Independence Monument. More than a chill spot, it’s a symbol of national pride right in the heart of Yangon.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center mb-4">
+            <div class="flippycard">
+                <div class="flippycard-inner">
+                    <div class="cover p-3">
+                        <div class="flippycard-outside-element text-center">
+                            <h2 class="fw-bold">Did you know?</h2>
+                            <small style="display:block; margin-top:10px; color: #D8EB8E;">People’s Park has over 3,000 plants and a botanical maze.</small>
+                        </div>
+                    </div>
+                    <div class="inside">
+                        <p class="flippycard-inside-element">
+                            People’s Park next to the Shwedagon Pagoda blends nature with culture. It features over 3,000 plants from dozens of species, floral displays, medicinal herbs, and a botanical maze.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!--Footer-->
+    <footer class="bg-dark text-white py-5" id="contact">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="image/logo2.jpg" alt="Logo" class="footer-logo mb-3">
+                    <h3 class="h5 mb-3"><i class="fas fa-leaf me-2"></i>Beyond the Bench</h3>
+                    <p class="small">We inspire people to look beyond the bench — discovering the environmental, cultural, and social value of our parks while encouraging youth to care for and protect these shared spaces.</p>
+                    <div class="social-icons mt-4">
+                        <a href="https://www.facebook.com/" class="text-white me-3"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.x.com/" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/" class="text-white me-3"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <h3 class="h5 mb-3">Quick Links</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none  footer-link">
+                            <i class="fas fa-home me-2"></i>Home</a></li>
+                        <li class="mb-2"><a href="aboutus.html" class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-info-circle me-2"></i>About Us</a></li>
+
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="learning">
+                            <label for="learning" class="footer-label"><i class="bi bi-mortarboard-fill"></i>
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="enviromental_awaraness.html">Environmental Awareness</a></li>
+                                <li><a href="culturalpreservation.html">Cultural Preservation</a></li>
+                                <li><a href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="community">
+                            <label for="community" class="footer-label"><i class="bi bi-people-fill"></i>
+                                Community Hub
+                                <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="combinedfinal.html">Fun Quizzes</a></li>
+                                <li><a href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li><a href="https://docs.google.com/document/d/1KBs0JQOvbeFJuwe8dePoCFIE3pOzIx7nn3qXni5PmcY/edit?usp=sharing"
+                                class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-envelope me-2"></i>References</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4">
+                    <h3 class="h5 mb-3">Contact Us</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            No. 635/J, Yoe Ma Yeik Thar (Pyae Road), 2nd Ward, Kamayut Township, Yangon.
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            09-882224766
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            beyondthebench@gmail.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-4 opacity-25">
+
+            <div class="text-center small">
+                <p class="mb-0">&copy; 2025 Beyond the Bench. All rights reserved. | <a href="terms.html">Terms & Privacy</a></p>
+             
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="user-auth.js"></script>
+
+    <!--Animation on scroll javascript-->
+    <script>
+        AOS.init();
+
+        document.querySelectorAll('.accordion-item-horizontal').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.accordion-item-horizontal')
+                    .forEach(i => i.classList.remove('active'));
+
+                item.classList.add('active');
+            });
+        });
+
+        // Get current page
+        const currentPage = window.location.pathname.split("/").pop();
+
+        // Loop over all nav links
+        document.querySelectorAll(".nav-link").forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+                link.classList.add("active");
+            }
+        });
+
+        /*Register*/
+
+
+    </script>
+</body>
+
+</html>

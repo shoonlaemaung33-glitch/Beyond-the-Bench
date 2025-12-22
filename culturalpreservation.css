@@ -1,0 +1,530 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Kurale", serif;
+    min-height: 100vh;
+    background-image: radial-gradient(circle at 50% 50%, rgba(167, 197, 68, 0.158) 0%, rgba(255, 255, 255, 0) 50%);
+}
+
+.kurale-regular {
+    font-family: "Kurale", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --light-green: #e9f5e9;
+    --dark-green: #4f6e4f;
+    --turquiose: #005B4C;
+    --pastel-orange: #D8EB8E;
+    --bg-color: #F8FCF5;
+}
+
+/*Hero Section*/
+
+.hero-section-culturepreserve {
+    background-image:
+        linear-gradient(180deg, #1e5500ac, #002e1fec),
+        url("https://i.pinimg.com/736x/03/ad/cf/03adcfe894d3b4821b9cc65e46d2fbf5.jpg");
+    background-size: cover;
+    background-position: 15% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 110vh;
+}
+
+
+.hero-title {
+    color: var(--pastel-orange);
+    font-weight: 800;
+    font-size: 40px;
+}
+
+.hero-img {
+    object-fit: cover;
+    object-position: 10% 35%;
+    border-radius: 25px 25px 0 0;
+}
+
+.hero-img2 {
+    width: 260px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0 0 0 25px;
+    display: block;
+}
+
+
+.hero-img3 {
+    border-radius: 0 0 25px 0;
+    object-fit: cover;
+    object-position: 10% 46%;
+}
+
+.hero-img4 {
+    object-fit: cover;
+    object-position: 10% 35%;
+}
+
+.image-wrapper {
+    position: relative;
+    /* ensures tag sits relative to image */
+    display: inline-block;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    /* clips tag nicely if needed */
+}
+
+.tag-custom {
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    background-color: var(--turquiose);
+    color: var(--pastel-orange);
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 0 0 0 25px;
+    display: inline-block;
+    font-size: 0.9em;
+    z-index: 5;
+}
+
+.tag {
+    position: absolute;
+    bottom: 0px;
+    left: 12px;
+    background-color: var(--turquiose);
+    color: var(--pastel-orange);
+    font-weight: 700;
+    padding: 4px 8px;
+    font-size: 0.9em;
+    border-radius: 1px;
+    z-index: 5;
+}
+
+.image-wrapper:hover {
+    transform: scale(1.1);
+}
+
+.hero-img,
+.tag {
+    display: block;
+}
+
+
+/*Waves looking ahh*/
+
+svg {
+    margin-top: -203px;
+}
+
+/*Accordion Session*/
+
+.cultural-park-title {
+    position: relative;
+}
+
+.cultural-park-title::after {
+    content: '';
+    position: absolute;
+    left: 8%;
+    bottom: -12px;
+    transform: translateX(-50%);
+    width: 175px;
+    height: 3px;
+    background-color: var(--pastel-orange);
+    border-radius: 2px;
+    margin-bottom: 5px;
+}
+
+/* Hide content on inactive cards */
+.accordion-item-horizontal:not(.active) .accordion-body {
+    opacity: 0;
+    transform: translateY(10px);
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
+}
+
+.accordion-body h2::after {
+    content: '';
+    position: absolute;
+    left: 9%;
+    top: 65px;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 5px;
+    background-color: var(--pastel-orange);
+    border-radius: 2px;
+    margin-bottom: 2px;
+}
+
+.accordion-item-horizontal.active .accordion-body {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 1000px;
+    overflow-y: auto;
+}
+
+.horizontal-accordion {
+    display: flex;
+    height: 350px;
+    gap: 1rem;
+}
+
+.accordion-item-horizontal {
+    flex: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: flex 0.45s ease;
+    display: flex;
+    flex-direction: column;
+    background: var(--light-green);
+}
+
+.accordion-item-horizontal.active {
+    flex: 3;
+}
+
+.accordion-item-horizontal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.75);
+    z-index: 1;
+}
+
+.accordion-item-horizontal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 73, 54, 0.678), rgba(53, 56, 0, 0.619));
+    z-index: 2;
+}
+
+.accordion-body {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: white;
+    overflow-y: auto;
+    transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
+}
+
+/* Smooth opacity/slide for text */
+.accordion-item-horizontal:not(.active) .accordion-body p,
+.accordion-item-horizontal:not(.active) .accordion-body h5,
+.accordion-item-horizontal:not(.active) .accordion-body ul {
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+.accordion-item-horizontal.active .accordion-body p,
+.accordion-item-horizontal.active .accordion-body h5,
+.accordion-item-horizontal.active .accordion-body ul {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease 0.1s;
+}
+
+.accordion-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.accordion-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}
+
+/* Park-specific background images */
+.kandawgyi::before {
+    background-image: url("https://i.pinimg.com/736x/12/5e/00/125e00b2ab501dc2bd5902f58ba97e77.jpg");
+}
+
+.thakinmya::before {
+    background-image: url("https://i.pinimg.com/736x/40/bf/1b/40bf1b2373e4bd26515f39b7aaf4cc50.jpg");
+}
+
+.uottama::before {
+    background-image: url("https://i.pinimg.com/736x/93/97/24/9397247c6ca71d67bb7c6aa762a4a649.jpg");
+}
+
+@media (max-width: 768px) {
+
+    .accordion-body h2::after {
+        left: 14%;
+        bottom: -10px;
+        transform: translateX(-50%);
+    }
+
+    .cultural-park-title::after {
+        left: 20%;
+        /* center title line */
+        bottom: -12px;
+        transform: translateX(-50%);
+    }
+
+    .horizontal-accordion {
+        flex-direction: column;
+        /* stack items vertically */
+        height: auto;
+    }
+
+    .accordion-item-horizontal {
+        flex: unset;
+        /* remove horizontal flex sizing */
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .accordion-item-horizontal.active {
+        flex: unset;
+        /* just expand with content height */
+    }
+
+    .accordion-body {
+        max-height: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .accordion-item-horizontal.active .accordion-body {
+        max-height: 1000px;
+        /* or auto if you prefer */
+    }
+
+    .hero-title{
+        font-size: 35px;
+    }
+}
+
+/* ==========================
+   Cultural Fun Facts Flipcards
+   ========================== */
+
+/* Section Title */
+.cultural-title {
+    color: var(--turquiose);
+    position: relative;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.cultural-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 5px;
+    background-color: var(--pastel-orange);
+    border-radius: 2px;
+}
+
+/* Flippy Card Container */
+.flippycard {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    min-height: 300px;
+    perspective: 1500px;
+    margin: 1rem auto;
+}
+
+/* Inner wrapper for flipping */
+.flippycard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+}
+
+/* Flip on hover */
+.flippycard:hover .flippycard-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front cover */
+.cover,
+.inside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-left: 5px solid var(--Vivid_Emerald);
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    text-align: center;
+    transition: transform 0.6s;
+}
+
+/* Front cover specifics */
+.cover {
+    background-color: var(--turquiose);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transform: rotateY(0deg);
+    z-index: 2;
+}
+
+.cover h2 {
+    color: var(--pastel-orange);
+}
+
+
+/* Inside page */
+.inside {
+    background-color: var(--light-green);
+    color: var(--turquiose);
+    transform: rotateY(180deg);
+    overflow-y: auto;
+    justify-content: center;
+}
+
+/* Scrollbar styling inside card */
+.inside::-webkit-scrollbar {
+    width: 6px;
+}
+
+.inside::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* Front text styling */
+.flippycard-outside-element h2 {
+    font-size: 20px;
+    margin: 0;
+}
+
+/* Inside text styling */
+.flippycard-inside-element {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;
+    padding: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .flippycard {
+        max-width: 90%;
+    }
+
+    .flippycard-inside-element {
+        padding-left: 15px;
+        padding-right: 10px;
+        font-size: 14px;
+    }
+
+    .cultural-title {
+        font-size: 1.8rem;
+    }
+     .hero-title{
+        font-size: 35px;
+    }
+}
+
+
+/*Responsive*/
+
+@media (max-width:768px) {
+
+    svg {
+        margin-bottom: -80px;
+    }
+}
+
+/* =========================
+   Tablet View (768px - 1024px)
+   ========================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    /* Hero Section */
+    .hero-section-culturepreserve {
+        background-position: 20% 50%;
+    }
+
+    .hero-img2 {
+        width: 220px;
+        height: 180px;
+    }
+
+    .tour-img {
+        width: 500px;
+        height: 350px;
+    }
+
+    /* Accordion Section */
+    .horizontal-accordion {
+        position: relative;
+        height: 300px;
+    }
+
+    .accordion-item-horizontal {
+        border-radius: 12px;
+    }
+
+    .accordion-body {
+        padding: 1rem;
+    }
+
+    .accordion-body h2 {
+        position: relative ;
+    }
+
+    .accordion-body h2::after {
+        position: absolute;
+        left: 10%;
+        top: 37px;
+        transform: translateX(-50%);
+    }
+
+    .cultural-park-title::after {
+        left: 13%;
+        bottom: -15px;
+        transform: translateX(-50%);
+    }
+
+    /* Flipcards */
+    .flippycard {
+        max-width: 360px;
+        min-height: 260px;
+    }
+
+    .flippycard-inside-element {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    .cultural-title {
+        font-size: 1.9rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Hero image wrapper scaling */
+    .image-wrapper {
+        transition: transform 0.25s ease;
+    }
+}
+

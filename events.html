@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park Community Events | Beyond The Bench</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="events.css">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="auth.css">
+
+    <link rel="shortcut icon" href="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png"
+        type="image/x-icon">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet">
+
+
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Great+Vibes&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/89a27aa0d6.js" crossorigin="anonymous"></script>
+
+    <!--Animation on scroll-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+<body>
+
+ <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png" alt="Logo" class="logo">
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#navOffcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Offcanvas -->
+            <div class="offcanvas offcanvas-end" id="navOffcanvas">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold">Beyond The Bench</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto gap-lg-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="parkrevitilization.html">Park
+                                Revitalization</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown">
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="enviromental_awaraness.html">Environmental
+                                        Awareness</a></li>
+                                <li><a class="dropdown-item" href="culturalpreservation.html">Cultural Preservation</a>
+                                </li>
+                                <li><a class="dropdown-item" href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active" href="#" role="button" data-bs-toggle="dropdown">
+                                Community Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="combinedfinal.html">Fun Quizzes</a></li>
+                                <li><a class="dropdown-item" href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a class="dropdown-item active" href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.html">About Us</a>
+                        </li>
+                    </ul>
+
+                    <!-- User Profile or Sign In Button -->
+                    <div id="userNavSection">
+                        <!-- This will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration/Login Modal -->
+    <div class="modal fade" id="NavModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Welcome to Beyond The Bench</h5>
+                    <button type="button" class="btn-close nav-btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Tabs for Login/Register -->
+                    <ul class="nav nav-tabs mb-4" id="authTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
+                                type="button" role="tab">Sign In</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register"
+                                type="button" role="tab">Register</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="authTabsContent">
+                        <!-- Login Tab -->
+                        <div class="tab-pane fade show active" id="login" role="tabpanel">
+                            <form id="loginForm" class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="loginEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword"
+                                        placeholder="Enter your password" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your password.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                            </form>
+                            <div class="text-center mt-3">
+                                <a href="#" class="text-decoration-none" id="forgotPassword">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <!-- Register Tab -->
+                        <div class="tab-pane fade" id="register" role="tabpanel">
+                            <form id="registerForm" class="needs-validation" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="John"
+                                            required minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid first name (min 2 characters).
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Doe" required
+                                            minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid last name (min 2 characters).
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Email address *</label>
+                                    <input type="email" class="form-control" id="registerEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">Password *</label>
+                                    <input type="password" class="form-control" id="registerPassword"
+                                        placeholder="At least 8 characters" required minlength="8">
+                                    <div class="password-strength">
+                                        <div class="strength-bar" id="passwordStrength"></div>
+                                    </div>
+                                    <div class="strength-text" id="strengthText">Password strength: None</div>
+                                    <small class="form-text text-muted">Must contain uppercase, lowercase, and
+                                        numbers</small>
+                                    <div class="invalid-feedback">
+                                        Password must be at least 8 characters with uppercase, lowercase, and numbers.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password *</label>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        placeholder="Re-enter password" required>
+                                    <div class="invalid-feedback">
+                                        Passwords do not match.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Choose an Avatar *</label>
+                                    <div class="avatar-selection">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=b6e3f4"
+                                            class="avatar-option" data-avatar="avatar1" alt="Avatar 1">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jane&backgroundColor=c0aede"
+                                            class="avatar-option" data-avatar="avatar2" alt="Avatar 2">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mike&backgroundColor=d1d4f9"
+                                            class="avatar-option" data-avatar="avatar3" alt="Avatar 3">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah&backgroundColor=ffd5dc"
+                                            class="avatar-option" data-avatar="avatar4" alt="Avatar 4">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&backgroundColor=ffdfbf"
+                                            class="avatar-option" data-avatar="avatar5" alt="Avatar 5">
+                                    </div>
+                                    <input type="hidden" id="selectedAvatar" required>
+                                    <div class="invalid-feedback">
+                                        Please select an avatar.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="termsAgreement" required>
+                                    <label class="form-check-label" for="termsAgreement">
+                                        I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and
+                                        <a href="#" class="text-decoration-none">Privacy Policy</a> *
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree to the terms and conditions.
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                                <p class="text-muted small mt-3">* Required fields</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reset Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotPasswordForm">
+                        <div class="mb-3">
+                            <label for="resetEmail" class="form-label">Enter your email address</label>
+                            <input type="email" class="form-control" id="resetEmail" placeholder="name@example.com"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Reset Link</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Park Community Events Hub</h1>
+            <p class="hero-subtitle">Join our vibrant community through online sessions, photo competitions, and
+                cultural events. Connect, share, and celebrate parks together!</p>
+            <div>
+                <span class="hero-badge">Online Sharing Sessions</span>
+                <span class="hero-badge">Mobile Photo Competition</span>
+                <span class="hero-badge">Community Events</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Sharing Sessions -->
+    <section id="sharing" class="sharing-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Online Sharing Sessions</h2>
+                <p>Join our virtual events, download resources, and connect with park enthusiasts worldwide</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="sharing-card">
+                        <div class="sharing-header">
+                            <i class="fas fa-video sharing-icon"></i>
+                            <h3 class="sharing-title">Park Photography Tips</h3>
+                            <div class="sharing-date">March 15, 2026 • 7:00 PM</div>
+                        </div>
+                        <div class="sharing-content">
+                            <div class="sharing-details">
+                                <p><i class="fas fa-user"></i> Host: Ma Sandar Kyaw, Wildlife Photographer</p>
+                                <p><i class="fas fa-clock"></i> Duration: 90 minutes</p>
+                                <p><i class="fas fa-link"></i> Platform: Zoom Meeting</p>
+                                <p><i class="fas fa-users"></i> Max Participants: 100</p>
+                            </div>
+                            <p>Learn professional techniques for capturing stunning park landscapes and wildlife.
+                                Perfect for competition entries!</p>
+                            <div class="btn-container">
+                                <a href="#" class="session-btn details-btn" data-bs-toggle="modal"
+                                    data-bs-target="#detailsModal1">Details</a>
+                                <a href="#" class="session-btn" data-bs-toggle="modal" data-bs-target="#joinModal1">Join
+                                    Meeting</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="sharing-card">
+                        <div class="sharing-header">
+                            <i class="fas fa-leaf sharing-icon"></i>
+                            <h3 class="sharing-title">Sustainable Park Practices</h3>
+                            <div class="sharing-date">April 5, 2026 • 6:30 PM</div>
+                        </div>
+                        <div class="sharing-content">
+                            <div class="sharing-details">
+                                <p><i class="fas fa-user"></i> Host: NGO Environmental Conservation Team</p>
+                                <p><i class="fas fa-clock"></i> Duration: 75 minutes</p>
+                                <p><i class="fas fa-link"></i> Platform: Google Meet</p>
+                                <p><i class="fas fa-users"></i> Max Participants: 150</p>
+                            </div>
+                            <p>Discover how to minimize your environmental impact while enjoying parks. Learn about
+                                leave-no-trace principles.</p>
+                            <div class="btn-container">
+                                <a href="#" class="session-btn details-btn" data-bs-toggle="modal"
+                                    data-bs-target="#detailsModal2">Details</a>
+                                <a href="#" class="session-btn" data-bs-toggle="modal" data-bs-target="#joinModal2">Join
+                                    Meeting</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="sharing-card">
+                        <div class="sharing-header">
+                            <i class="fas fa-history sharing-icon"></i>
+                            <h3 class="sharing-title">Historical Park Stories</h3>
+                            <div class="sharing-date">April 25, 2026 • 8:00 PM</div>
+                        </div>
+                        <div class="sharing-content">
+                            <div class="sharing-details">
+                                <p><i class="fas fa-user"></i> Host: Dr. Michael Chen, Historian</p>
+                                <p><i class="fas fa-clock"></i> Duration: 60 minutes</p>
+                                <p><i class="fas fa-link"></i> Platform: Zoom Webinar</p>
+                                <p><i class="fas fa-users"></i> Max Participants: 200</p>
+                            </div>
+                            <p>Explore the rich history and cultural significance of our local parks through
+                                storytelling and archival photos.</p>
+                            <div class="btn-container">
+                                <a href="#" class="session-btn details-btn" data-bs-toggle="modal"
+                                    data-bs-target="#detailsModal3">Details</a>
+                                <a href="#" class="session-btn" data-bs-toggle="modal" data-bs-target="#joinModal3">Join
+                                    Meeting</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Modals for Sharing Sessions -->
+    <!-- Modal 1 -->
+    <div class="modal fade" id="detailsModal1" tabindex="-1" aria-labelledby="detailsModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModal1Label">Park Photography Tips - Session Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="mb-3" style="color: var(--primary-green);">What You'll Learn</h4>
+                    <ul>
+                        <li>Essential camera settings for outdoor photography</li>
+                        <li>Composition techniques for stunning landscape shots</li>
+                        <li>How to capture wildlife without disturbing natural habitats</li>
+                        <li>Lighting strategies for different times of day</li>
+                        <li>Post-processing tips for mobile photography</li>
+                        <li>How to prepare for photo competitions</li>
+                    </ul>
+
+                    <h4 class="mb-3 mt-4" style="color: var(--primary-green);">About the Host</h4>
+                    <p>Ma Sandar Kyaw is an award-winning wildlife photographer with over 15 years of experience. Her
+                        work has been featured in National Geographic and she has won multiple international photography
+                        competitions.</p>
+
+                    <h4 class="mb-3 mt-4" style="color: var(--primary-green);">Session Agenda</h4>
+                    <ul>
+                        <li>7:00 PM - Introduction & Overview</li>
+                        <li>7:15 PM - Technical Photography Basics</li>
+                        <li>7:45 PM - Composition Masterclass</li>
+                        <li>8:15 PM - Live Q&A Session</li>
+                        <li>8:45 PM - Closing Remarks</li>
+                    </ul>
+
+                    <div class="mt-4">
+                        <p><strong>Required:</strong> None, but having a camera or smartphone is recommended</p>
+                        <p><strong>Skill Level:</strong> Beginner to Intermediate</p>
+                        <p><strong>Materials Provided:</strong> Presentation slides and resource guide</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-btn" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="modal-btn join-btn" data-bs-dismiss="modal" data-bs-toggle="modal"
+                        data-bs-target="#joinModal1">Join This Session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal fade" id="detailsModal2" tabindex="-1" aria-labelledby="detailsModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModal2Label">Sustainable Park Practices - Session Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="mb-3" style="color: var(--primary-green);">What You'll Learn</h4>
+                    <ul>
+                        <li>Leave-No-Trace principles for park visitors</li>
+                        <li>Sustainable hiking and camping practices</li>
+                        <li>How to minimize your carbon footprint in parks</li>
+                        <li>Wildlife protection and ethical observation</li>
+                        <li>Community conservation initiatives</li>
+                        <li>How to advocate for park sustainability</li>
+                    </ul>
+
+                    <h4 class="mb-3 mt-4" style="color: var(--primary-green);">About the Hosts</h4>
+                    <p>The Environmental Conservation Team consists of park rangers, environmental scientists, and
+                        conservation activists who have been working together for over a decade to protect natural
+                        spaces.</p>
+
+                    <h4 class="mb-3 mt-4" style="color: var(--primary-green);">Session Agenda</h4>
+                    <ul>
+                        <li>6:30 PM - Introduction to Park Conservation</li>
+                        <li>6:45 PM - Sustainable Visitor Practices</li>
+                        <li>7:15 PM - Case Studies: Success Stories</li>
+                        <li>7:45 PM - How You Can Make a Difference</li>
+                        <li>8:15 PM - Q&A and Discussion</li>
+                    </ul>
+
+                    <div class="mt-4">
+                        <p><strong>Required:</strong> None</p>
+                        <p><strong>Skill Level:</strong> All levels welcome</p>
+                        <p><strong>Materials Provided:</strong> Sustainability checklist and resource links</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-btn" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="modal-btn join-btn" data-bs-dismiss="modal" data-bs-toggle="modal"
+                        data-bs-target="#joinModal2">Join This Session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div class="modal fade" id="detailsModal3" tabindex="-1" aria-labelledby="detailsModal3Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModal3Label">Historical Park Stories - Session Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="mb-3" style="color: var(--primary-green);">What You'll Discover</h4>
+                    <ul>
+                        <li>Indigenous history of local park lands</li>
+                        <li>Historical landmarks within parks</li>
+                        <li>Stories of early settlers and park development</li>
+                        <li>Archival photographs and documents</li>
+                        <li>Cultural significance of natural features</li>
+                        <li>How history shapes current park use</li>
+                    </ul>
+
+                    <h4 class="mb-3 mt-4" style="color: var(--primary-green);">About the Host</h4>
+                    <p>Dr. Michael Chen is a historian specializing in local history and cultural heritage. He has
+                        published several books on regional history and regularly contributes to historical preservation
+                        projects.</p>
+
+                    <h4 class="mb-3 mt-4" style="color: var(--primary-green);">Session Agenda</h4>
+                    <ul>
+                        <li>8:00 PM - Introduction to Park Histories</li>
+                        <li>8:15 PM - Indigenous Heritage and Stories</li>
+                        <li>8:35 PM - Colonial Era and Park Development</li>
+                        <li>8:55 PM - Modern Era Conservation Efforts</li>
+                        <li>9:15 PM - Q&A Session</li>
+                    </ul>
+
+                    <div class="mt-4">
+                        <p><strong>Required:</strong> None</p>
+                        <p><strong>Skill Level:</strong> All levels welcome</p>
+                        <p><strong>Materials Provided:</strong> Historical timeline and reading list</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-btn" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="modal-btn join-btn" data-bs-dismiss="modal" data-bs-toggle="modal"
+                        data-bs-target="#joinModal3">Join This Session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Meeting Modals -->
+    <!-- Join Modal 1 -->
+    <div class="modal fade" id="joinModal1" tabindex="-1" aria-labelledby="joinModal1Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="joinModal1Label">Join Park Photography Tips Session</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="meeting-link-box">
+                        <h6><i class="fas fa-video me-2"></i>Zoom Meeting Link</h6>
+                        <p class="meeting-link">https://zoom.us/j/1234567890?pwd=FAKELINK12345</p>
+                        <p class="small mt-2"><i class="fas fa-info-circle me-1"></i>Meeting ID: 123 456 7890 |
+                            Passcode: parkphoto</p>
+                    </div>
+
+                    <p><strong>Session Time:</strong> March 15, 2026 • 7:00 PM (Duration: 90 minutes)</p>
+                    <p><strong>Host:</strong> Sarah Johnson, Wildlife Photographer</p>
+
+                    <div class="mt-3"
+                        style="background-color: rgba(216, 235, 142, 0.2); padding: 15px; border-radius: 8px;">
+                        <h6 style="color: var(--primary-green);"><i class="fas fa-lightbulb me-2"></i>Tips for Joining:
+                        </h6>
+                        <ul class="mb-0 small" style="color: #555;">
+                            <li>Join 5-10 minutes early to test your audio/video</li>
+                            <li>Have your camera ready if you'd like to participate</li>
+                            <li>Download Zoom client for best experience</li>
+                            <li>Mute your microphone when not speaking</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-btn" data-bs-dismiss="modal">Close</button>
+                    <a href="https://zoom.us/j/1234567890?pwd=FAKELINK12345" target="_blank" class="modal-btn join-btn">
+                        <i class="fas fa-external-link-alt me-2"></i>Open Zoom Meeting
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Modal 2 -->
+    <div class="modal fade" id="joinModal2" tabindex="-1" aria-labelledby="joinModal2Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="joinModal2Label">Join Sustainable Park Practices Session</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="meeting-link-box">
+                        <h6><i class="fas fa-video me-2"></i>Google Meet Link</h6>
+                        <p class="meeting-link">https://meet.google.com/abc-defg-hij</p>
+                        <p class="small mt-2"><i class="fas fa-info-circle me-1"></i>No password required for this
+                            session</p>
+                    </div>
+
+                    <p><strong>Session Time:</strong> April 5, 2026 • 6:30 PM (Duration: 75 minutes)</p>
+                    <p><strong>Host:</strong> Environmental Conservation Team</p>
+
+                    <div class="mt-3"
+                        style="background-color: rgba(216, 235, 142, 0.2); padding: 15px; border-radius: 8px;">
+                        <h6 style="color: var(--primary-green);"><i class="fas fa-lightbulb me-2"></i>Tips for Joining:
+                        </h6>
+                        <ul class="mb-0 small" style="color: #555;">
+                            <li>Use Google Chrome for best compatibility</li>
+                            <li>You can join without a Google account</li>
+                            <li>Enable captions if needed</li>
+                            <li>Questions can be posted in the chat</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-btn" data-bs-dismiss="modal">Close</button>
+                    <a href="https://meet.google.com/abc-defg-hij" target="_blank" class="modal-btn join-btn">
+                        <i class="fas fa-external-link-alt me-2"></i>Open Google Meet
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Modal 3 -->
+    <div class="modal fade" id="joinModal3" tabindex="-1" aria-labelledby="joinModal3Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="joinModal3Label">Join Historical Park Stories Session</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="meeting-link-box">
+                        <h6><i class="fas fa-video me-2"></i>Zoom Webinar Link</h6>
+                        <p class="meeting-link">https://zoom.us/webinar/register/WN_FAKELINK12345</p>
+                        <p class="small mt-2"><i class="fas fa-info-circle me-1"></i>Registration required for this
+                            webinar</p>
+                    </div>
+
+                    <p><strong>Session Time:</strong> April 25, 2026 • 8:00 PM (Duration: 60 minutes)</p>
+                    <p><strong>Host:</strong> Dr. Michael Chen, Historian</p>
+
+                    <div class="mt-3"
+                        style="background-color: rgba(216, 235, 142, 0.2); padding: 15px; border-radius: 8px;">
+                        <h6 style="color: var(--primary-green);"><i class="fas fa-lightbulb me-2"></i>Tips for Joining:
+                        </h6>
+                        <ul class="mb-0 small" style="color: #555;">
+                            <li>This is a webinar format (view-only for attendees)</li>
+                            <li>Questions can be submitted via Q&A panel</li>
+                            <li>Register in advance to receive reminder</li>
+                            <li>Recording will be available after the session</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-btn" data-bs-dismiss="modal">Close</button>
+                    <a href="https://zoom.us/webinar/register/WN_FAKELINK12345" target="_blank"
+                        class="modal-btn join-btn">
+                        <i class="fas fa-external-link-alt me-2"></i>Register for Webinar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Photo Competition -->
+    <section id="competition" class="competition-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mobile Photo Competition</h2>
+                <p>Submit your best park photos taken with your mobile device. Monthly themes and exciting prizes!</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="competition-form">
+                        <h3 class="text-center mb-4" style="color: var(--primary-green);">Submit Your Photo</h3>
+                        <form id="photoForm">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Your Name *</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Photo Title *</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Photo Description *</label>
+                                <textarea class="form-control" rows="3" required></textarea>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Competition Theme *</label>
+                                    <select class="form-select" required>
+                                        <option value="">Select a theme</option>
+                                        <option>Park Landscapes</option>
+                                        <option>Wildlife Encounters</option>
+                                        <option>Cultural Elements</option>
+                                        <option>Seasonal Changes</option>
+                                        <option>Community Activities</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Park Location *</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Upload Evidence Photos / Behind the scenes *</label>
+                                <input type="file" class="form-control" accept="image/*" required>
+
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Upload Your Competition Photo *</label>
+                                <input type="file" class="form-control" accept="image/*" required>
+                                <div class="form-text">Max file size: 5MB. Accepted formats: JPG, PNG</div>
+                            </div>
+
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" required>
+                                <label class="form-check-label">I confirm this is my original work and taken with a
+                                    mobile device</label>
+                            </div>
+
+                            <button type="submit" class="submit-btn">Submit Photo Entry</button>
+                        </form>
+                    </div>
+
+                    <div class="mt-5">
+                        <h4 class="text-center mb-4" style="color: var(--primary-green);">Competition Themes for Next
+                            Month</h4>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center p-3 border rounded"
+                                    style="border-color: var(--accent-yellow) !important;">
+                                    <i class="fas fa-tree fa-2x mb-2" style="color: var(--primary-green);"></i>
+                                    <h5>Ancient Trees</h5>
+                                    <p class="small">Capture majestic trees in parks</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center p-3 border rounded"
+                                    style="border-color: var(--accent-yellow) !important;">
+                                    <i class="fas fa-water fa-2x mb-2" style="color: var(--primary-green);"></i>
+                                    <h5>Water Elements</h5>
+                                    <p class="small">Lakes, streams, waterfalls in parks</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center p-3 border rounded"
+                                    style="border-color: var(--accent-yellow) !important;">
+                                    <i class="fas fa-users fa-2x mb-2" style="color: var(--primary-green);"></i>
+                                    <h5>Park Community</h5>
+                                    <p class="small">People enjoying park activities and a sense of community.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Winners Gallery -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Competition Winners Gallery</h2>
+                <p>View the stunning winning photos from our recent competitions</p>
+            </div>
+
+            <div class="gallery-grid" id="lightbox-gallery">
+                <!-- First Row - 3 Photos -->
+                <!-- Photo 1 -->
+                <div class="gallery-item" onclick="currentSlide(1)">
+                    <img src="https://i.pinimg.com/736x/af/f9/c1/aff9c18f3a71b7c9c6d2dbfb7d500ff0.jpg"
+                        alt="Mountain Landscape">
+                    <div class="winner-badge">1st Prize</div>
+                    <div class="photo-info">
+                        <h5>Echoes of Laughter</h5>
+                        <p>By Thae Su Myat</p>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="gallery-item" onclick="currentSlide(2)">
+                    <img src="https://i.pinimg.com/736x/cf/0f/58/cf0f58ccfdc89a4501360ae05fb069dd.jpg"
+                        alt="Deer in Park">
+                    <div class="winner-badge">2nd Prize</div>
+                    <div class="photo-info">
+                        <h5>Morning Encounter</h5>
+                        <p>By Maung Kyaw Soe</p>
+                    </div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="gallery-item" onclick="currentSlide(3)">
+                    <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Forest Path">
+                    <div class="winner-badge">3rd Prize</div>
+                    <div class="photo-info">
+                        <h5>Enchanted Path</h5>
+                        <p>By Amy Aung</p>
+                    </div>
+                </div>
+
+                <!-- Second Row - 3 Photos -->
+                <!-- Photo 4 -->
+                <div class="gallery-item" onclick="currentSlide(4)">
+                    <img src="https://i.pinimg.com/1200x/bb/eb/f1/bbebf14034238457866657cfadbd177d.jpg"
+                        alt="Autumn Colors">
+                    <div class="winner-badge">Honorable Mention</div>
+                    <div class="photo-info">
+                        <h5>Autumn Symphony</h5>
+                        <p>By Lu Maw</p>
+                    </div>
+                </div>
+
+                <!-- Photo 5 -->
+                <div class="gallery-item" onclick="currentSlide(5)">
+                    <img src="https://i.pinimg.com/736x/e8/25/ca/e825cafd8df96beeb3c9522de8efdc72.jpg" alt="Waterfall">
+                    <div class="winner-badge">People's Choice</div>
+                    <div class="photo-info">
+                        <h5>Holy God of Water</h5>
+                        <p>By Shoon Thiri Moe</p>
+                    </div>
+                </div>
+
+                <!-- Photo 6 -->
+                <div class="gallery-item" onclick="currentSlide(6)">
+                    <img src="https://i.pinimg.com/736x/98/75/03/9875034e934ae40c6eaacf11345f2a25.jpg" alt="Sunset">
+                    <div class="winner-badge">Judge's Favorite</div>
+                    <div class="photo-info">
+                        <h5>Golden Hour</h5>
+                        <p>By Khin Thu Kha</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lightbox Modal (Based on W3Schools) -->
+            <div id="myLightbox" class="modal-lightbox">
+                <span class="close" onclick="closeLightbox()">&times;</span>
+                <div class="modal-content-lightbox">
+
+                    <div class="mySlides">
+                        <div class="numbertext">1 / 6</div>
+                        <img src="https://i.pinimg.com/736x/af/f9/c1/aff9c18f3a71b7c9c6d2dbfb7d500ff0.jpg"
+                            alt="Echoes of Laughter - 1st Prize">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">2 / 6</div>
+                        <img src="https://i.pinimg.com/736x/cf/0f/58/cf0f58ccfdc89a4501360ae05fb069dd.jpg"
+                            alt="Morning Encounter - 2nd Prize">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">3 / 6</div>
+                        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                            alt="Enchanted Path - 3rd Prize">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">4 / 6</div>
+                        <img src="https://i.pinimg.com/1200x/bb/eb/f1/bbebf14034238457866657cfadbd177d.jpg"
+                            alt="Autumn Symphony - Honorable Mention">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">5 / 6</div>
+                        <img src="https://i.pinimg.com/736x/e8/25/ca/e825cafd8df96beeb3c9522de8efdc72.jpg"
+                            alt="Water's Dance - People's Choice Award">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">6 / 6</div>
+                        <img src="https://i.pinimg.com/736x/98/75/03/9875034e934ae40c6eaacf11345f2a25.jpg"
+                            alt="Golden Hour - Judge's Favorite">
+                    </div>
+
+                    <!-- Caption text -->
+                    <div class="caption-container">
+                        <h4 id="caption"> - 1st Prize</h4>
+                        <p id="caption-desc">By Alex Chen | Captured at Mountainview Park</p>
+                    </div>
+
+                    <!-- Next/previous controls -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                    <!-- Thumbnail image controls -->
+                    <div class="thumbnail-container">
+                        <img class="demo"
+                            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                            onclick="currentSlide(1)" alt="Mountain Majesty">
+                        <img class="demo"
+                            src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                            onclick="currentSlide(2)" alt="Morning Encounter">
+                        <img class="demo"
+                            src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                            onclick="currentSlide(3)" alt="Enchanted Path">
+                        <img class="demo"
+                            src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                            onclick="currentSlide(4)" alt="Autumn Symphony">
+                        <img class="demo"
+                            src="https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                            onclick="currentSlide(5)" alt="Water's Dance">
+                        <img class="demo"
+                            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                            onclick="currentSlide(6)" alt="Golden Hour">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcements Board -->
+    <section id="announcements" class="announcements-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Events & Announcements</h2>
+                <p>Stay updated with our community activities and events calendar</p>
+            </div>
+
+            <div class="announcements-container">
+                <div class="announcement-slider">
+                    <!-- Slide 1 -->
+                    <div class="announcement-slide active">
+                        <h3 class="event-title">Community Cleanup Day</h3>
+                        <div class="event-content ">
+                            <div class="event-details">
+                                <p><i class="fas fa-calendar"></i> <strong>Date:</strong> March 12, 2026</p>
+                                <p><i class="fas fa-clock"></i> <strong>Time:</strong> 9:00 AM - 12:00 PM</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Mya Nandar Park </p>
+                                <p><i class="fas fa-info-circle"></i> <strong>Details:</strong> Join us for a morning of
+                                    park cleanup and restoration. Gloves, bags, and tools will be provided. All ages
+                                    welcome! This is a family-friendly event where we'll work together to remove litter,
+                                    clear trails, and plant native species. Refreshments and snacks will be served after
+                                    the cleanup. Register in advance to help us plan for supplies.</p>
+                                <p><i class="fas fa-user-friends"></i> <strong>Expected Participants:</strong> 100+
+                                    community members</p>
+                                <p><i class="fas fa-star"></i> <strong>Special Feature:</strong> Eco-friendly workshop
+                                    on recycling</p>
+                            </div>
+                            <div class="event-image">
+                                <img src="https://images.unsplash.com/photo-1571624436279-b272aff752b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                    alt="Community Cleanup">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="announcement-slide">
+                        <h3 class="event-title">Cultural Storytelling Evening</h3>
+                        <div class="event-content">
+                            <div class="event-details">
+                                <p><i class="fas fa-calendar"></i> <strong>Date:</strong> March 18, 2026</p>
+                                <p><i class="fas fa-clock"></i> <strong>Time:</strong> 6:30 PM - 8:30 PM</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Thakin Mya Park</p>
+                                <p><i class="fas fa-info-circle"></i> <strong>Details:</strong> Elders from local
+                                    Indigenous communities will share traditional stories about the land, parks, and
+                                    natural world. This immersive evening includes storytelling, traditional music, and
+                                    cultural demonstrations. Family-friendly event with traditional snacks and crafts.
+                                    Learn about the deep connection between people and parks through oral history.</p>
+                                <p><i class="fas fa-user-friends"></i> <strong>Featured Storytellers:</strong> 5
+                                    community elders</p>
+                                <p><i class="fas fa-star"></i> <strong>Special Feature:</strong> Traditional craft
+                                    demonstration</p>
+                            </div>
+                            <div class="event-image">
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                    alt="Storytelling Event">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="announcement-slide">
+                        <h3 class="event-title">Park Art Competition Exhibition</h3>
+                        <div class="event-content">
+                            <div class="event-details">
+                                <p><i class="fas fa-calendar"></i> <strong>Submission Deadline:</strong> March 30, 2026
+                                </p>
+                                <p><i class="fas fa-clock"></i> <strong>Exhibition Dates:</strong> April 10-17, 2024</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> City Art Gallery &
+                                    Online Virtual Tour</p>
+                                <p><i class="fas fa-info-circle"></i> <strong>Details:</strong> Submit artwork inspired
+                                    by parks in three categories: Painting, Photography, and Digital Art. Winners will
+                                    receive cash prizes and their work will be featured in a special exhibition. All
+                                    submitted works will be displayed in our online gallery. Opening night includes
+                                    artist talks and award ceremony.</p>
+                                <p><i class="fas fa-user-friends"></i> <strong>Prizes:</strong> $1,000 total prize money
+                                </p>
+                                <p><i class="fas fa-star"></i> <strong>Special Feature:</strong> Virtual reality
+                                    exhibition tour</p>
+                            </div>
+                            <div class="event-image">
+                                <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                    alt="Art Exhibition">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="announcement-slide">
+                        <h3 class="event-title">Spring Birdwatching Workshop</h3>
+                        <div class="event-content">
+                            <div class="event-details">
+                                <p><i class="fas fa-calendar"></i> <strong>Date:</strong> April 3, 2026</p>
+                                <p><i class="fas fa-clock"></i> <strong>Time:</strong> 7:00 AM - 10:00 AM</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Kandaw Mingalar Park
+                                </p>
+                                <p><i class="fas fa-info-circle"></i> <strong>Details:</strong> Learn to identify spring
+                                    migratory birds with expert ornithologists. Perfect for beginners and experienced
+                                    birdwatchers alike. Binoculars and field guides provided. We'll cover identification
+                                    techniques, bird behavior, and conservation efforts. Hot drinks and breakfast snacks
+                                    served. Dress warmly and bring your camera!</p>
+                                <p><i class="fas fa-user-friends"></i> <strong>Guides:</strong> 3 expert ornithologists
+                                </p>
+                                <p><i class="fas fa-star"></i> <strong>Special Feature:</strong> Rare bird species
+                                    spotting</p>
+                            </div>
+                            <div class="event-image">
+                                <img src="https://images.unsplash.com/photo-1551085254-e96b210db58a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                    alt="Birdwatching">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <div class="slider-dot active" onclick="currentAnnouncementSlide(1)"></div>
+                    <div class="slider-dot" onclick="currentAnnouncementSlide(2)"></div>
+                    <div class="slider-dot" onclick="currentAnnouncementSlide(3)"></div>
+                    <div class="slider-dot" onclick="currentAnnouncementSlide(4)"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!--Footer-->
+    <footer class="bg-dark text-white py-5" id="contact">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="image/logo2.jpg" alt="Logo" class="footer-logo mb-3">
+                    <h3 class="h5 mb-3"><i class="fas fa-leaf me-2"></i>Beyond the Bench</h3>
+                    <p class="small">We inspire people to look beyond the bench — discovering the environmental, cultural, and social value of our parks while encouraging youth to care for and protect these shared spaces.</p>
+                    <div class="social-icons mt-4">
+                        <a href="https://www.facebook.com/" class="text-white me-3"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.x.com/" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/" class="text-white me-3"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <h3 class="h5 mb-3">Quick Links</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none  footer-link">
+                            <i class="fas fa-home me-2"></i>Home</a></li>
+                        <li class="mb-2"><a href="aboutus.html" class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-info-circle me-2"></i>About Us</a></li>
+
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="learning">
+                            <label for="learning" class="footer-label"><i class="bi bi-mortarboard-fill"></i>
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="enviromental_awaraness.html">Environmental Awareness</a></li>
+                                <li><a href="culturalpreservation.html">Cultural Preservation</a></li>
+                                <li><a href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="community">
+                            <label for="community" class="footer-label"><i class="bi bi-people-fill"></i>
+                                Community Hub
+                                <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="combinedfinal.html">Fun Quizzes</a></li>
+                                <li><a href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li><a href="https://docs.google.com/document/d/1KBs0JQOvbeFJuwe8dePoCFIE3pOzIx7nn3qXni5PmcY/edit?usp=sharing"
+                                class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-envelope me-2"></i>References</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4">
+                    <h3 class="h5 mb-3">Contact Us</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            No. 635/J, Yoe Ma Yeik Thar (Pyae Road), 2nd Ward, Kamayut Township, Yangon.
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            09-882224766
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            beyondthebench@gmail.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-4 opacity-25">
+
+            <div class="text-center small">
+                <p class="mb-0">&copy; 2025 Beyond the Bench. All rights reserved. | <a href="terms.html">Terms & Privacy</a></p>
+             
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="user-auth.js"></script>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Photo Form Submission
+        document.getElementById('photoForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your photo submission! We will review it and notify you if selected for the competition.');
+            this.reset();
+        });
+
+        // Lightbox Gallery (Based on W3Schools)
+        let slideIndex = 1;
+        const captions = [
+            "Echoes of Laughter - 1st Prize",
+            "Morning Encounter - 2nd Prize",
+            "Enchanted Path - 3rd Prize",
+            "Autumn Symphony - Honorable Mention",
+            "Holy God of Water - People's Choice Award",
+            "Golden Hour - Judge's Favorite"
+        ];
+
+        const captionDesc = [
+            "By Thae Su Myat | Captured at Mountainview Park",
+            "By Maung Kyaw Soe | Captured at Deerfield Park",
+            "By Amy Aung| Captured at Whispering Woods",
+            "By Lu Maw | Captured at Maple Grove Park",
+            "By Shoon Thiri Moe | Captured at Waterfall National Park",
+            "By Khin Thu Kha | Captured at Sunset Ridge Park"
+        ];
+
+        function openLightbox() {
+            document.getElementById("myLightbox").style.display = "block";
+            showSlides(slideIndex);
+        }
+
+        function closeLightbox() {
+            document.getElementById("myLightbox").style.display = "none";
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("demo");
+            let captionText = document.getElementById("caption");
+            let captionDescText = document.getElementById("caption-desc");
+
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = captions[slideIndex - 1];
+            captionDescText.innerHTML = captionDesc[slideIndex - 1];
+        }
+
+        // Initialize lightbox when clicking on any gallery item
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function () {
+                openLightbox();
+                // Set the correct slide based on which image was clicked
+                const index = Array.from(this.parentNode.children).indexOf(this);
+                currentSlide(index + 1);
+            });
+        });
+
+        // Announcements Slider
+        let announcementSlideIndex = 0;
+        const announcementSlides = document.querySelectorAll('.announcement-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function showAnnouncementSlides() {
+            // Hide all slides
+            announcementSlides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            // Remove active class from all dots
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+
+            // Show current slide and activate corresponding dot
+            announcementSlides[announcementSlideIndex].classList.add('active');
+            dots[announcementSlideIndex].classList.add('active');
+
+            // Move to next slide
+            announcementSlideIndex++;
+            if (announcementSlideIndex >= announcementSlides.length) {
+                announcementSlideIndex = 0;
+            }
+        }
+
+        function currentAnnouncementSlide(n) {
+            announcementSlideIndex = n - 1;
+            showAnnouncementSlides();
+        }
+
+        // Initialize slider
+        showAnnouncementSlides();
+
+        // Auto-advance slides every 5 seconds
+        setInterval(showAnnouncementSlides, 5000);
+
+        // Manual dot controls
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                announcementSlideIndex = index;
+                showAnnouncementSlides();
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

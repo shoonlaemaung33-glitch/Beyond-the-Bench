@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myanmar Bird Sound Quiz | Beyond the Bench </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet">
+ 
+<link rel="shortcut icon" href="https://i.pinimg.com/736x/e1/49/03/e1490326a256a9ae6c9a2ffc0fdf2986.jpg" type="image/x-icon">
+    <style>
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Kurale", serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #005b4c90   0%,#005b4c 50%, #d8eb8e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 30px 0 40px;
+        }
+
+        .logo {
+            font-size: 3.2rem;
+            font-weight: 900;
+            background: linear-gradient(
+            135deg,
+            #f1f7d8 30%,
+            #d8eb8e 70%,
+            #bcd9cf 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #d8eb8e;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Timer & Score Container */
+        .timer-container {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border: 3px solid #d8eb8e;
+            position: relative;
+            overflow: hidden;
+            display: none;
+        }
+
+        .timer-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+             background: linear-gradient(
+            135deg,
+            #edf9ba 30%,
+            #d8eb8e 70%,
+            #dbf37d 100%
+            );
+        }
+
+
+         .score-display {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #005b4c;
+        }
+
+        .score-display span {
+            font-size: 2.5rem;
+            color: #cbe75b;
+        }
+
+        .timer-display {
+            text-align: center;
+        }
+
+        .timer-label {
+            font-size: 1.5rem;
+            color: #005b4c;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .timer {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color:  #cbe75b;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Quiz Container */
+        .quiz-container {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: none;
+        }
+
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+               background: linear-gradient(
+            135deg,
+            #edf9ba 30%,
+            #d8eb8e 70%,
+            #dbf37d 100%
+            );
+        }
+
+        /* Question Styles */
+        .question-container {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .question-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #005b4c;
+            color: #d8eb8e;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .question-text {
+            font-size: 1.8rem;
+            color: #005b4c;
+            margin-bottom: 40px;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        /* Audio Player */
+        .audio-player-container {
+            background: linear-gradient(135deg, #d8eb8e75 0%, #d8eb8e 100%);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 50px;
+            border: 3px dashed #005b4c;
+            position: relative;
+        }
+
+        .audio-title {
+            font-size: 1.5rem;
+            color: #005b4c;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .audio-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg,#005b4cbb , #005b4c);
+            color: white;
+            border: 1px solid white;
+            cursor: pointer;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(52, 178, 51, 0.3);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 25px rgba(52, 178, 51, 0.4);
+        }
+
+        .play-btn.playing {
+            background: linear-gradient(135deg, #EA2839, #FF6B6B);
+        }
+
+        .repeat-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #d8eb8e;
+            color: #005b4c;
+            border: 1px dashed  #005b4c;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .repeat-btn:hover {
+            transform: rotate(180deg);
+              background: #d8eb8e;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-slider {
+            width: 100px;
+        }
+
+        .play-count {
+            font-size: 1rem;
+            color: #005b4c;
+            margin-top: 15px;
+        }
+
+        /* Bird Options */
+        .bird-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .bird-option {
+            background: #d8eb8e;
+            border: 2px solid #d8eb8e;
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .bird-option:hover:not(.disabled) {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(46, 139, 87, 0.15);
+            border-color: #005b4c;
+        }
+
+        .bird-option.selected.correct {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .bird-option.selected.incorrect {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .bird-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .bird-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #005b4c;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .bird-name {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #005b4c;
+            margin-bottom: 5px;
+        }
+
+        .bird-scientific {
+            font-size: 0.9rem;
+            color: #005b4c;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        /* Navigation Buttons */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-prev {
+            background: #005b4cad;
+            color:  #d8eb8e;
+        }
+
+        .btn-prev:hover:not(:disabled) {
+            background: #005b4c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.4);
+        }
+
+        .btn-prev:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-next {
+             background: #005b4cad;
+            color:  #d8eb8e;
+            box-shadow: 0 5px 15px rgba(52, 178, 51, 0.3);
+        }
+
+        .btn-next:hover:not(:disabled) {
+            background: #005b4c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 178, 51, 0.4);
+        }
+
+        .btn-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Results Section */
+        .results-container {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .results-title {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            background: linear-gradient(
+            135deg,
+            #f1f7d8 30%,
+            #d8eb8e 70%,
+            #bcd9cf 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 40px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+              background: conic-gradient(
+            #d8eb8e 0% 30%,   /* from 0% to 30% use #d8eb8e */
+            white 30% 100%  /* from 30% to 100% use #005b4c */
+            );
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .score-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #005b4c;
+            position: relative;
+            z-index: 2;
+        }
+
+        .score-total {
+            font-size: 1.5rem;
+            color: #005b4c;
+            position: relative;
+            z-index: 2;
+        }
+
+        .score-message {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 20px 0;
+            color: #d8eb8e;
+        }
+
+        .perfect-score {
+            color: #d8eb8e;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Bird Fact Section */
+        .bird-facts {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .facts-title {
+            font-size: 1.8rem;
+            color: #EA2839;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .fact-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #34B233;
+        }
+
+        .fact-bird-name {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #2E8B57;
+            margin-bottom: 10px;
+        }
+
+        .fact-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Audio Controls */
+        .global-audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .audio-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #b25133;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.1);
+            background: #2E8B57;
+        }
+
+       
+       
+        /* Responsive */
+        @media (max-width: 992px) {
+            .landing-title {
+                font-size: 3.2rem;
+            }
+            
+            .quiz-container {
+                padding: 40px 30px;
+            }
+            
+            .question-text {
+                font-size: 1.6rem;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .timer-container {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .audio-player-container {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .landing-title {
+                font-size: 2.5rem;
+            }
+            
+            .landing-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .start-btn {
+                padding: 18px 40px;
+                font-size: 1.3rem;
+            }
+            
+            .bird-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .results-title {
+                font-size: 2.2rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .timer {
+                font-size: 2.2rem;
+            }
+            
+            .audio-controls {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .landing-title {
+                font-size: 2rem;
+            }
+            
+            .landing-content {
+                padding: 25px;
+            }
+            
+            .start-btn {
+                padding: 16px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .quiz-container {
+                padding: 30px 20px;
+            }
+            
+            .question-text {
+                font-size: 1.4rem;
+            }
+            
+            .score-circle {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .score-circle::before {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .score-value {
+                font-size: 2.5rem;
+            }
+            
+            .play-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+
+            #start-timer-btn {
+    background-color: #005b4cc5;   /* forest green */
+    color: #d8eb8e;
+    border: none;
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#start-timer-btn:hover {
+    background-color: #005b4c;
+    transform: scale(1.05);
+}
+
+#start-timer-btn:active {
+    transform: scale(0.95);
+}
+#start-timer-btn {
+    transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+
+
+      .btn-submit {
+            background: #005b4cad;
+            color:  #d8eb8e;
+            margin: 0 auto;
+        }
+
+        .btn-submit:hover {
+             background: #005b4c;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px #d8eb8e61;
+        }
+
+        /* Big animated result text for all scores */
+#score-message {
+    font-size: 2.5rem; /* make it big */
+    font-weight: bold;
+    text-align: center;
+    animation: moveText 2s ease-in-out infinite alternate; /* up & down movement */
+}
+
+/* Moving text animation */
+@keyframes moveText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Optional: different colors for passing vs failing */
+#score-message.passing {
+    color: #d8eb8e; /* green for 7-9 marks */
+}
+
+#score-message.sad {
+    color: #d8eb8e; /* red for <7 marks */
+}
+
+#fireworks-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+    overflow: hidden;
+}
+
+
+
+
+        .results-details {
+
+            background: #f8f9fa;
+
+            color: #005b4c;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            margin: 40px auto;
+
+            max-width: 800px;
+
+            text-align: left;
+
+        }
+
+
+
+     .detail-item {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #e0e0e0;
+
+        }
+
+
+
+        .detail-item:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+
+        .detail-correct {
+
+            color: green;
+
+            font-weight: 600;
+
+        }
+
+
+
+        .detail-incorrect {
+
+            color: red;
+
+            font-weight: 600;
+
+        }
+    </style>
+</head>
+<body>
+    
+     <!-- Quiz Access Control -->
+    <div id="quiz-access-control" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, #005b4c90 0%, #005b4c 50%, #d8eb8e 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        font-family: 'Kurale', serif;
+    ">
+        <div style="
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 5px solid #d8eb8e;
+            max-height: 100vh;        
+            overflow-y: auto;      
+        ">
+        <div style="font-size: 4rem; margin-bottom: 20px; color:#005b4c;">
+                <i class="fa-solid fa-user-lock  fa-bounce"></i>
+        </div>
+            <h2 style="
+                color: #005b4c;
+                margin-bottom: 15px;
+                font-size: 2.2rem;
+            ">
+                Quiz Access Required
+            </h2>
+            
+            <p style="
+                color: #666;
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 30px;
+            ">
+                This Myanmar Bird Sound Audio Quizz is only available for registered users.<br>
+                Please log in or register to continue.
+            </p>
+            
+            <div style="
+                background: #f8f9fa;
+                border-radius: 15px;
+                padding: 25px;
+                margin: 30px 0;
+                border-left: 4px solid #005b4c;
+            ">
+                <h3 style="color: #005b4c; margin-bottom: 15px;">
+               <i class="fa-solid fa-star me-2"></i>  Quiz Features
+                </h3>
+                <ul style="
+                    text-align: left;
+                    color: #555;
+                    line-height: 1.8;
+                    margin: 0;
+                    padding-left: 20px;
+                ">
+                    <li>3 bird sound recognition questions</li>
+                    <li>5-minute timed quiz</li>
+                    <li>5+ Bird Species </li>
+                    <li>Fun animations for high scores</li>
+                    <li>Track your bird sound knowledge</li>
+                </ul>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <button onclick="handleLoginRedirect()" style="
+                    padding: 15px 40px;
+                    background: #005b4c;
+                    color: #d8eb8e;
+                    border: none;
+                    border-radius: 50px;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    margin: 0 10px 20px 10px;
+                    min-width: 200px;
+                " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 25px rgba(0, 91, 76, 0.3)';"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <i class="fas fa-sign-in-alt"></i> Log In
+                </button>
+                
+                <button onclick="handleRegisterRedirect()" style="
+                    padding: 15px 40px;
+                    background: #d8eb8e;
+                    color: #005b4c;
+                    border: 2px solid #005b4c;
+                    border-radius: 50px;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    margin: 0 10px;
+                    min-width: 200px;
+                " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 25px rgba(216, 235, 142, 0.3)';"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <i class="fas fa-user-plus"></i> Register
+                </button>
+            </div>
+            
+           
+        </div>
+    </div>
+
+    <script>
+    // Quiz Access Control System
+    function checkQuizAccess() {
+        // Check if user is logged in using the UserManager
+        if (window.userManager && window.userManager.isLoggedIn()) {
+            // User is logged in - hide access control and show quiz
+            document.getElementById('quiz-access-control').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Show welcome message
+            const user = window.userManager.getCurrentUser();
+            if (user) {
+                // Create and show welcome toast
+                showWelcomeMessage(user);
+            }
+            return true;
+        }
+        
+        // User is not logged in - show access control
+        document.getElementById('quiz-access-control').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        return false;
+    }
+
+    function showWelcomeMessage(user) {
+        // Create a custom welcome message element
+        const welcomeDiv = document.createElement('div');
+        welcomeDiv.id = 'welcome-toast';
+        welcomeDiv.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #005b4c, #024238);
+            color: #d8eb8e;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            border-left: 5px solid #d8eb8e;
+            max-width: 400px;
+            animation: slideInRight 0.5s ease-out;
+            font-family: 'Kurale', serif;
+        `;
+        
+        welcomeDiv.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="${user.avatar}" 
+                    alt="${user.firstName}" 
+                    style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #d8eb8e;">
+                <div>
+                    <h4 style="margin: 0 0 5px 0; color: #d8eb8e;">Welcome, ${user.firstName}!</h4>
+                    <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">
+                        Ready to listen and guess Myanmar’s birds?
+                    </p>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(welcomeDiv);
+        
+        // Auto-remove after 5 seconds
+        setTimeout(() => {
+            welcomeDiv.style.animation = 'slideOutRight 0.5s ease-out';
+            setTimeout(() => welcomeDiv.remove(), 500);
+        }, 5000);
+    }
+
+    // Handle login redirect
+    function handleLoginRedirect() {
+        // Store the current URL to return to after login
+        sessionStorage.setItem('returnToQuiz', window.location.href);
+        
+        // Redirect to main site login page
+        // Change this URL to your actual login page
+        window.location.href = '/index.html#login'; // Adjust based on your site structure
+    }
+
+    // Handle register redirect
+    function handleRegisterRedirect() {
+        // Store the current URL to return to after registration
+        sessionStorage.setItem('returnToQuiz', window.location.href);
+        
+        // Redirect to main site registration page
+        // Change this URL to your actual registration page
+        window.location.href = '/index.html#register'; // Adjust based on your site structure
+    }
+
+    // Check if we're returning from successful login/registration
+    function checkReturnFromAuth() {
+        const returnToQuiz = sessionStorage.getItem('returnToQuiz');
+        const justLoggedIn = sessionStorage.getItem('justLoggedIn');
+        
+        if (returnToQuiz && justLoggedIn === 'true') {
+            // Clear the flags
+            sessionStorage.removeItem('returnToQuiz');
+            sessionStorage.removeItem('justLoggedIn');
+            
+            // Check access again
+            if (checkQuizAccess()) {
+                // Show welcome message again
+                const user = window.userManager.getCurrentUser();
+                if (user) {
+                    setTimeout(() => showWelcomeMessage(user), 500);
+                }
+            }
+        }
+    }
+
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check for user manager on window
+        if (!window.userManager) {
+            // If userManager doesn't exist globally, check localStorage directly
+            const currentUser = localStorage.getItem('beyondTheBenchCurrentUser');
+            if (currentUser) {
+                // User exists in localStorage - create minimal userManager object
+                window.userManager = {
+                    isLoggedIn: function() {
+                        return localStorage.getItem('beyondTheBenchCurrentUser') !== null;
+                    },
+                    getCurrentUser: function() {
+                        try {
+                            return JSON.parse(localStorage.getItem('beyondTheBenchCurrentUser'));
+                        } catch (e) {
+                            return null;
+                        }
+                    }
+                };
+            } else {
+                // No user manager or user - show access control
+                document.getElementById('quiz-access-control').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                return;
+            }
+        }
+        
+        // Check access and handle returns from auth
+        setTimeout(() => {
+            checkQuizAccess();
+            checkReturnFromAuth();
+        }, 100);
+    });
+
+    // Add this to your login/registration success handlers on the main site:
+    // After successful login/registration, set these flags:
+    // sessionStorage.setItem('justLoggedIn', 'true');
+    // Then redirect back to quiz page
+    </script>
+
+    <div id="fireworks-container"></div>
+
+    <!-- Audio Elements for Bird Sounds -->
+    <audio id="bird-sound-1" preload="auto">
+        <source src="audio/White-browed Scimitar-babbler.m4a" type="audio/mpeg">
+    </audio>
+    <audio id="bird-sound-2" preload="auto">
+        <source src="audio/Indian Cuckoo.m4a" type="audio/mpeg">
+    </audio>
+    <audio id="bird-sound-3" preload="auto">
+        <source src="audio/Brown Bush-warbler.m4a" type="audio/mpeg">
+    </audio>
+ 
+  
+    
+    <!-- Feedback Sounds -->
+    <audio id="correct-sound" preload="auto">
+        <source src="audio/correct_answer.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="incorrect-sound" preload="auto">
+        <source src="audio/wrong_answer.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="celebration-sound" preload="auto">
+        <source src="audio/yeah-excited-crowd-gfx-sounds-3-3-00-01.mp3" type="audio/mpeg">
+    </audio>
+
+     <audio id="boo-sound" preload="auto">
+        <source src="audio/cartoon-fail-music-sting-tomas-herudek-1-00-04.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Global Audio Controls -->
+    <div class="global-audio-controls" id="global-audio-controls">
+        <button class="audio-btn" id="toggle-sound">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header id="main-header">
+            <h1 class="logo">🦜 Myanmar Bird Sound Quiz 🦜</h1>
+            <p class="tagline">Listen to authentic bird calls from Myanmar's unique avian species and test your identification skills !</p>
+        </header>
+
+        <!-- Timer & Score -->
+        <div class="timer-container" id="timer-container">
+            <div class="score-display">
+                Score: <span id="current-score">0</span>/<span id="total-score">3</span>
+            </div>
+            
+            <div class="timer-display">
+                <div class="timer-label">Time Remaining</div>
+                <div class="timer" id="timer">5:00</div>
+                 <button id="start-timer-btn">Start Timer</button>
+            </div>
+            
+            <div class="progress-display">
+                <div class="timer-label">Question Progress</div>
+                <div style="font-size: 2.5rem; font-weight: 700; color:  #cbe75b;">
+                    <span id="current-q">1</span>/<span id="total-q">3</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Container -->
+        <div class="quiz-container" id="quiz-container">
+            <!-- Question 1 -->
+            <div class="question-container active" id="question-1">
+                <div class="question-number">Question 1 of 3</div>
+                <h2 class="question-text">Listen to this bird call. Which Myanmar bird is this?</h2>
+                
+                <div class="audio-player-container">
+                    <div class="audio-title">Bird Call #1</div>
+                    <div class="audio-controls">
+                        <button class="play-btn" id="play-btn-1">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="repeat-btn" id="repeat-btn-1">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <div class="volume-control">
+                            <i class="fas fa-volume-up"></i>
+                            <input type="range" class="volume-slider" id="volume-1" min="0" max="1" step="0.1" value="0.7">
+                        </div>
+                    </div>
+                    <div class="play-count" id="play-count-1">Played 0 times</div>
+                </div>
+                
+                <div class="bird-options">
+
+                      <div class="bird-option" data-correct="false" data-value="A">
+                        <img src="https://i.pinimg.com/1200x/8a/88/ca/8a88caca8d14a1e575b1a23194e74344.jpg"  alt="White-throated Babbler" class="bird-image">
+                        <div class="bird-name">Hooded Treepie</div>
+                        <div class="bird-scientific">(Crypsirina cucullata)</div>
+                    </div> 
+
+                     <div class="bird-option" data-correct="true" data-value="B">
+                        <img src="https://i.pinimg.com/1200x/7f/23/c2/7f23c2c6d897b2ecbce2e54f4f72d4b5.jpg" alt="White-throated Babbler" class="bird-image">
+                        <div class="bird-name">White-browed Scimitar-babbler</div>
+                        <div class="bird-scientific">(Argya gularis)</div>
+                    </div>
+
+                    
+                    <div class="bird-option" data-correct="false" data-value="C">
+                        <img src="https://i.pinimg.com/1200x/b4/e9/e2/b4e9e2fae2797c463e4da26bcef4c8af.jpg" alt="Burmese Bushlark" class="bird-image">
+                        <div class="bird-name">Burmese Bushlark</div>
+                        <div class="bird-scientific">(Mirafra microptera)</div>
+                    </div>
+                
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-container" id="question-2">
+                <div class="question-number">Question 2 of 3</div>
+                <h2 class="question-text">Identify this bird from its distinctive call:</h2>
+                
+                <div class="audio-player-container">
+                    <div class="audio-title">Bird Call #2</div>
+                    <div class="audio-controls">
+                        <button class="play-btn" id="play-btn-2">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="repeat-btn" id="repeat-btn-2">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <div class="volume-control">
+                            <i class="fas fa-volume-up"></i>
+                            <input type="range" class="volume-slider" id="volume-2" min="0" max="1" step="0.1" value="0.7">
+                        </div>
+                    </div>
+                    <div class="play-count" id="play-count-2">Played 0 times</div>
+                </div>
+                
+                <div class="bird-options">
+                         <div class="bird-option" data-correct="true" data-value="A">
+                        <img src="https://i.pinimg.com/736x/03/5c/3b/035c3bee49d8d20f22582fc82473079f.jpg" alt="Brown Hornbill" class="bird-image">
+                        <div class="bird-name">Indian Cuckoo</div>
+                        <div class="bird-scientific">(Cuculus micropterus)</div>
+                    </div>
+
+                    <div class="bird-option" data-correct="false" data-value="B">
+                        <img src="https://i.pinimg.com/1200x/8a/88/ca/8a88caca8d14a1e575b1a23194e74344.jpg" alt="Hooded Treepie" class="bird-image">
+                        <div class="bird-name">Hooded Treepie</div>
+                        <div class="bird-scientific">(Crypsirina cucullata)</div>
+                    </div>
+                    
+               
+                    
+                    <div class="bird-option" data-correct="false" data-value="C">
+                        <img src="https://i.pinimg.com/736x/55/49/38/5549380cb5f7b8e502abde9c278fdffa.jpg" alt="Grey-breasted Prinia" class="bird-image">
+                        <div class="bird-name">Grey-breasted Prinia</div>
+                        <div class="bird-scientific">Prinia hodgsonii</div>
+                    </div>
+                    
+                  
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-container" id="question-3">
+                <div class="question-number">Question 3 of 3</div>
+                <h2 class="question-text">Which bird makes this melodic song?</h2>
+                
+                <div class="audio-player-container">
+                    <div class="audio-title">Bird Call #3</div>
+                    <div class="audio-controls">
+                        <button class="play-btn" id="play-btn-3">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="repeat-btn" id="repeat-btn-3">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <div class="volume-control">
+                            <i class="fas fa-volume-up"></i>
+                            <input type="range" class="volume-slider" id="volume-3" min="0" max="1" step="0.1" value="0.7">
+                        </div>
+                    </div>
+                    <div class="play-count" id="play-count-3">Played 0 times</div>
+                </div>
+                
+                <div class="bird-options">
+                    <div class="bird-option" data-correct="false" data-value="A">
+                        <img src="https://i.pinimg.com/1200x/0c/ee/29/0cee2942db8a8f6e1d08ef1125191c1c.jpg" alt="Brown Hornbill" class="bird-image">
+                        <div class="bird-name">Brown Hornbill</div>
+                        <div class="bird-scientific">(Anorrhinus austeni)</div>
+                    </div>
+                    
+                    <div class="bird-option" data-correct="true" data-value="B">
+                        <img src="https://i.pinimg.com/1200x/0f/8a/d6/0f8ad666f3c3e7dbd636dc49d74bed2d.jpg" alt="Brown-breasted Bulbul" class="bird-image">
+                        <div class="bird-name">Brown-breasted Bulbul</div>
+                        <div class="bird-scientific">(Pycnonotus xanthorrhous)</div>
+                    </div>
+                    
+                    <div class="bird-option" data-correct="false" data-value="C">
+                        <img src="https://i.pinimg.com/1200x/cc/ee/7e/ccee7e100c8e8f647ead38663c5bf362.jpg" alt="Jerdon's Minivet" class="bird-image">
+                        <div class="bird-name">Jerdon's Minivet</div>
+                        <div class="bird-scientific">(Pericrocotus albifrons)</div>
+                    </div>
+                 
+                </div>
+            </div>
+
+            <!-- Additional questions would continue here... -->
+
+            <!-- Navigation Buttons -->
+            <div class="navigation">
+                <button class="btn btn-prev" id="prev-btn" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="btn btn-next" id="next-btn">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-container" id="results-container">
+            <h2 class="results-title">Quiz Results</h2>
+            
+            <div class="score-circle" id="score-circle">
+                <div class="score-value" id="final-score">0</div>
+                <div class="score-total">/ 10</div>
+            </div>
+            
+            <div class="score-message" id="score-message"></div>
+            
+       
+            
+            <div class="results-details">
+                <div class="detail-item">
+                    <span>Total Questions:</span>
+                    <span>10</span>
+                </div>
+                <div class="detail-item">
+                    <span>Correct Answers:</span>
+                    <span class="detail-correct" id="correct-answers">0</span>
+                </div>
+                <div class="detail-item">
+                    <span>Incorrect Answers:</span>
+                    <span class="detail-incorrect" id="incorrect-answers">0</span>
+                </div>
+                <div class="detail-item">
+                    <span>Time Taken:</span>
+                    <span id="time-taken">0:00</span>
+                </div>
+                <div class="detail-item">
+                    <span>Accuracy:</span>
+                    <span id="accuracy">0%</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <p style="font-size: 1.1rem; color: #d8eb8e; max-width: 700px; margin: 0 auto 30px;">
+                    <strong>Environmental Tip:</strong> <span id="environment-tip">Respect birds in parks by keeping noise low, not feeding them junk food, and leaving their habitats undisturbed.</span>
+                </p>
+            </div>
+            
+            <button class="btn btn-submit" id="restart-btn">
+                <i class="fas fa-redo"></i> Take Quiz Again
+            </button>
+        </div>
+
+        
+    </div>
+
+<script>
+/* =========================
+   CONFIG
+========================= */
+const QUIZ_CONFIG = {
+    totalQuestions: 3,
+    timeLimit: 300,
+    passingScore: 7,
+    perfectScore: 10
+};
+
+/* =========================
+   STATE
+========================= */
+let quizState = {
+    currentQuestion: 1,
+    score: 0,
+    answered: Array(QUIZ_CONFIG.totalQuestions).fill(false),
+    timerStarted: false,
+    timeRemaining: QUIZ_CONFIG.timeLimit,
+    timerInterval: null,
+    soundEnabled: true,
+    playCounts: Array(QUIZ_CONFIG.totalQuestions).fill(0),
+    audioElements: {}
+};
+
+/* =========================
+   DOM
+========================= */
+const quizContainer = document.getElementById("quiz-container");
+const timerContainer = document.getElementById("timer-container");
+const resultsContainer = document.getElementById("results-container");
+
+const startTimerBtn = document.getElementById("start-timer-btn");
+const timerEl = document.getElementById("timer");
+const scoreEl = document.getElementById("current-score");
+const qEl = document.getElementById("current-q");
+
+const nextBtn = document.getElementById("next-btn");
+const prevBtn = document.getElementById("prev-btn");
+const restartBtn = document.getElementById("restart-btn");
+
+const toggleSoundBtn = document.getElementById("toggle-sound");
+
+const correctSound = document.getElementById("correct-sound");
+const incorrectSound = document.getElementById("incorrect-sound");
+const celebrationSound = document.getElementById("celebration-sound");
+const booSound = document.getElementById("boo-sound");
+
+/* =========================
+   INIT
+========================= */
+document.addEventListener("DOMContentLoaded", () => {
+    quizContainer.style.display = "block";
+    timerContainer.style.display = "flex";
+    resultsContainer.style.display = "none";
+
+    setupAudio();
+    updateScore();
+    lockAllInteractions();
+
+    nextBtn.disabled = true;
+    prevBtn.disabled = true;
+});
+
+/* =========================
+   TIMER
+========================= */
+startTimerBtn.onclick = () => {
+    if (quizState.timerStarted) return;
+
+    quizState.timerStarted = true;
+    startTimerBtn.style.display = "none";
+    unlockInteractions();
+    startTimer();
+};
+
+function startTimer() {
+    updateTimer();
+    quizState.timerInterval = setInterval(() => {
+        quizState.timeRemaining--;
+        updateTimer();
+
+        if (quizState.timeRemaining <= 0) {
+            finishQuiz();
+        }
+    }, 1000);
+}
+
+function updateTimer() {
+    const m = Math.floor(quizState.timeRemaining / 60);
+    const s = quizState.timeRemaining % 60;
+    timerEl.textContent = `${m}:${s.toString().padStart(2, "0")}`;
+}
+
+/* =========================
+   AUDIO
+========================= */
+function setupAudio() {
+    for (let i = 1; i <= QUIZ_CONFIG.totalQuestions; i++) {
+        const audio = document.getElementById(`bird-sound-${i}`);
+        const playBtn = document.getElementById(`play-btn-${i}`);
+        const repeatBtn = document.getElementById(`repeat-btn-${i}`);
+        const volume = document.getElementById(`volume-${i}`);
+        const count = document.getElementById(`play-count-${i}`);
+
+        quizState.audioElements[i] = audio;
+        audio.volume = volume.value;
+
+        playBtn.onclick = () => {
+            if (!quizState.timerStarted) return;
+            stopAllAudio();
+            audio.play();
+            quizState.playCounts[i - 1]++;
+            count.textContent = `Played ${quizState.playCounts[i - 1]} times`;
+        };
+
+        repeatBtn.onclick = () => {
+            if (!quizState.timerStarted) return;
+            audio.currentTime = 0;
+            audio.play();
+        };
+
+        volume.oninput = () => audio.volume = volume.value;
+    }
+}
+
+function stopAllAudio() {
+    Object.values(quizState.audioElements).forEach(a => {
+        a.pause();
+        a.currentTime = 0;
+    });
+}
+
+/* =========================
+   OPTIONS
+========================= */
+document.querySelectorAll(".bird-option").forEach(option => {
+    option.onclick = () => {
+        if (!quizState.timerStarted) return;
+
+        const box = option.closest(".question-container");
+        const qIndex = Number(box.id.split("-")[1]) - 1;
+
+        if (quizState.answered[qIndex]) return;
+        quizState.answered[qIndex] = true;
+
+        box.querySelectorAll(".bird-option").forEach(o => {
+            o.style.pointerEvents = "none";
+            o.classList.add("disabled");
+        });
+
+        if (option.dataset.correct === "true") {
+            quizState.score++;
+            option.classList.add("selected", "correct");
+            quizState.soundEnabled && correctSound.play();
+        } else {
+            option.classList.add("selected", "incorrect");
+            box.querySelector('[data-correct="true"]').classList.add("correct");
+            quizState.soundEnabled && incorrectSound.play();
+        }
+
+        updateScore();
+        nextBtn.disabled = false;
+    };
+});
+
+/* =========================
+   NAVIGATION
+========================= */
+nextBtn.onclick = () => {
+    if (!quizState.answered[quizState.currentQuestion - 1]) return;
+
+    stopAllAudio();
+
+    if (quizState.currentQuestion < QUIZ_CONFIG.totalQuestions) {
+        changeQuestion(quizState.currentQuestion + 1);
+    } else {
+        finishQuiz();
+    }
+};
+
+function changeQuestion(q) {
+    document.getElementById(`question-${quizState.currentQuestion}`).classList.remove("active");
+    quizState.currentQuestion = q;
+    document.getElementById(`question-${q}`).classList.add("active");
+
+    qEl.textContent = q;
+    prevBtn.disabled = q === 1;
+    nextBtn.disabled = !quizState.answered[q - 1];
+}
+
+/* =========================
+   FINISH QUIZ
+========================= */
+function finishQuiz() {
+    clearInterval(quizState.timerInterval);
+    quizContainer.style.display = "none";
+    timerContainer.style.display = "none";
+    resultsContainer.style.display = "block";
+
+    const scoreMsg = document.getElementById("score-message");
+    const fireworks = document.getElementById("fireworks-container");
+
+    document.getElementById("final-score").textContent = quizState.score;
+    document.getElementById("correct-answers").textContent = quizState.score;
+    document.getElementById("incorrect-answers").textContent =
+        QUIZ_CONFIG.totalQuestions - quizState.score;
+
+    if (quizState.score === QUIZ_CONFIG.perfectScore) {
+        scoreMsg.textContent = "PERFECT SCORE! ";
+        scoreMsg.className = "score-message passing";
+        showCelebration("celebration");
+    } else if (quizState.score >= QUIZ_CONFIG.passingScore) {
+        scoreMsg.textContent = "Great job! ";
+        scoreMsg.className = "score-message passing";
+        showCelebration("celebration");
+    } else {
+        scoreMsg.textContent = "Try again next time ! ";
+        scoreMsg.className = "score-message sad";
+        showCelebration("sad");
+    }
+}
+
+/* =========================
+   CELEBRATIONS
+========================= */
+function showCelebration(type) {
+    const container = document.getElementById("fireworks-container");
+    container.style.display = "block";
+    container.innerHTML = "";
+
+    celebrationSound.pause();
+    booSound.pause();
+    celebrationSound.currentTime = 0;
+    booSound.currentTime = 0;
+
+    if (type === "celebration") {
+        quizState.soundEnabled && celebrationSound.play();
+        for (let i = 0; i < 10; i++) createFirework(container);
+    } else {
+        quizState.soundEnabled && booSound.play();
+        createSadRain(container);
+    }
+
+    setTimeout(() => {
+        container.innerHTML = "";
+        container.style.display = "none";
+    }, 8000);
+}
+
+function createFirework(container) {
+    const spark = document.createElement("div");
+    spark.className = "mega-firework";
+    spark.style.left = Math.random() * 100 + "%";
+    spark.style.top = Math.random() * 60 + "%";
+    spark.style.setProperty("--x", `${Math.random() * 300 - 150}px`);
+    spark.style.setProperty("--y", `${Math.random() * 300 - 150}px`);
+    container.appendChild(spark);
+}
+
+function createSadRain(container) {
+    for (let i = 0; i < 60; i++) {
+        const drop = document.createElement("div");
+        drop.className = "rain-drop";
+        drop.style.left = Math.random() * 100 + "%";
+        container.appendChild(drop);
+    }
+}
+
+/* =========================
+   UTIL
+========================= */
+function updateScore() {
+    scoreEl.textContent = quizState.score;
+}
+
+function lockAllInteractions() {
+    document.querySelectorAll(".bird-option, .play-btn, .repeat-btn").forEach(el => {
+        el.style.pointerEvents = "none";
+        el.style.opacity = "0.5";
+    });
+}
+
+function unlockInteractions() {
+    document.querySelectorAll(".bird-option, .play-btn, .repeat-btn").forEach(el => {
+        el.style.pointerEvents = "auto";
+        el.style.opacity = "1";
+    });
+}
+
+/* =========================
+   SOUND TOGGLE
+========================= */
+toggleSoundBtn.onclick = () => {
+    quizState.soundEnabled = !quizState.soundEnabled;
+    toggleSoundBtn.innerHTML = quizState.soundEnabled
+        ? '<i class="fas fa-volume-up"></i>'
+        : '<i class="fas fa-volume-mute"></i>';
+};
+
+/* =========================
+   RESTART
+========================= */
+restartBtn.onclick = () => location.reload();
+
+ document.addEventListener('DOMContentLoaded', () => {
+    // Show alert when page loads
+    alert("Start the timer first before answering and see how well you can do!");
+
+    // Initialize quiz
+    initQuiz();
+});
+
+prevBtn.onclick = () => {
+    stopAllAudio();
+    if (quizState.currentQuestion > 1) {
+        changeQuestion(quizState.currentQuestion - 1);
+    }
+};
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

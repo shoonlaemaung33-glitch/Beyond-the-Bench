@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park Revitilization | Beyond the Bench </title>
+    <!-- Google Fonts - Kurale -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png"
+        type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- Animate On Scroll CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="parkrevitilization.css">
+    <link rel="stylesheet" href="footer.css">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="nav.css">
+   
+
+</head>
+
+<body>
+  
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png" alt="Logo" class="logo">
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#navOffcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Offcanvas -->
+            <div class="offcanvas offcanvas-end" id="navOffcanvas">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold">Beyond The Bench</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto gap-lg-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="parkrevitilization.html">Park
+                                Revitalization</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown">
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="enviromental_awaraness.html">Environmental
+                                        Awareness</a></li>
+                                <li><a class="dropdown-item" href="culturalpreservation.html">Cultural Preservation</a>
+                                </li>
+                                <li><a class="dropdown-item" href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown">
+                                Community Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="combinedfinal.html">Fun Quizzes </a></li>
+                                <li><a class="dropdown-item" href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a class="dropdown-item" href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.html">About Us</a>
+                        </li>
+                    </ul>
+
+                    <!-- User Profile or Sign In Button -->
+                    <div id="userNavSection">
+                        <!-- This will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration/Login Modal -->
+    <div class="modal fade" id="NavModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Welcome to Beyond The Bench</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Tabs for Login/Register -->
+                    <ul class="nav nav-tabs mb-4" id="authTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
+                                type="button" role="tab">Sign In</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register"
+                                type="button" role="tab">Register</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="authTabsContent">
+                        <!-- Login Tab -->
+                        <div class="tab-pane fade show active" id="login" role="tabpanel">
+                            <form id="loginForm" class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="loginEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword"
+                                        placeholder="Enter your password" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your password.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                            </form>
+                            <div class="text-center mt-3">
+                                <a href="#" class="text-decoration-none" id="forgotPassword">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <!-- Register Tab -->
+                        <div class="tab-pane fade" id="register" role="tabpanel">
+                            <form id="registerForm" class="needs-validation" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="John"
+                                            required minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid first name (min 2 characters).
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Doe" required
+                                            minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid last name (min 2 characters).
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Email address *</label>
+                                    <input type="email" class="form-control" id="registerEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">Password *</label>
+                                    <input type="password" class="form-control" id="registerPassword"
+                                        placeholder="At least 8 characters" required minlength="8">
+                                    <div class="password-strength">
+                                        <div class="strength-bar" id="passwordStrength"></div>
+                                    </div>
+                                    <div class="strength-text" id="strengthText">Password strength: None</div>
+                                    <small class="form-text text-muted">Must contain uppercase, lowercase, and
+                                        numbers</small>
+                                    <div class="invalid-feedback">
+                                        Password must be at least 8 characters with uppercase, lowercase, and numbers.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password *</label>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        placeholder="Re-enter password" required>
+                                    <div class="invalid-feedback">
+                                        Passwords do not match.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Choose an Avatar *</label>
+                                    <div class="avatar-selection">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=b6e3f4"
+                                            class="avatar-option" data-avatar="avatar1" alt="Avatar 1">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jane&backgroundColor=c0aede"
+                                            class="avatar-option" data-avatar="avatar2" alt="Avatar 2">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mike&backgroundColor=d1d4f9"
+                                            class="avatar-option" data-avatar="avatar3" alt="Avatar 3">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah&backgroundColor=ffd5dc"
+                                            class="avatar-option" data-avatar="avatar4" alt="Avatar 4">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&backgroundColor=ffdfbf"
+                                            class="avatar-option" data-avatar="avatar5" alt="Avatar 5">
+                                    </div>
+                                    <input type="hidden" id="selectedAvatar" required>
+                                    <div class="invalid-feedback">
+                                        Please select an avatar.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="termsAgreement" required>
+                                    <label class="form-check-label" for="termsAgreement">
+                                        I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and
+                                        <a href="#" class="text-decoration-none">Privacy Policy</a> *
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree to the terms and conditions.
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                                <p class="text-muted small mt-3">* Required fields</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reset Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotPasswordForm">
+                        <div class="mb-3">
+                            <label for="resetEmail" class="form-label">Enter your email address</label>
+                            <input type="email" class="form-control" id="resetEmail" placeholder="name@example.com"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Reset Link</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="title" data-aos="fade-up" data-aos-duration="800">How We're Reviving <span>Myanmar's
+                        Parks</span></h1>
+                <p class="lead" data-aos="fade-up" data-aos-delay="300">Transforming neglected green spaces into vibrant
+                    community hubs through ecological restoration, cultural preservation, and active community
+                    participation.</p>
+                <button class="cta-button" id="learnMoreBtn" data-aos="fade-up" data-aos-delay="450">
+                    Explore Our Approach <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="scroll-down" id="scrollDownBtn">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- Enhanced Second Hero Section -->
+    <section class="section second-hero" id="secondHero">
+        <div class="container">
+            <div class="second-hero-content">
+                <div class="urgent-badge" data-aos="fade-up">
+                    <i class="fas fa-exclamation-circle me-2"></i> URGENT NEED
+                </div>
+                <h2 data-aos="fade-up" data-aos-delay="100">The Critical Need to Revitalize Myanmar's Local Parks</h2>
+                <p data-aos="fade-up" data-aos-delay="200">Myanmar's urban green spaces are in crisis. With only 0.41m²
+                    of park space per person - less than 5% of the WHO standard - our communities are deprived of
+                    essential green infrastructure. Parks are more than just open spaces; they are vital for public
+                    health, environmental sustainability, cultural preservation, and social cohesion.</p>
+
+                <div class="row mt-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="col-md-3 mb-3">
+                        <div class="stat-item">
+                            <span class="stat-value">0.41m²</span>
+                            <span class="stat-label">Green space per person in Yangon</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="stat-item">
+                            <span class="stat-value">38.7%</span>
+                            <span class="stat-label">Decline since 1990</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="stat-item">
+                            <span class="stat-value">9m²</span>
+                            <span class="stat-label">WHO Standard</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="stat-item">
+                            <span class="stat-value">40%</span>
+                            <span class="stat-label">Need urgent revitalization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="cta-button mt-4" data-aos="fade-up" data-aos-delay="400"
+                    onclick="scrollToSection('comparison')">
+                    Compare with Other Countries <i class="fas fa-chart-bar"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Focus Areas Section -->
+    <section class="section bg-light" id="focus">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Three-Pillar Approach to Park Revitalization</h2>
+            <p class="text-center mb-4" data-aos="fade-up" data-aos-delay="150">Holistic transformation through
+                interconnected focus areas</p>
+
+            <!-- FIXED: All three cards now perfectly aligned -->
+            <div class="focus-grid">
+                <!-- Environment Card - FIXED: Now perfectly aligned with others -->
+                <div class="focus-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="focus-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="focus-title">Environmental Restoration</h3>
+                    <p>Rebuilding native ecosystems, enhancing biodiversity, and implementing sustainable water
+                        management to create resilient urban green spaces that combat climate change and improve air
+                        quality.</p>
+
+                    <div class="card-info-box">
+                        <ul>
+                            <li>Native plant species reintroduction</li>
+                            <li>Sustainable water management systems</li>
+                            <li>Urban heat island reduction</li>
+                            <li>Wildlife habitat creation</li>
+                            <li>Soil health improvement</li>
+                        </ul>
+                    </div>
+
+                    <button class="cta-button mt-3 focus-btn" data-type="environment">
+                        Learn More <i class="fas fa-seedling"></i>
+                    </button>
+                </div>
+
+                <!-- Culture Card -->
+                <div class="focus-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="focus-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3 class="focus-title">Cultural Integration</h3>
+                    <p>Weaving Myanmar's rich heritage, traditional arts, and community identity into park design to
+                        create spaces that celebrate our history, tell our stories, and preserve cultural traditions.
+                    </p>
+
+                    <div class="card-info-box">
+                        <ul>
+                            <li>Public art by local artists</li>
+                            <li>Historical interpretation</li>
+                            <li>Cultural events and festivals</li>
+                            <li>Traditional craft workshops</li>
+                            <li>Indigenous knowledge preservation</li>
+                        </ul>
+                    </div>
+
+                    <button class="cta-button mt-3 focus-btn" data-type="culture">
+                        Learn More <i class="fas fa-palette"></i>
+                    </button>
+                </div>
+
+                <!-- Community Engagement Card -->
+                <div class="focus-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="focus-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="focus-title">Community Engagement</h3>
+                    <p>Empowering residents through participatory design, volunteer programs, and inclusive activities
+                        that ensure parks serve everyone equitably and become true community assets.</p>
+
+                    <div class="card-info-box">
+                        <ul>
+                            <li>Community design workshops</li>
+                            <li>Volunteer maintenance programs</li>
+                            <li>Intergenerational activities</li>
+                            <li>Accessibility improvements</li>
+                            <li>Youth leadership programs</li>
+                        </ul>
+                    </div>
+
+                    <button class="cta-button mt-3 focus-btn" data-type="community">
+                        Learn More <i class="fas fa-hands-helping"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Visualization Section -->
+    <section class="section" id="data">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">The Green Space Crisis in Myanmar: Data Insights</h2>
+            <p class="text-center mb-4" data-aos="fade-up" data-aos-delay="150">Source: "Green Spaces in Yangon: Towards
+                a Greener City for All" (Another Development, 2019) – <a
+                    href="https://www.themimu.info/sites/themimu.info/files/documents/Report_Green_Space_in_Yangon_Towards_Greener_City_for_All_ENG.pdf"
+                    target="_blank">View Full Report</a></p>
+
+            <div class="data-visualization" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="chart-title">Green Space Per Person Comparison: Myanmar vs International Standards</h3>
+                <p class="chart-description">Analysis of green space availability from 1990 to present compared with WHO
+                    recommendations</p>
+
+                <div class="chart-container">
+                    <div class="y-axis">
+                        <div class="y-label"><span class="y-label-text">100 sq ft</span></div>
+                        <div class="y-label"><span class="y-label-text">75 sq ft</span></div>
+                        <div class="y-label"><span class="y-label-text">50 sq ft</span></div>
+                        <div class="y-label"><span class="y-label-text">25 sq ft</span></div>
+                        <div class="y-label"><span class="y-label-text">0 sq ft</span></div>
+                    </div>
+
+                    <div class="bar-chart" id="greenSpaceChart">
+                        <!-- Bars created by JavaScript -->
+                        <div class="bar" style="height: 30.5%; background-color: #005B4C; margin: 0 15px;">
+                            <div class="bar-value">30.5 sq ft</div>
+                            <div class="bar-label">1990</div>
+                        </div>
+                        <div class="bar" style="height: 21.9%; background-color: #00755E; margin: 0 15px;">
+                            <div class="bar-value">21.9 sq ft</div>
+                            <div class="bar-label">2002</div>
+                        </div>
+                        <div class="bar" style="height: 18.7%; background-color: #20B2AA; margin: 0 15px;">
+                            <div class="bar-value">18.7 sq ft</div>
+                            <div class="bar-label">2014</div>
+                        </div>
+                        <div class="bar" style="height: 96.9%; background-color: #2E8B57; margin: 0 15px;">
+                            <div class="bar-value">96.9 sq ft</div>
+                            <div class="bar-label who-label">WHO Standard</div>
+                        </div>
+                    </div>
+                    <div class="chart-axis"></div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button class="cta-button" id="viewResearchBtn">
+                        <i class="fas fa-file-alt me-2"></i> View Full Research Summary
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Myanmar Comparison Section -->
+    <section class="section bg-light" id="comparison">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up" style="color: var(--primary-color);">Comparing Myanmar's Parks
+                with Other Countries</h2>
+            <p class="text-center mb-4" data-aos="fade-up" data-aos-delay="150">Understanding the gap highlights why
+                revitalization is essential</p>
+
+            <div class="comparison-visual" data-aos="fade-up" data-aos-delay="200">
+                <h3>Why Revitalization Matters: Current State vs International Standards</h3>
+                <div class="visual-comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-image myanmar-image">
+                            <img src="https://i.pinimg.com/736x/cb/81/28/cb8128acc968827a1d00aedeb8fbf6b8.jpg"
+                                alt="Current park condition in Myanmar">
+                            <div class="image-label">Typical Park in Myanmar Today</div>
+                        </div>
+                        <div class="comparison-details">
+                            <h4><i class="fas fa-map-marker-alt me-2" style="color: #CD5C5C;"></i>Myanmar Parks: Current
+                                Reality</h4>
+                            <ul class="mt-2" style="color: var(--dark-color);">
+                                <li><i class="fas fa-times me-2" style="color: #CD5C5C;"></i>Severely limited green
+                                    space per person</li>
+                                <li><i class="fas fa-times me-2" style="color: #CD5C5C;"></i>Deteriorating
+                                    infrastructure and facilities</li>
+                                <li><i class="fas fa-times me-2" style="color: #CD5C5C;"></i>Minimal recreational
+                                    amenities</li>
+                                <li><i class="fas fa-times me-2" style="color: #CD5C5C;"></i>Poor maintenance and safety
+                                    concerns</li>
+                                <li><i class="fas fa-times me-2" style="color: #CD5C5C;"></i>Limited community
+                                    programming</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-image international-image">
+                            <img src="https://i.pinimg.com/736x/1c/74/6f/1c746fb3c976ae478352690cf10a43c8.jpg"
+                                alt="International standard park">
+                            <div class="image-label">Park in Singapore</div>
+                        </div>
+                        <div class="comparison-details">
+                            <h4><i class="fas fa-globe-americas me-2" style="color: #2E8B57;"></i>International Park
+                                Standards</h4>
+                            <ul class="mt-2" style="color: var(--dark-color);">
+                                <li><i class="fas fa-check me-2" style="color: #2E8B57;"></i>Adequate green space
+                                    (15-20m² per person)</li>
+                                <li><i class="fas fa-check me-2" style="color: #2E8B57;"></i>Modern, well-maintained
+                                    facilities</li>
+                                <li><i class="fas fa-check me-2" style="color: #2E8B57;"></i>Diverse recreational
+                                    amenities</li>
+                                <li><i class="fas fa-check me-2" style="color: #2E8B57;"></i>Universal accessibility for
+                                    all</li>
+                                <li><i class="fas fa-check me-2" style="color: #2E8B57;"></i>Active community
+                                    programming</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-stats">
+                    <div class="stat-item myanmar-stat">
+                        <span class="stat-value">0.41m²</span>
+                        <span class="stat-label">Green space per person</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">15%</span>
+                        <span class="stat-label">Parks with proper facilities</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">9 Townships</span>
+                        <span class="stat-label">Have no public parks</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">38.7%</span>
+                        <span class="stat-label">Decline since 1990</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-table" data-aos="fade-up" data-aos-delay="300">
+                <div class="table-header">
+                    <h3 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Detailed Comparison: Why We Need
+                        Revitalization</h3>
+                    <span>Key differences highlighting the urgency for transformation</span>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell myanmar">
+                        <span class="badge badge-negative">Myanmar</span>
+                        <strong>Limited Access & Facilities</strong>
+                    </div>
+                    <div class="table-cell">
+                        <span class="badge badge-positive">Other Countries</span>
+                        <strong>Comprehensive Access & Facilities</strong>
+                    </div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell myanmar">
+                        <i class="fas fa-times-circle me-2" style="color: #CD5C5C;"></i>
+                        Less than 1m² green space per capita
+                    </div>
+                    <div class="table-cell">
+                        <i class="fas fa-check-circle me-2" style="color: #2E8B57;"></i>
+                        15-20m² green space per capita
+                    </div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell myanmar">
+                        <i class="fas fa-times-circle me-2" style="color: #CD5C5C;"></i>
+                        Minimal recreational amenities
+                    </div>
+                    <div class="table-cell">
+                        <i class="fas fa-check-circle me-2" style="color: #2E8B57;"></i>
+                        Diverse amenities for all ages
+                    </div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell myanmar">
+                        <i class="fas fa-times-circle me-2" style="color: #CD5C5C;"></i>
+                        Poor accessibility standards
+                    </div>
+                    <div class="table-cell">
+                        <i class="fas fa-check-circle me-2" style="color: #2E8B57;"></i>
+                        Universal accessibility
+                    </div>
+                </div>
+
+                <div class="table-row">
+                    <div class="table-cell myanmar">
+                        <i class="fas fa-times-circle me-2" style="color: #CD5C5C;"></i>
+                        Limited community programming
+                    </div>
+                    <div class="table-cell">
+                        <i class="fas fa-check-circle me-2" style="color: #2E8B57;"></i>
+                        Active community hubs with events
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-container" data-aos="fade-up" data-aos-delay="400">
+                <h4 class="slider-title">Visualize the Gap: Drag to Compare Park Quality</h4>
+
+                <div class="slider-wrapper">
+                    <div class="slider-track"></div>
+                    <input type="range" min="1" max="100" value="20" class="slider" id="qualitySlider">
+                </div>
+
+                <div class="slider-labels">
+                    <div class="slider-label left">Myanmar Parks Today</div>
+                    <div class="slider-label right">International Standards</div>
+                </div>
+
+                <div class="slider-value" id="sliderValue">20%</div>
+
+                <p class="text-center mt-3" id="sliderMessage">This shows Myanmar parks currently operate at only 20% of
+                    international quality standards.</p>
+
+                <div class="text-center mt-3">
+                    <button class="cta-button" id="seeImpactBtn">
+                        <i class="fas fa-chart-line me-2"></i> See Revitalization Impact
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section cta-section" id="action">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title" data-aos="fade-up">Join the Park Revitalization Movement</h2>
+                <p class="cta-text" data-aos="fade-up" data-aos-delay="150">Together, we can transform Myanmar's parks
+                    into vibrant community spaces that benefit everyone. Your involvement makes a real difference.</p>
+
+                <div class="action-buttons" data-aos="fade-up" data-aos-delay="250">
+                    <button class="action-button" id="getInvolvedBtn">
+                        <i class="fas fa-hands me-2"></i> Get Involved
+                    </button>
+                    <button class="action-button" id="supportUsBtn">
+                        <i class="fas fa-heart me-2"></i> Support Our Work
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail Modal -->
+    <div class="detail-modal" id="detailModal">
+        <div class="pr-modal-content">
+            <div class="pr-modal-header">
+                <h3 class="pr-modal-title" id="modalTitle">Focus Area Details</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="pr-modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+   <!--Footer-->
+    <footer class="bg-dark text-white py-5" id="contact">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="image/logo2.jpg" alt="Logo" class="footer-logo mb-3">
+                    <h3 class="h5 mb-3"><i class="fas fa-leaf me-2"></i>Beyond the Bench</h3>
+                    <p class="small">We inspire people to look beyond the bench — discovering the environmental, cultural, and social value of our parks while encouraging youth to care for and protect these shared spaces.</p>
+                    <div class="social-icons mt-4">
+                        <a href="https://www.facebook.com/" class="text-white me-3"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.x.com/" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/" class="text-white me-3"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <h3 class="h5 mb-3">Quick Links</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none  footer-link">
+                            <i class="fas fa-home me-2"></i>Home</a></li>
+                        <li class="mb-2"><a href="aboutus.html" class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-info-circle me-2"></i>About Us</a></li>
+
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="learning">
+                            <label for="learning" class="footer-label"><i class="bi bi-mortarboard-fill"></i>
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="enviromental_awaraness.html">Environmental Awareness</a></li>
+                                <li><a href="culturalpreservation.html">Cultural Preservation</a></li>
+                                <li><a href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="community">
+                            <label for="community" class="footer-label"><i class="bi bi-people-fill"></i>
+                                Community Hub
+                                <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="combinedfinal.html"> Fun Quizzes </a></li>
+                                <li><a href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li><a href="https://docs.google.com/document/d/1KBs0JQOvbeFJuwe8dePoCFIE3pOzIx7nn3qXni5PmcY/edit?usp=sharing"
+                                class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-envelope me-2"></i>References</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4">
+                    <h3 class="h5 mb-3">Contact Us</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            No. 635/J, Yoe Ma Yeik Thar (Pyae Road), 2nd Ward, Kamayut Township, Yangon.
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            09-882224766
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            beyondthebench@gmail.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-4 opacity-25">
+
+            <div class="text-center small">
+                <p class="mb-0">&copy; 2025 Beyond the Bench. All rights reserved. | <a href="terms.html">Terms & Privacy</a></p>
+             
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="user-auth.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Animate On Scroll JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 700,
+            once: true,
+            offset: 100
+        });
+
+        // Get current page
+        const currentPage = window.location.pathname.split("/").pop();
+
+        // Loop over all nav links
+        document.querySelectorAll(".nav-link").forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+                link.classList.add("active");
+            }
+        });
+
+        // When page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            setupSlider();
+            setupButtons();
+            setupModal();
+            initFormValidation();
+
+            // Make bars clickable
+            var bars = document.querySelectorAll('.bar');
+            for (var i = 0; i < bars.length; i++) {
+                bars[i].addEventListener('click', function () {
+                    var year = this.querySelector('.bar-label').textContent;
+                    var value = this.querySelector('.bar-value').textContent;
+                    showBarDetails(year, value);
+                });
+            }
+        });
+
+        // Function to show bar details
+        function showBarDetails(year, value) {
+            var details = '';
+
+            if (year === "1990") {
+                details = '<h4 style="color: #005B4C">1990: Peak Green Space</h4><p><strong>' + value + ' per person</strong></p><p>Population: 2.9 million, Park area: 3.2 sq miles</p>';
+            } else if (year === "2002") {
+                details = '<h4 style="color: #00755E">2002: Decline Begins</h4><p><strong>' + value + ' per person</strong></p><p>28.2% decrease from 1990</p>';
+            } else if (year === "2014") {
+                details = '<h4 style="color: #20B2AA">2014: Critical Shortage</h4><p><strong>' + value + ' per person</strong></p><p>38.7% decrease from 1990</p>';
+            } else {
+                details = '<h4 style="color: #2E8B57">WHO Standard</h4><p><strong>' + value + ' per person</strong></p><p>Myanmar provides only 4.3% of this standard</p>';
+            }
+
+            openModal('research');
+            document.getElementById('modalTitle').textContent = 'Data: ' + year;
+            document.getElementById('modalBody').innerHTML = details;
+        }
+
+        // Function to setup slider
+        function setupSlider() {
+            var slider = document.getElementById('qualitySlider');
+            var sliderValue = document.getElementById('sliderValue');
+            var message = document.getElementById('sliderMessage');
+
+            slider.oninput = function () {
+                var value = this.value;
+                sliderValue.textContent = value + '%';
+
+                if (value < 30) {
+                    message.textContent = "Myanmar's current park conditions - significant investment needed for basic amenities and maintenance.";
+                } else if (value < 70) {
+                    message.textContent = "Transition phase - basic amenities present but lacking comprehensive features like biodiversity, accessibility, and cultural integration.";
+                } else {
+                    message.textContent = "International standards achieved - parks serve as multi-functional community hubs with environmental, social, and cultural benefits.";
+                }
+            };
+        }
+
+        // Function to setup all buttons
+        function setupButtons() {
+            // Scroll buttons
+            document.getElementById('learnMoreBtn').addEventListener('click', function () {
+                scrollToSection('focus');
+            });
+
+            document.getElementById('scrollDownBtn').addEventListener('click', function () {
+                scrollToSection('focus');
+            });
+
+            // Focus area buttons
+            var focusButtons = document.querySelectorAll('.focus-btn');
+            for (var i = 0; i < focusButtons.length; i++) {
+                focusButtons[i].addEventListener('click', function () {
+                    var type = this.getAttribute('data-type');
+                    openModal(type);
+                });
+            }
+
+            // Other buttons
+            document.getElementById('viewResearchBtn').addEventListener('click', function () {
+                openModal('research');
+            });
+
+            document.getElementById('seeImpactBtn').addEventListener('click', function () {
+                openModal('impact');
+            });
+
+            // Action buttons
+            document.getElementById('getInvolvedBtn').addEventListener('click', function () {
+                openModal('getinvolved');
+            });
+
+            document.getElementById('supportUsBtn').addEventListener('click', function () {
+                openModal('supportus');
+            });
+        }
+
+        // Function to setup modal
+        function setupModal() {
+            var modal = document.getElementById('detailModal');
+            var closeBtn = document.getElementById('closeModal');
+
+            closeBtn.addEventListener('click', function () {
+                modal.classList.remove('active');
+            });
+
+            modal.addEventListener('click', function (event) {
+                if (event.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            // Payment option selection
+            document.addEventListener('click', function (event) {
+                if (event.target.closest('.payment-option')) {
+                    var clickedOption = event.target.closest('.payment-option');
+                    var allOptions = document.querySelectorAll('.payment-option');
+
+                    for (var i = 0; i < allOptions.length; i++) {
+                        allOptions[i].classList.remove('selected');
+                    }
+
+                    clickedOption.classList.add('selected');
+
+                    // Show payment details
+                    var paymentType = clickedOption.getAttribute('data-payment');
+                    var paymentDetails = document.getElementById('paymentDetails');
+                    var paymentInstructions = document.getElementById('paymentInstructions');
+
+                    paymentDetails.classList.remove('d-none');
+
+                    var instructions = {
+                        'kbz': 'Please transfer to:<br><strong>Bank:</strong> KBZ Bank<br><strong>Account Name:</strong> Myanmar Park Revitalization<br><strong>Account Number:</strong> 1234 5678 9012<br><br>After payment, please email receipt to donations@parkrevitalization.mm',
+                        'aya': 'Please transfer to:<br><strong>Bank:</strong> AYA Bank<br><strong>Account Name:</strong> Myanmar Park Revitalization<br><strong>Account Number:</strong> 9876 5432 1098<br><br>Use "Park Donation" in transaction description.',
+                        'wave': 'Send payment to:<br><strong>Wave Money:</strong> 09-123 456 789<br><strong>Account Name:</strong> Park Revitalization<br><br>Take screenshot of payment confirmation for your records.',
+                        'kpay': 'Send payment via K Pay to:<br><strong>K Pay ID:</strong> parkrevitalization<br><strong>Account Name:</strong> Myanmar Park Revitalization<br><br>Include your email in payment note for receipt.'
+                    };
+
+                    paymentInstructions.innerHTML = instructions[paymentType] || 'Select a payment method to see instructions';
+                }
+            });
+        }
+
+        // Function to scroll to section
+        function scrollToSection(sectionId) {
+            var element = document.getElementById(sectionId);
+            if (element) {
+                window.scrollTo({
+                    top: element.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Function to open modal with content
+        function openModal(type) {
+            var modal = document.getElementById('detailModal');
+            var modalTitle = document.getElementById('modalTitle');
+            var modalBody = document.getElementById('modalBody');
+
+            var content = getModalContent(type);
+            modalTitle.textContent = content.title;
+            modalBody.innerHTML = content.body;
+            modal.classList.add('active');
+
+            // Re-initialize form validation
+            setTimeout(initFormValidation, 100);
+        }
+
+        // Function to get modal content
+        function getModalContent(type) {
+            if (type === 'environment') {
+                return {
+                    title: 'Environmental Restoration',
+                    body: `<h4><i class="fas fa-leaf me-2"></i>Environmental Restoration Focus</h4>
+                    <p>Our environmental pillar focuses on creating sustainable, biodiverse urban ecosystems in Myanmar's parks:</p>
+                    <ul>
+                        <li><strong>Native Plant Reintroduction:</strong> Prioritizing over 50 native Myanmar plant species to restore local biodiversity and create self-sustaining ecosystems that require less maintenance.</li>
+                        <li><strong>Sustainable Water Management:</strong> Implementing rain gardens, bioswales, and permeable pavements to reduce runoff by 40% and recharge groundwater aquifers.</li>
+                        <li><strong>Soil Health Improvement:</strong> Using composting, aeration, and mycorrhizal fungi to improve soil quality, supporting plant growth and carbon sequestration.</li>
+                        <li><strong>Wildlife Corridors:</strong> Creating connected green spaces that allow urban wildlife to move safely, increasing biodiversity by 60% in project areas.</li>
+                        <li><strong>Climate Resilience:</strong> Planting trees strategically to combat urban heat islands, reducing temperatures by 2-3°C in surrounding areas.</li>
+                        <li><strong>Pollinator Gardens:</strong> Establishing designated areas with flowering plants to support bee and butterfly populations.</li>
+                    </ul>
+                    <div class="engagement-form mt-3">
+                        <h5>Current Environmental Projects</h5>
+                        <ul>
+                            <li><strong>Kandawgyi Park Restoration:</strong> 15-acre native plant restoration project</li>
+                            <li><strong>Yangon Riverfront Greenway:</strong> 3km pollinator corridor development</li>
+                            <li><strong>Urban Forest Initiative:</strong> 10,000 native trees planted across 5 townships</li>
+                            <li><strong>Community Rain Garden Program:</strong> 25 rain gardens installed in neighborhood parks</li>
+                        </ul>
+                    </div>`
+                };
+            } else if (type === 'culture') {
+                return {
+                    title: 'Cultural Integration',
+                    body: `<h4><i class="fas fa-landmark me-2"></i>Cultural Integration Focus</h4>
+                    <p>We integrate cultural elements into parks to celebrate Myanmar's rich heritage and community identity:</p>
+                    <ul>
+                        <li><strong>Public Art Installations:</strong> Commissioning local artists to create murals, sculptures, and installations that reflect community stories and traditions.</li>
+                        <li><strong>Historical Interpretation:</strong> Installing interactive displays and signs that share the history of the land, indigenous communities, and cultural significance.</li>
+                        <li><strong>Cultural Events Programming:</strong> Hosting regular festivals, performances, and workshops celebrating diverse traditions including Thingyan, Tazaungdaing, and regional festivals.</li>
+                        <li><strong>Indigenous Knowledge Integration:</strong> Incorporating traditional ecological knowledge from Myanmar's ethnic groups into park design and management.</li>
+                        <li><strong>Multilingual Signage:</strong> Ensuring park information is accessible in Burmese, English, and local ethnic languages.</li>
+                        <li><strong>Cultural Heritage Walks:</strong> Developing guided tours highlighting historical and cultural features of each park.</li>
+                    </ul>
+                    <div class="engagement-form mt-3">
+                        <h5>Current Cultural Programs</h5>
+                        <ul>
+                            <li><strong>Traditional Craft Workshops:</strong> Weekly sessions in 8 parks across Yangon</li>
+                            <li><strong>Storytelling Circles:</strong> Elder-led storytelling of local legends and history</li>
+                            <li><strong>Ethnic Festival Celebrations:</strong> Monthly cultural festivals celebrating Myanmar's diversity</li>
+                            <li><strong>Public Art Commission:</strong> Supporting 12 local artists annually for park installations</li>
+                            <li><strong>Cultural Heritage Trails:</strong> 5km of interpretive trails in major parks</li>
+                        </ul>
+                    </div>`
+                };
+            } else if (type === 'community') {
+                return {
+                    title: 'Community Engagement',
+                    body: `<h4><i class="fas fa-users me-2"></i>Community Engagement Focus</h4>
+                    <p>We activate communities through inclusive participation and capacity building in Myanmar's parks:</p>
+                    <ul>
+                        <li><strong>Participatory Design Workshops:</strong> Involving residents in the planning and design of park renovations through community charrettes and design workshops.</li>
+                        <li><strong>Volunteer Stewardship Programs:</strong> Organizing regular clean-ups, planting days, and maintenance activities with over 500 active volunteers across Yangon.</li>
+                        <li><strong>Educational Workshops:</strong> Offering classes on gardening, sustainability, park stewardship, and environmental education for all ages.</li>
+                        <li><strong>Universal Accessibility Improvements:</strong> Ensuring parks are welcoming and usable for people of all abilities through ramp installations, tactile paths, and accessible facilities.</li>
+                        <li><strong>Youth Engagement Programs:</strong> Creating youth councils and programs that encourage young people to connect with nature and their community.</li>
+                        <li><strong>Intergenerational Activities:</strong> Designing programs that bring together different age groups for mutual learning and connection.</li>
+                    </ul>
+                    <div class="engagement-form mt-3">
+                        <h5>Community Impact (Last Year)</h5>
+                        <ul>
+                            <li><strong>2,500+ community members engaged</strong> in design processes</li>
+                            <li><strong>15,000 volunteer hours</strong> contributed to park maintenance</li>
+                            <li><strong>45 community-led events</strong> hosted in revitalized parks</li>
+                            <li><strong>12 youth parks councils</strong> established across townships</li>
+                            <li><strong>8 parks made fully accessible</strong> for people with disabilities</li>
+                            <li><strong>30 community garden plots</strong> created and maintained by residents</li>
+                        </ul>
+                    </div>`
+                };
+            } else if (type === 'research') {
+                return {
+                    title: 'Research Summary: Green Spaces in Myanmar',
+                    body: `<h4><i class="fas fa-file-alt me-2"></i>Comprehensive Research Findings</h4>
+                    <p>The "Green Spaces in Myanmar" study reveals critical data about urban green space decline and its impact:</p>
+                    
+                    <h5>Key Quantitative Findings from the Report:</h5>
+                    <ul>
+                        <li><strong>Population Growth:</strong> Yangon's population doubled from 2.9 million in 1990 to 5.2 million in 2014, increasing pressure on existing green spaces.</li>
+                        <li><strong>Green Space Per Capita:</strong> Dropped by 38.7%, from 4.55 m² in 1990 to 2.79 m² in 2014.</li>
+                        <li><strong>WHO Standard Comparison:</strong> Myanmar provides only 4.3% of the WHO's recommended 9 m² of green space per person.</li>
+                        <li><strong>Total Park Area:</strong> 63 public parks covering 211.25 hectares (0.81 square miles) total area.</li>
+                        <li><strong>Park Distribution:</strong> Central Business District has 6 parks (9.5% of total), while 9 townships (26% of Yangon) have no public parks at all.</li>
+                        <li><strong>Accessibility:</strong> Only 8% of parks are accessible to people with disabilities or elderly residents.</li>
+                    </ul>
+                    
+                    <h5>International Comparison:</h5>
+                    <ul>
+                        <li><strong>Singapore:</strong> 47 m² green space per person (66 times more than Myanmar)</li>
+                        <li><strong>Tokyo:</strong> 6.2 m² per person (7 times more than Myanmar)</li>
+                        <li><strong>Bangkok:</strong> 3.3 m² per person (1.2 times more than Myanmar)</li>
+                        <li><strong>Seoul:</strong> 15.9 m² per person (22 times more than Myanmar)</li>
+                    </ul>
+                    
+                    <div class="engagement-form mt-3">
+                        <h5>Research Recommendations:</h5>
+                        <ol>
+                            <li>Immediate protection of existing green spaces from commercial development</li>
+                            <li>Creation of new parks in underserved townships within 2 years</li>
+                            <li>Minimum 6% of urban land dedicated to public green space</li>
+                            <li>Integration of green space planning into all new development projects</li>
+                            <li>Establishment of a Green Space Trust Fund for maintenance and expansion</li>
+                            <li>Community-led park management and programming</li>
+                        </ol>
+                        <p class="mt-2"><strong>Source:</strong> "Green Spaces in Yangon: Towards a Greener City for All" (Another Development, 2019). <a href="https://www.themimu.info/sites/themimu.info/files/documents/Report_Green_Space_in_Yangon_Towards_Greener_City_for_All_ENG.pdf" target="_blank">View Full Report</a></p>
+                    </div>
+                    `
+                };
+            } else if (type === 'impact') {
+                return {
+                    title: 'Impact of Park Revitalization',
+                    body: `<h4><i class="fas fa-chart-line me-2"></i>Expected Impact of Park Revitalization in Myanmar</h4>
+                    <p>Comprehensive benefits of revitalizing Myanmar's parks through our three-pillar approach:</p>
+                    
+                    <h5>Environmental Impact:</h5>
+                    <ul>
+                        <li><strong>Air Quality Improvement:</strong> Each mature tree absorbs 48 pounds of CO2 annually and filters pollutants</li>
+                        <li><strong>Temperature Reduction:</strong> Green spaces can lower surrounding temperatures by 2-8°C, reducing urban heat island effect</li>
+                        <li><strong>Biodiversity Increase:</strong> Native plant restoration supports local bird, insect, and small mammal populations</li>
+                        <li><strong>Stormwater Management:</strong> Green infrastructure can absorb up to 30% more rainwater, reducing flooding</li>
+                    </ul>
+                    
+                    <h5>Social and Cultural Impact:</h5>
+                    <ul>
+                        <li><strong>Community Cohesion:</strong> Parks increase social interaction by 70% in surrounding neighborhoods</li>
+                        <li><strong>Physical Health:</strong> Access to green spaces increases physical activity by 50% and reduces obesity rates</li>
+                        <li><strong>Mental Health:</strong> Regular park use decreases stress levels by 60% and reduces depression symptoms</li>
+                        <li><strong>Cultural Preservation:</strong> Integration of traditional arts and knowledge preserves Myanmar's heritage</li>
+                        <li><strong>Youth Development:</strong> Parks with programming reduce youth crime rates by 40% in surrounding areas</li>
+                    </ul>
+                    
+                    <h5>Economic Impact:</h5>
+                    <ul>
+                        <li><strong>Property Values:</strong> Proximity to quality parks increases property values by 8-20%</li>
+                        <li><strong>Tourism:</strong> Well-maintained parks can increase tourism revenue by 15%</li>
+                        <li><strong>Job Creation:</strong> Each park revitalization project creates 25-50 local jobs during construction and 5-10 permanent maintenance positions</li>
+                        <li><strong>Healthcare Savings:</strong> Reduced healthcare costs from increased physical activity: estimated 500,000 MMK/person/year</li>
+                    </ul>
+                    
+                    <div class="engagement-form mt-3">
+                        <h5>5-Year Revitalization Projection for Myanmar:</h5>
+                        <ul>
+                            <li><strong>Phase 1 (Year 1-2):</strong> 10 parks revitalized, 50,000 residents served directly</li>
+                            <li><strong>Phase 2 (Year 3-4):</strong> 25 parks revitalized, 150,000 residents served</li>
+                            <li><strong>Phase 3 (Year 5):</strong> 50 parks revitalized, 300,000 residents served</li>
+                            <li><strong>Total Environmental Impact:</strong> 500,000 native trees planted, 100 acres of green space restored</li>
+                            <li><strong>Total Economic Impact:</strong> 1,000 local jobs created, 50 million MMK in healthcare savings</li>
+                        </ul>
+                    </div>`
+                };
+            } else if (type === 'getinvolved') {
+                return {
+                    title: 'Get Involved',
+                    body: getGetInvolvedForm()
+                };
+            } else if (type === 'supportus') {
+                return {
+                    title: 'Support Our Work',
+                    body: getSupportUsForm()
+                };
+            } else {
+                return {
+                    title: 'Information',
+                    body: '<p>Information will be available soon.</p>'
+                };
+            }
+        }
+
+        // Function to get Get Involved form
+        function getGetInvolvedForm() {
+            return `<h4><i class="fas fa-hands me-2"></i>Join the Park Revitalization Movement</h4>
+                    <p>Your participation can make a real difference in transforming Myanmar's parks. Fill out the form below to get involved.</p>
+                    
+                    <div class="engagement-form">
+                        <h5 class="form-title">Get Involved Form</h5>
+                        <form id="involvementForm" novalidate>
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" class="form-control" id="fullName" required>
+                                <div class="error-message" id="fullNameError">Please enter your full name</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" class="form-control" id="email" required>
+                                <div class="error-message" id="emailError">Please enter a valid email address</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                                <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="location">Location/City *</label>
+                                <select class="form-select" id="location" required>
+                                    <option value="">Select your location</option>
+                                    <option value="yangon">Yangon</option>
+                                    <option value="mandalay">Mandalay</option>
+                                    <option value="naypyidaw">Naypyidaw</option>
+                                    <option value="bago">Bago</option>
+                                    <option value="mawlamyine">Mawlamyine</option>
+                                    <option value="taunggyi">Taunggyi</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="error-message" id="locationError">Please select your location</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="involvementType">How would you like to get involved? *</label>
+                                <select class="form-select" id="involvementType" required>
+                                    <option value="">Select an option</option>
+                                    <option value="volunteer">Volunteer (Park clean-up, planting days)</option>
+                                    <option value="advocate">Community Advocate (Help spread awareness)</option>
+                                    <option value="skills">Share Professional Skills (Architecture, gardening, etc.)</option>
+                                    <option value="youth">Youth Ambassador (Ages 16-25)</option>
+                                    <option value="corporate">Corporate Partnership</option>
+                                </select>
+                                <div class="error-message" id="involvementTypeError">Please select how you'd like to get involved</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Additional Message (Optional)</label>
+                                <textarea class="form-control form-textarea" id="message" placeholder="Tell us more about your interest or any specific skills you have..."></textarea>
+                            </div>
+                            
+                            <!-- FIXED: Updated checkbox text -->
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="commitment" required>
+                                <label class="form-check-label" for="commitment">
+                                    I commit to actively participate in park revitalization activities and contribute to transforming Myanmar's green spaces
+                                </label>
+                                <div class="error-message" id="commitmentError">Please confirm your commitment to participate</div>
+                            </div>
+                            
+                            <button type="submit" class="form-submit">Submit Your Interest</button>
+                        </form>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <h5>Other Ways to Get Involved:</h5>
+                        <ul>
+                            <li><strong>Follow us on social media</strong> to stay updated on events</li>
+                            <li><strong>Organize a community meeting</strong> to discuss local park needs</li>
+                            <li><strong>Participate in our monthly park clean-up days</strong> (First Saturday of every month)</li>
+                            <li><strong>Become a Park Friend</strong> by adopting a specific park for regular monitoring</li>
+                        </ul>
+                    </div>`;
+        }
+
+        // Function to get Support Us form
+        function getSupportUsForm() {
+            return `<h4><i class="fas fa-heart me-2"></i>Support Park Revitalization in Myanmar</h4>
+                    <p>Your support enables us to transform neglected spaces into vibrant community parks. 100% of donations go directly to park revitalization projects.</p>
+                    
+                    <div class="engagement-form">
+                        <h5 class="form-title">Make a Donation (MMK)</h5>
+                        <form id="supportForm" novalidate>
+                            <div class="form-group">
+                                <label for="supportName">Full Name *</label>
+                                <input type="text" class="form-control" id="supportName" required>
+                                <div class="error-message" id="supportNameError">Please enter your full name</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="supportEmail">Email Address *</label>
+                                <input type="email" class="form-control" id="supportEmail" required>
+                                <div class="error-message" id="supportEmailError">Please enter a valid email address</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="donationAmount">Donation Amount (MMK) *</label>
+                                <select class="form-select" id="donationAmount" required>
+                                    <option value="">Select an amount</option>
+                                    <option value="25000"><span class="currency-symbol">MMK</span>25,000 - Plants 5 native seedlings</option>
+                                    <option value="50000"><span class="currency-symbol">MMK</span>50,000 - Provides a durable park bench</option>
+                                    <option value="100000"><span class="currency-symbol">MMK</span>100,000 - Supports educational workshops for 20 children</option>
+                                    <option value="250000"><span class="currency-symbol">MMK</span>250,000 - Creates a community garden plot</option>
+                                    <option value="500000"><span class="currency-symbol">MMK</span>500,000 - Funds park improvements for a neighborhood</option>
+                                    <option value="custom">Custom Amount</option>
+                                </select>
+                                <div class="error-message" id="donationAmountError">Please select a donation amount</div>
+                            </div>
+                            
+                            <div class="form-group d-none" id="customAmountGroup">
+                                <label for="customAmount">Custom Amount (MMK) *</label>
+                                <input type="number" class="form-control" id="customAmount" min="1000" step="1000" placeholder="Enter amount in MMK">
+                                <div class="error-message" id="customAmountError">Please enter a valid amount (minimum 1,000 MMK)</div>
+                            </div>
+                            
+                            <div class="payment-methods">
+                                <h5>Select Payment Method *</h5>
+                                <p class="mb-2" style="font-size: 0.9rem; color: #666;">Choose your preferred payment method. Account details will be shown after selection.</p>
+                                <div class="payment-options">
+                                    <div class="payment-option" data-payment="kbz">
+                                        <img src="https://i.pinimg.com/736x/c1/2a/6a/c12a6a1eb9dd461e3b61a77448443def.jpg" alt="KBZ Bank" class="bank-logo">
+                                        <div class="payment-name">KBZ Bank</div>
+                                        <div class="payment-details">Bank Transfer</div>
+                                    </div>
+                                    
+                                    <div class="payment-option" data-payment="aya">
+                                        <img src="https://i.pinimg.com/736x/bf/9b/c9/bf9bc96dc7ed3e2643b19b1cc782d2a2.jpg" alt="AYA Bank" class="bank-logo">
+                                        <div class="payment-name">AYA Bank</div>
+                                        <div class="payment-details">Mobile Banking</div>
+                                    </div>
+                                    
+                                    <div class="payment-option" data-payment="wave">
+                                        <img src="https://i.pinimg.com/736x/79/45/0b/79450bab7ed45e1e00df82e51007bbb0.jpg" alt="Wave Money" class="bank-logo">
+                                        <div class="payment-name">Wave Money</div>
+                                        <div class="payment-details">09-123 456 789</div>
+                                    </div>
+                                    
+                                    <div class="payment-option" data-payment="kpay">
+                                        <img src="https://i.pinimg.com/736x/78/44/c3/7844c3a607d1bc34a879ea96f6382d81.jpg" alt="K Pay" class="bank-logo">
+                                        <div class="payment-name">K Pay</div>
+                                        <div class="payment-details">Mobile Payment</div>
+                                    </div>
+                                </div>
+                                <div class="error-message mt-2" id="paymentError">Please select a payment method</div>
+                                
+                                <div id="paymentDetails" class="mt-3 p-3 bg-white rounded d-none">
+                                    <h6>Payment Instructions:</h6>
+                                    <p id="paymentInstructions">Select a payment method to see instructions</p>
+                                </div>
+                            </div>
+                            
+                            <!-- FIXED: Updated checkbox text -->
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="donationAgreement" required>
+                                <label class="form-check-label" for="donationAgreement">
+                                    I understand that my donation will be used exclusively for park revitalization projects in Myanmar and agree to the terms of the donation program
+                                </label>
+                                <div class="error-message" id="donationAgreementError">Please agree to the donation terms</div>
+                            </div>
+                            
+                            <button type="submit" class="form-submit">Continue to Payment</button>
+                        </form>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <h5>What Your Support Enables:</h5>
+                        <ul>
+                            <li><strong>MMK 25,000</strong> plants 5 native trees with 1 year of care</li>
+                            <li><strong>MMK 50,000</strong> provides a durable, accessible park bench</li>
+                            <li><strong>MMK 100,000</strong> supports educational workshops for 20 children</li>
+                            <li><strong>MMK 250,000</strong> creates a community garden with 10 plots</li>
+                            <li><strong>MMK 500,000</strong> funds park improvements for an entire neighborhood</li>
+                        </ul>
+                        <p class="mt-2"><em>All donations are tax-deductible. You will receive a receipt via email.</em></p>
+                    </div>`;
+        }
+
+        // Initialize form validation
+        function initFormValidation() {
+            // Custom amount toggle
+            var donationAmount = document.getElementById('donationAmount');
+            var customAmountGroup = document.getElementById('customAmountGroup');
+
+            if (donationAmount) {
+                donationAmount.addEventListener('change', function () {
+                    if (this.value === 'custom') {
+                        customAmountGroup.classList.remove('d-none');
+                        document.getElementById('customAmount').required = true;
+                    } else {
+                        customAmountGroup.classList.add('d-none');
+                        document.getElementById('customAmount').required = false;
+                    }
+                });
+            }
+
+            // Form submission handlers
+            var involvementForm = document.getElementById('involvementForm');
+            var supportForm = document.getElementById('supportForm');
+
+            if (involvementForm) {
+                involvementForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    if (validateForm('involvementForm')) {
+                        alert('Thank you for your commitment to revitalizing Myanmar\'s parks! We will contact you within 3 business days.');
+                        document.getElementById('detailModal').classList.remove('active');
+                        involvementForm.reset();
+                    }
+                });
+            }
+
+            if (supportForm) {
+                supportForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    if (validateForm('supportForm')) {
+                        var selectedPayment = document.querySelector('.payment-option.selected');
+                        var paymentName = selectedPayment ? selectedPayment.querySelector('.payment-name').textContent : 'selected method';
+
+                        var amountField = document.getElementById('donationAmount');
+                        var customAmountField = document.getElementById('customAmount');
+                        var amount = amountField.value === 'custom' ? customAmountField.value + ' MMK' : amountField.options[amountField.selectedIndex].text;
+
+                        alert('Thank you for your generous support of ' + amount + ' for Myanmar\'s park revitalization! Please complete your payment through ' + paymentName + '. You will receive a confirmation email within 24 hours.');
+                        document.getElementById('detailModal').classList.remove('active');
+                        supportForm.reset();
+                        document.getElementById('paymentDetails').classList.add('d-none');
+
+                        var allOptions = document.querySelectorAll('.payment-option');
+                        for (var i = 0; i < allOptions.length; i++) {
+                            allOptions[i].classList.remove('selected');
+                        }
+                    }
+                });
+            }
+
+            // Real-time validation
+            var inputs = document.querySelectorAll('.form-control, .form-select');
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('blur', function () {
+                    validateField(this);
+                });
+
+                inputs[i].addEventListener('input', function () {
+                    var errorElement = document.getElementById(this.id + 'Error');
+                    if (errorElement) {
+                        errorElement.style.display = 'none';
+                        this.classList.remove('error');
+                    }
+                });
+            }
+        }
+
+        // Validate a single field
+        function validateField(field) {
+            var errorElement = document.getElementById(field.id + 'Error');
+            if (!errorElement) return true;
+
+            var isValid = true;
+
+            if (field.hasAttribute('required') && !field.value.trim()) {
+                isValid = false;
+                errorElement.textContent = 'This field is required';
+            }
+            else if (field.type === 'email' && field.value) {
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(field.value)) {
+                    isValid = false;
+                    errorElement.textContent = 'Please enter a valid email address';
+                }
+            }
+            else if (field.id === 'customAmount' && field.value) {
+                if (parseInt(field.value) < 1000) {
+                    isValid = false;
+                    errorElement.textContent = 'Minimum donation is 1,000 MMK';
+                }
+            }
+
+            if (!isValid) {
+                errorElement.style.display = 'block';
+                field.classList.add('error');
+            } else {
+                errorElement.style.display = 'none';
+                field.classList.remove('error');
+            }
+
+            return isValid;
+        }
+
+        // Validate entire form
+        function validateForm(formId) {
+            var form = document.getElementById(formId);
+            var isValid = true;
+
+            var fields = form.querySelectorAll('.form-control, .form-select, .form-check-input[required]');
+            for (var i = 0; i < fields.length; i++) {
+                if (!validateField(fields[i])) {
+                    isValid = false;
+                }
+            }
+
+            if (formId === 'supportForm') {
+                var selectedPayment = document.querySelector('.payment-option.selected');
+                var paymentError = document.getElementById('paymentError');
+
+                if (!selectedPayment) {
+                    isValid = false;
+                    paymentError.style.display = 'block';
+                } else {
+                    paymentError.style.display = 'none';
+                }
+            }
+
+            if (formId === 'involvementForm' || formId === 'supportForm') {
+                var checkboxId = formId === 'involvementForm' ? 'commitment' : 'donationAgreement';
+                var checkbox = document.getElementById(checkboxId);
+                var checkboxError = document.getElementById(checkboxId + 'Error');
+
+                if (!checkbox.checked) {
+                    isValid = false;
+                    if (checkboxError) checkboxError.style.display = 'block';
+                } else {
+                    if (checkboxError) checkboxError.style.display = 'none';
+                }
+            }
+
+            return isValid;
+        }
+
+        document.body.classList.add('modal-open');
+        document.body.classList.remove('modal-open');
+
+    </script>
+</body>
+
+</html>
