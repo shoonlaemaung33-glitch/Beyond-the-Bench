@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Session | Beyond The Bench</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="shortcut icon" href="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png"
+        type="image/x-icon">
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Force fresh load of Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css?ver=1" rel="stylesheet">
+
+    <link rel="stylesheet" href="blogpage.css">
+    <link rel="stylesheet" href="footer.css">
+
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="auth.css">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet">
+
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Great+Vibes&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/89a27aa0d6.js" crossorigin="anonymous"></script>
+
+    <!--Animation on scroll-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+<body>
+   <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png" alt="Logo" class="logo">
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#navOffcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Offcanvas -->
+            <div class="offcanvas offcanvas-end" id="navOffcanvas">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold">Beyond The Bench</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto gap-lg-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="parkrevitilization.html">Park
+                                Revitalization</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown">
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="enviromental_awaraness.html">Environmental
+                                        Awareness</a></li>
+                                <li><a class="dropdown-item" href="culturalpreservation.html">Cultural Preservation</a>
+                                </li>
+                                <li><a class="dropdown-item" href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active" href="#" role="button" data-bs-toggle="dropdown">
+                                Community Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="combinedfinal.html">Fun Quizzes</a></li>
+                                <li><a class="dropdown-item active" href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a class="dropdown-item" href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.html">About Us</a>
+                        </li>
+                    </ul>
+
+                    <!-- User Profile or Sign In Button -->
+                    <div id="userNavSection">
+                        <!-- This will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration/Login Modal -->
+    <div class="modal fade" id="NavModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Welcome to Beyond The Bench</h5>
+                    <button type="button" class="btn-close nav-btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Tabs for Login/Register -->
+                    <ul class="nav nav-tabs mb-4" id="authTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
+                                type="button" role="tab">Sign In</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register"
+                                type="button" role="tab">Register</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="authTabsContent">
+                        <!-- Login Tab -->
+                        <div class="tab-pane fade show active" id="login" role="tabpanel">
+                            <form id="loginForm" class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="loginEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword"
+                                        placeholder="Enter your password" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your password.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                            </form>
+                            <div class="text-center mt-3">
+                                <a href="#" class="text-decoration-none" id="forgotPassword">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <!-- Register Tab -->
+                        <div class="tab-pane fade" id="register" role="tabpanel">
+                            <form id="registerForm" class="needs-validation" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="John"
+                                            required minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid first name (min 2 characters).
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Doe" required
+                                            minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid last name (min 2 characters).
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Email address *</label>
+                                    <input type="email" class="form-control" id="registerEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">Password *</label>
+                                    <input type="password" class="form-control" id="registerPassword"
+                                        placeholder="At least 8 characters" required minlength="8">
+                                    <div class="password-strength">
+                                        <div class="strength-bar" id="passwordStrength"></div>
+                                    </div>
+                                    <div class="strength-text" id="strengthText">Password strength: None</div>
+                                    <small class="form-text text-muted">Must contain uppercase, lowercase, and
+                                        numbers</small>
+                                    <div class="invalid-feedback">
+                                        Password must be at least 8 characters with uppercase, lowercase, and numbers.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password *</label>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        placeholder="Re-enter password" required>
+                                    <div class="invalid-feedback">
+                                        Passwords do not match.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Choose an Avatar *</label>
+                                    <div class="avatar-selection">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=b6e3f4"
+                                            class="avatar-option" data-avatar="avatar1" alt="Avatar 1">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jane&backgroundColor=c0aede"
+                                            class="avatar-option" data-avatar="avatar2" alt="Avatar 2">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mike&backgroundColor=d1d4f9"
+                                            class="avatar-option" data-avatar="avatar3" alt="Avatar 3">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah&backgroundColor=ffd5dc"
+                                            class="avatar-option" data-avatar="avatar4" alt="Avatar 4">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&backgroundColor=ffdfbf"
+                                            class="avatar-option" data-avatar="avatar5" alt="Avatar 5">
+                                    </div>
+                                    <input type="hidden" id="selectedAvatar" required>
+                                    <div class="invalid-feedback">
+                                        Please select an avatar.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="termsAgreement" required>
+                                    <label class="form-check-label" for="termsAgreement">
+                                        I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and
+                                        <a href="#" class="text-decoration-none">Privacy Policy</a> *
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree to the terms and conditions.
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                                <p class="text-muted small mt-3">* Required fields</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reset Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotPasswordForm">
+                        <div class="mb-3">
+                            <label for="resetEmail" class="form-label">Enter your email address</label>
+                            <input type="email" class="form-control" id="resetEmail" placeholder="name@example.com"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Reset Link</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="landing-page">
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo2 col-lg-5 w-100 mt-2">
+                        <div class="logo-text">
+                            <h1>Fun Blogs</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2>Blogs</h2>
+                <p>Explore our collection of blogs covering team projects, environmental awareness, and cultural
+                    preservation in the context of creating accessible parks for all.</p>
+            </div>
+        </section>
+
+       <!-- Blog Categories Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h2>Our Blog Categories</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <!-- Team Projects Category -->
+            <div class="col-lg-4 col-md-6 col-sm-8 mb-4 d-flex">
+                <a href="#team-blogs" class="category-card w-100" onclick="showCategory('team')">
+                    <div class="category-header team">
+                        <div class="category-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Our Team Projects & Initiatives</h3>
+                        <p>Behind-the-scenes & Project Details</p>
+                    </div>
+                    <div class="category-content">
+                        <p>Follow our journey as we try to develop and implement solutions to make
+                            our local parks more developed in different aspects for everyone. Learn about our challenges, successes, and the real
+                            impact of our work.</p>
+                        <div class="category-stats d-flex justify-content-between">
+                            <div class="stat-item text-center">
+                                <span class="stat-number">4</span>
+                                <span class="stat-label">Active Projects</span>
+                            </div>
+                            <div class="stat-item text-center">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Team Members</span>
+                            </div>
+                            <div class="stat-item text-center">
+                                <span class="stat-number">4</span>
+                                <span class="stat-label">Blog Posts</span>
+                            </div>
+                        </div>
+                        <br><br>
+                        <h5 class="text-center" style="color: #005b4c;">Click for more <i class="fas fa-chevron-right"></i> </h5>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Environmental Awareness Category -->
+            <div class="col-lg-4 col-md-6 col-sm-8 mb-4 d-flex">
+                <a href="#environment-blogs" class="category-card w-100" onclick="showCategory('environment')">
+                    <div class="category-header environment">
+                        <div class="category-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Urban Nature Appreciation</h3>
+                        <p>Know even more about green spaces</p>
+                    </div>
+                    <div class="category-content">
+                        <p>Explore how urban nature appreciation and accessibility intersect in parks. Learn why
+                            green spaces matter — for cleaner air, cooler cities, community well-being, and thriving
+                            ecosystems alike.</p>
+                        <div class="category-stats d-flex justify-content-between">
+                            <div class="stat-item text-center">
+                                <span class="stat-number">1</span>
+                                <span class="stat-label">Eco Projects</span>
+                            </div>
+                            <div class="stat-item text-center">
+                                <span class="stat-number">30%</span>
+                                <span class="stat-label">Less Stress</span>
+                            </div>
+                            <div class="stat-item text-center">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Blog Posts</span>
+                            </div>
+                        </div>
+                        <br><br>
+                        <h5 class="text-center" style="color: #005b4c;">Click for more <i class="fas fa-chevron-right"></i> </h5>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Cultural Preservation Category -->
+            <div class="col-lg-4 col-md-6 col-sm-8 mb-4 d-flex">
+                <a href="#culture-blogs" class="category-card w-100" onclick="showCategory('culture')">
+                    <div class="category-header culture">
+                        <div class="category-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3>Keeping Park History Alive</h3>
+                        <p>Explore cultural richness of our parks</p>
+                    </div>
+                    <div class="category-content">
+                        <p>Explore how cultural preservation and park heritage intertwine in urban green spaces.
+                            Discover how parks are not just places to relax, but also living landscapes that reflect
+                            history, community traditions, and shared identity across generations.
+                        </p>
+                        <div class="category-stats d-flex justify-content-between">
+                            <div class="stat-item text-center">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Park</span>
+                            </div>
+                            <div class="stat-item text-center">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Accessible</span>
+                            </div>
+                            <div class="stat-item text-center">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Blog Posts</span>
+                            </div>
+                        </div>
+                        <br><br>
+                        <h5 class="text-center" style="color: #005b4c;">Click for more <i class="fas fa-chevron-right"></i> </h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </div>
+
+    <!-- Team Blogs Page (Hidden by default) -->
+    <div id="team-blogs-page" class="blog-page" style="display: none;">
+        <header>
+            <div class="container-custom">
+                <div class="header-content">
+                    <div class="logo2">
+                        <div class="logo-text mt-2">
+                            <h1>Team Projects Blog</h1>
+                            <p>Youth Innovation in Action</p>
+                        </div>
+                    </div>
+                    <a href="#landing"  class="back-btn" onclick="showLandingPage()">
+                        <i class="fas fa-arrow-left"></i> Back to Categories
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <div class="blog-page-header">
+            <div class="container">
+                <h1>Team Projects</h1>
+                <p>Follow the journey of us creating solutions for parks. From
+                    brainstorming to implementation, see how young innovators are making a difference.</p>
+            </div>
+        </div>
+
+      <!-- Blog Section -->
+    <div class="container py-5">
+        <div class="row g-4 justify-content-center">
+            <!-- Team Blog 1 -->
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex">
+                <div class="blog-card w-100">
+                    <div class="blog-image" style="background-image: url('https://i.pinimg.com/736x/86/e7/4a/86e74a9f63c014e392c0f37c1be071a9.jpg');">
+                        <span class="blog-category-tag">Science Project</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 11, 2025</span>
+                            <span><i class="far fa-user"></i> Beyond the Bench Team</span>
+                        </div>
+                        <h3>Building Automatic Hand Santizer Dispenser</h3>
+                        <p class="blog-excerpt">In this project, we built an Automatic Hand Sanitizer Dispenser to promote better hygiene using simple technology. The dispenser works without physical contact, helping to reduce the spread of germs in public places. By combining basic electronics and design, our project shows how small, practical innovations can make everyday life safer, cleaner, and more convenient for everyone.</p>
+                        <a href="#team-blog-1" class="read-more" onclick="showBlogArticle('team-blog-1')">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Blog 2 -->
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex">
+                <div class="blog-card w-100">
+                    <div class="blog-image" style="background-image: url('https://i.pinimg.com/736x/09/fd/7a/09fd7aba06fe3a243a1c011470e55bb7.jpg');">
+                        <span class="blog-category-tag">Maths Project</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Nov 25, 2025</span>
+                            <span><i class="far fa-user"></i> Beyond the Bench Team</span>
+                        </div>
+                        <h3>Terracotta Evaporative Cooling Structure Planning</h3>
+                        <p class="blog-excerpt">This project explores planning and design of a Terracotta Evaporative Cooling Structure, using mathematical calculations to optimize shape, surface area, and airflow. Combining traditional materials with maths, we show how simple geometry can support sustainable, natural cooling solutions.</p>
+                        <a href="#team-blog-2" class="read-more" onclick="showBlogArticle('team-blog-2')">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Blog 3 -->
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex">
+                <div class="blog-card w-100">
+                    <div class="blog-image" style="background-image: url('https://i.pinimg.com/736x/77/2e/3d/772e3db203965f4247adabada8fdc7cb.jpg');">
+                        <span class="blog-category-tag">English Project</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 12, 2025</span>
+                            <span><i class="far fa-user"></i> Beyond the Bench Team</span>
+                        </div>
+                        <h3>Exploring Yangon’s Living Museums _ Culturally-Rich Parks Tour</h3>
+                        <p class="blog-excerpt">We explored Kandawgyi Park, U Ottama Park, and Thakhin Mya Park to understand how parks reflect culture, community, and everyday life. Observation and storytelling highlighted the cultural value of these spaces and the importance of preserving parks as living heritage.</p>
+                        <a href="#team-blog-3" class="read-more" onclick="showBlogArticle('team-blog-3')">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Blog 4 -->
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex">
+                <div class="blog-card w-100">
+                    <div class="blog-image" style="background-image: url('image/gp_pic.jpg');">
+                        <span class="blog-category-tag">Global Perspective Project</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 12, 2025</span>
+                            <span><i class="far fa-user"></i> Beyond the Bench Team</span>
+                        </div>
+                        <h3>Inclusive by Innovation: Revitalizing Parks Through Inclusive Technology</h3>
+                        <p class="blog-excerpt">This project explores how accessible technologies can support people with disabilities in local parks, raise awareness about accessibility issues, and encourage youths to create inclusive solutions for everyone.</p>
+                        <a href="#team-blog-4" class="read-more" onclick="showBlogArticle('team-blog-4')">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+
+   <!-- Environment Blogs Page (Hidden by default) -->
+<div id="environment-blogs-page" class="blog-page" style="display: none;">
+    <header>
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center py-3 flex-wrap">
+                <div class="logo2">
+                    <div class="logo-text mt-2">
+                        <h1>Environmental Awareness Blog</h1>
+                    </div>
+                </div>
+                <a href="#landing" class="btn btn-outline-success mb-2" onclick="showLandingPage()">
+                    <i class="fas fa-arrow-left"></i> Back to Categories
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="blog-page-header py-3">
+        <div class="container">
+            <h1>Environmental Sustainability & Accessibility</h1>
+            <p>Exploring how eco-friendly technologies and practices can create parks that are both sustainable and accessible to visitors of all abilities.</p>
+        </div>
+    </div>
+
+    <br><br><br><br>
+    <div class="container py-4">
+        <div class="row g-4 justify-content-center">
+            <!-- Environment Blog 1 -->
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex">
+                <div class="blog-card w-100">
+                    <div class="blog-image" style="background-image: url('https://dartfordwaffler.co.uk/wp-content/uploads/2020/02/House-crow.jpg');">
+                        <span class="blog-category-tag">Burmese Birds</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 8, 2025</span>
+                            <span><i class="far fa-user"></i> Beyond the Bench Team</span>
+                        </div>
+                        <h3>Birdlife in Myanmar: Feathered Friends from Wetlands to Parks</h3>
+                        <p class="blog-excerpt">Myanmar is home to an amazing variety of bird species — from urban park songbirds to migratory visitors that travel thousands of kilometres to rest and feed in the country’s wetlands. Learning about these birds helps us appreciate how vibrant and important our natural spaces truly are.</p>
+                        <a href="#environment-blog-1" class="read-more" onclick="showBlogArticle('environment-blog-1')">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Environment Blog 2 -->
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex">
+                <div class="blog-card w-100">
+                    <div class="blog-image" style="background-image: url('https://www.hlawgapark.com/wp-content/uploads/2020/12/camp1.jpg');">
+                        <span class="blog-category-tag">Wildlife & Nature</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 10, 2025</span>
+                            <span><i class="far fa-user"></i> Beyond the Bench Team</span>
+                        </div>
+                        <h3>Hlawga National Park: A Nature Escape Near Yangon</h3>
+                        <p class="blog-excerpt">Looking for a nature getaway close to Yangon? Hlawga National Park offers a refreshing mix of evergreen forests, wildlife encounters, and outdoor fun — all just a short trip from the city’s busy streets.</p>
+                        <a href="#environment-blog-2" class="read-more" onclick="showBlogArticle('environment-blog-2')">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Environment Blog 3 -->
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex">
+                <div class="blog-card w-100">
+                    <div class="blog-image" style="background-image: url('https://i.pinimg.com/736x/0e/18/c4/0e18c47699736b7472f5a2805ba017a0.jpg');">
+                        <span class="blog-category-tag">Urban Nature</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 15, 2025</span>
+                            <span><i class="far fa-user"></i> Beyond the Bench Team</span>
+                        </div>
+                        <h3>Urban Green Spaces in Yangon: Why They Matter</h3>
+                        <p class="blog-excerpt">Yangon isn’t just a bustling city — it’s also home to a surprising network of parks, gardens, and green spaces that help balance the urban heat and give residents places to relax, breathe, and connect with nature.</p>
+                        <a href="#environment-blog-3" class="read-more" onclick="showBlogArticle('environment-blog-3')">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+    <!-- Culture Blogs Page (Hidden by default) -->
+<div id="culture-blogs-page" class="blog-page" style="display: none;">
+    <header>
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center py-3 flex-wrap">
+                <div class="logo2">
+                    <div class="logo-text">
+                        <h1>Cultural Preservation Blog</h1>
+                    </div>
+                </div>
+                <a href="#landing" class="btn btn-outline-success mb-2" onclick="showLandingPage()">
+                    <i class="fas fa-arrow-left"></i> Back to Categories
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="blog-page-header py-3">
+        <div class="container">
+            <h1>Preserving Culture Through Awareness</h1>
+            <p>Discover how we're making historical and cultural park elements accessible to everyone while preserving their heritage value and significance.</p>
+        </div>
+    </div>
+
+    <br><br><br><br>
+
+    <div class="container py-4">
+        <div class="row g-4 justify-content-center">
+            <!-- Culture Blog 1 -->
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex">
+                <div class="blog-card w-100">
+                    <div class="blog-image" style="background-image: url('https://i.pinimg.com/736x/dc/c5/93/dcc593bf964c706264505c1f7bef7e80.jpg');">
+                        <span class="blog-category-tag">Cultural Importance</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 16, 2025</span>
+                            <span><i class="far fa-user"></i> Chaw Su Thwe</span>
+                        </div>
+                        <h3>The Cultural Importance of Our Local Parks</h3>
+                        <p class="blog-excerpt">Our local parks in Myanmar are spaces where history, culture, and community come together, connecting people to the past, bringing communities together in the present, and inspiring young people to care for and protect these meaningful places for the future.</p>
+                        <a href="#culture-blog-1" class="read-more" onclick="showBlogArticle('culture-blog-1')">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Culture Blog 2 -->
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex">
+                <div class="blog-card w-100">
+                    <div class="blog-image" style="background-image: url('https://i.pinimg.com/736x/ef/de/8f/efde8f4ce6358fd86eb36eaba51eca37.jpg');">
+                        <span class="blog-category-tag">Tour Blog</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 16, 2025</span>
+                            <span><i class="far fa-user"></i> Chit Kyi Phyu</span>
+                        </div>
+                        <h3>A tour to parks: 3 cultural-rich parks in Myanmar</h3>
+                        <p class="blog-excerpt">A full day exploring U Ottama Park, Kandawgyi Park, and Tha Khin Mya Park showed how Yangon’s cultural parks blend history, community, tradition, and modern life, leaving us exhausted but deeply appreciative of these green spaces as living parts of the city’s identity.</p>
+                        <a href="#culture-blog-2" class="read-more" onclick="showBlogArticle('culture-blog-2')">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Culture Blog 3 -->
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex">
+                <div class="blog-card w-100">
+                    <div class="blog-image" style="background-image: url('https://i.pinimg.com/736x/ea/37/d9/ea37d91e766335f1d305ec165818767a.jpg');">
+                        <span class="blog-category-tag">Interview Blog</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 16, 2025</span>
+                            <span><i class="far fa-user"></i> Shoon Lae Maung</span>
+                        </div>
+                        <h3>Interviewing About the Cultural Value of our Local Parks in Myanmar</h3>
+                        <p class="blog-excerpt">By listening to youths, activists, influencers, and cultural leaders, we learned that Yangon’s parks are seen as living cultural spaces where history, identity, and community can be revived through storytelling, creativity, and shared ownership.</p>
+                        <a href="#culture-blog-3" class="read-more" onclick="showBlogArticle('culture-blog-3')">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      <br><br><br><br>
+</div>
+
+    <!-- Individual Blog Articles Container (Hidden by default) -->
+    <div id="blog-article-container" style="display: none;"></div>
+
+    <!-- Comment System Templates -->
+    <template id="comment-template">
+        <div class="comment" data-comment-id="">
+            <div class="comment-header">
+                <div class="comment-author">
+                    <div class="author-avatar"></div>
+                    <div class="author-info">
+                        <h4 class="author-name"></h4>
+                        <span class="comment-time"></span>
+                    </div>
+                </div>
+                <button class="delete-comment" onclick="deleteComment(this)">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+            <div class="comment-content"></div>
+        </div>
+    </template>
+
+     <!--Footer-->
+    <footer class="bg-dark text-white py-5" id="contact">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="image/logo2.jpg" alt="Logo" class="footer-logo mb-3">
+                    <h3 class="h5 mb-3"><i class="fas fa-leaf me-2"></i>Beyond the Bench</h3>
+                    <p class="small">We inspire people to look beyond the bench — discovering the environmental, cultural, and social value of our parks while encouraging youth to care for and protect these shared spaces.</p>
+                    <div class="social-icons mt-4">
+                        <a href="https://www.facebook.com/" class="text-white me-3"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.x.com/" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/" class="text-white me-3"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <h3 class="h5 mb-3">Quick Links</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none  footer-link">
+                            <i class="fas fa-home me-2"></i>Home</a></li>
+                        <li class="mb-2"><a href="aboutus.html" class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-info-circle me-2"></i>About Us</a></li>
+
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="learning">
+                            <label for="learning" class="footer-label"><i class="bi bi-mortarboard-fill"></i>
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="enviromental_awaraness.html">Environmental Awareness</a></li>
+                                <li><a href="culturalpreservation.html">Cultural Preservation</a></li>
+                                <li><a href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="community">
+                            <label for="community" class="footer-label"><i class="bi bi-people-fill"></i>
+                                Community Hub
+                                <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="combinedfinal.html">Fun Quizzes</a></li>
+                                <li><a href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li><a href="https://docs.google.com/document/d/1KBs0JQOvbeFJuwe8dePoCFIE3pOzIx7nn3qXni5PmcY/edit?usp=sharing"
+                                class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-envelope me-2"></i>References</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4">
+                    <h3 class="h5 mb-3">Contact Us</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            No. 635/J, Yoe Ma Yeik Thar (Pyae Road), 2nd Ward, Kamayut Township, Yangon.
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            09-882224766
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            info@beyondthebench.org
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-4 opacity-25">
+
+            <div class="text-center small">
+                <p class="mb-0">&copy; 2025 Beyond the Bench. All rights reserved. | <a href="terms.html">Terms & Privacy</a></p>
+             
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- JavaScript Files -->
+    <script src="user-auth.js"></script>
+
+    <script>
+
+        // Store all comments with blog ID as key
+        let allComments = JSON.parse(localStorage.getItem('inclusiveParksComments')) || {};
+
+        // Page Navigation Functions
+        function showLandingPage() {
+            document.getElementById('landing-page').style.display = 'block';
+            document.getElementById('team-blogs-page').style.display = 'none';
+            document.getElementById('environment-blogs-page').style.display = 'none';
+            document.getElementById('culture-blogs-page').style.display = 'none';
+            document.getElementById('blog-article-container').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function showCategory(category) {
+            event.preventDefault();
+            document.getElementById('landing-page').style.display = 'none';
+
+            if (category === 'team') {
+                document.getElementById('team-blogs-page').style.display = 'block';
+                document.getElementById('environment-blogs-page').style.display = 'none';
+                document.getElementById('culture-blogs-page').style.display = 'none';
+            } else if (category === 'environment') {
+                document.getElementById('team-blogs-page').style.display = 'none';
+                document.getElementById('environment-blogs-page').style.display = 'block';
+                document.getElementById('culture-blogs-page').style.display = 'none';
+            } else if (category === 'culture') {
+                document.getElementById('team-blogs-page').style.display = 'none';
+                document.getElementById('environment-blogs-page').style.display = 'none';
+                document.getElementById('culture-blogs-page').style.display = 'block';
+            }
+
+            document.getElementById('blog-article-container').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        // Blog articles data - NOW WITH ALL 9 ARTICLES
+        const blogArticles = {
+            
+            // Team Blogs
+            'team-blog-1': {
+                    category: 'Science Project',
+                    title: 'Building Automatic Hand Sanitizer Dispenser',
+                    author: 'Beyond the Bench Team',
+                    date: 'Dec 11, 2025',
+                    image: 'https://i.pinimg.com/736x/86/e7/4a/86e74a9f63c014e392c0f37c1be071a9.jpg',
+                    content: `
+                <h2>Driving Question </h2>
+                 <p><strong> DQ: </strong>  How can Year 9 Fuchsia students design and implement sustainable solutions for local park revitalization that enhance park visitors’ experience while promoting environmental quality and community wellbeing?</p>
+                <h2>Essential Question</h2>
+                  <p> <strong> EQ: </strong>  How can Year 9 Fuchsia students design a solar-powered automatic hand sanitizer dispenser that promotes hygiene, public health, and sustainability, while ensuring accessibility for all park visitors to create a safer and more inclusive local park?</p>
+                <h2>Introduction</h2>
+                <p>Addresses the growing importance of public health and environmental sustainability.</p>
+                <p>Introduces a solar-powered automatic hand sanitizer dispenser for local parks.</p>
+                <p>Uses accessible, touch-free technology to promote hygienic use.</p>
+                <p>Designed with an inclusive installation height for all visitors.</p>
+                <p>Ensures safe and independent access for wheelchair users.</p>
+                <p>Promotes sustainability through renewable solar energy.</p>
+                <p>Helps create a safer, healthier, and more welcoming community space.</p>
+
+                <h2>Aim</h2>
+                <p>To design, build, and test a fully functional, solar-powered automatic hand sanitizer dispenser that improves park hygiene and accessibility in a sustainable manner.</p>
+
+                <h2>Objectives</h2>
+                <ul>
+                    <li>Integrate an IR sensor with an Arduino to create a reliable, touch-free activation system.</li>
+                    <li>Power the system sustainably using a solar panel and rechargeable battery.</li>
+                    <li>Construct a durable housing with the dispenser nozzle at an accessible height for children, adults, and wheelchair users.</li>
+                    <li>Ensure the system is cost-effective, weather-resistant, and easy to maintain for long-term public use.</li>
+                </ul>
+
+
+                <img src="image/sci-pic.jpg" alt="Group-work" style="max-width:100%;">
+
+                <h2>Problem Statement</h2>
+                <p><strong>Local parks lack hygiene stations:</strong> Many public parks do not provide enough handwashing or sanitizing facilities, leaving visitors without easy access to basic hygiene while using shared spaces.</p>
+                <p><strong>Disabled users struggle with manual hand-pump sanitizers:</strong> Manual sanitizer pumps are often difficult or impossible to use for people with limited mobility, strength, or coordination, making these facilities inaccessible.</p>
+                <p><strong>Risk of germ spread in shared areas:</strong> Without accessible hygiene options, germs can easily spread through frequently touched surfaces such as benches, playground equipment, and railings.</p>
+                <p><strong>Practical public deployment:</strong> Hygiene solutions in parks need to be durable, easy to use, and suitable for outdoor public environments where many different users interact daily.</p>
+                <p><strong>Lack of sustainable, solar-powered solutions:</strong> There are currently very few hygiene systems that use renewable energy like solar power, limiting long-term, eco-friendly options for public parks.</p>
+
+        <p>To solve these problems , we bring you a solution. Check our <strong>practical working video</strong> below !</p>    
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/83YqanDj0H8?si=9nE72cQIcjsR6RaO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+             <h2>Component List</h2>
+            <p>For our automatic hand sanitizer dispenser, we used a combination of hardware components that work together to create a touch-free, solar-powered, and reliable system.</p>
+            <ul>
+                <li><strong>Arduino Uno R3:</strong> The brain of our project. It controls all the components, processes signals from the sensor, and decides when the sanitizer should be dispensed.</li>
+                <li><strong>Breadboard:</strong> Allows us to connect components easily without soldering, making testing and adjustments faster and safer during development.</li>
+                <li><strong>Jumper wires (male-to-male and male-to-female):</strong> Connect all the components together, ensuring signals and power flow correctly between the Arduino, sensors, and modules.</li>
+                <li><strong>USB A-to-B Cable:</strong> Used for uploading code from the computer to the Arduino.</li>
+                <li><strong>IR Sensor:</strong> Detects hands without physical contact, allowing hygienic activation of the dispenser.</li>
+                <li><strong>Solar Panel:</strong> Generates renewable energy to power the dispenser outdoors without relying on electrical outlets.</li>
+                <li><strong>Battery:</strong> Stores energy from the solar panel, ensuring the dispenser works even during cloudy days or at night.</li>
+            </ul>
+            
+            <p>Below is our circuit diagram ,which we drew by ourselves.</p>
+            <img src="image/circuitdiagram_sci.png" alt="Automatic Hand Sanitizer Dispenser Circuit Diagram" style="max-width:100%;">
+
+            <h2>Conclusion</h2>
+            <p> The solar-powered automatic hand sanitizer dispenser project successfully demonstrates how practical technology can be harnessed to address real-world challenges in public health, accessibility, and sustainability. By achieving our objectives, we provide a model for a simple, effective, and green hygiene solution that can make our local parks safer and more inclusive for every visitor. This project underscores the potential for student-led innovation to contribute tangibly to community well-being and environmental stewardship. </p>
+                `
+                },
+
+            'team-blog-2': {
+
+                category: 'Maths Project',
+                title: 'Measurements for Maths project',
+                author: 'Beyond the Bench Team',
+                date: 'Nov 25, 2025',
+                image: 'https://i.pinimg.com/736x/09/fd/7a/09fd7aba06fe3a243a1c011470e55bb7.jpg',
+                content: `
+                
+        <h2>Driving Question</h2>
+        <p> <strong>DQ : </strong> How can we, as Year 9 Fuchsia students, use mathematical concepts to design relaxational areas or environmentally useful features in local parks that enhance comfort, convenience or ecosystem of the local community?</p>
+
+        <h2>Essential Question</h2>
+        <p> <strong>EQ : </strong> How can we apply geometric modelling to help us design an efficient Terracotta evaporative cooling structure that contributes to a naturally cooler environment while serving as an appealing art feature for our local park community?</p>
+
+        <p>Our maths project focused on designing and building a <strong>Terracotta Cooling System</strong> — a natural, eco-friendly way to keep water and small spaces cool using the principles of evaporation and thermal insulation. Math was central to the design process, from calculating dimensions to determining water flow and evaporation rates.</p>
+        
+        <img src="image/maths.jpg" alt="system" style="max-width:100%; display:block; margin: 0 auto;">
+
+        <h2>Measurements & Calculations</h2>
+        <p>We started by measuring terracotta pots of different sizes to figure out which combination would provide the maximum cooling effect. Key measurements included:</p>
+        <ul>
+            <li>Height and diameter of inner and outer pots</li>
+            <li>Thickness of terracotta walls</li>
+            <li>Volume of water needed for evaporation</li>
+            <li>Surface area exposed to air for maximum heat dissipation</li>
+        </ul>
+
+        <img src="image/maths-pic.jpg" alt="system" style="max-width:100%; display:block; margin: 0 auto;">
+
+        <h2>Mathematical Modeling</h2>
+        <p>Using the measurements, we applied basic geometry and algebra to predict cooling performance:</p>
+        <ul>
+            <li>Calculating the surface area for evaporation: <em>Area = 2πrh + 2πr²</em></li>
+            <li>Estimating heat transfer rates through the terracotta walls</li>
+            <li>Predicting temperature drop based on water volume and air circulation</li>
+        </ul>
+
+        <img src="image/maths_terracotta.jpg" alt="system" style="max-width:100%; display:block; margin: 0 auto;">
+
+        <h2>Design Iterations</h2>
+        <p>We tested several prototypes with varying pot sizes and wall thicknesses. By recording temperatures over time, we adjusted the dimensions and setup to achieve the most efficient cooling effect. This iterative process combined experimentation with careful calculations, giving us both accurate data and hands-on experience.</p>
+        
+        <div class="quote">
+            "Math isn’t just numbers on a page — it’s how we turned clay into a mini cooling powerhouse!" - Team Member
+        </div>
+
+        <p>We also interview some experts to gain more insights on desigining and implementing our  <strong>Terracotta Structure</strong> in Myanmar Environment.  </p>    
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/uItFCQKy3NI?si=woJvESyc7uXJFwn5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        <h2>Key Learnings</h2>
+        <ul>
+            <li>Precise measurements dramatically affect system efficiency</li>
+            <li>Small changes in wall thickness or water volume change cooling performance</li>
+            <li>Math models help predict results but testing is essential</li>
+            <li>Combining theory with experimentation leads to the best outcomes</li>
+        </ul>
+
+        <img src="image/clay_pot.jpg" alt="system" style="max-width:100%; display:block; margin: 0 auto;">
+
+        <h2>Next Steps</h2>
+        <p>We plan to scale up the system for community use, exploring larger terracotta panels and modular designs to provide natural cooling in urban settings, all while using math to ensure optimal performance.</p>
+                `
+
+            },
+
+            'team-blog-3': {
+                category: 'English Project',
+                title: 'Exploring Yangon’s Living Museums _ Culturally-Rich Parks Tour',
+                author: 'Beyond the Bench Team',
+                date: 'December 12, 2025',
+                image: 'https://i.pinimg.com/736x/77/2e/3d/772e3db203965f4247adabada8fdc7cb.jpg',
+                content: `
+
+        <h2> Driving Question </h2>
+        <p> <strong> DQ : </strong>  How can Year 9 Fuchsia Students use English literature, storytelling, and creative communication to inspire the community’s emotional and cultural connection with our local park and support its revitalization for present and future generations? </p>
+        
+        <h2> Essential Question </h2>
+        <p> <strong> EQ : </strong>   How can we apply creative English communication to awaken cultural awareness and reveal the hidden cultural value of local parks that enlighten the youths and community to reclaim and protect them as meaningful living museums rather than just recreational spaces?  </p>
+
+        <p>Our team took a mini adventure around three of Yangon’s most loved parks — <strong>Kandawgyi Park</strong>, <strong>U Ottama Park</strong>, and <strong>Thakhin Mya Park</strong>. It was amazing to see how each space has its own vibe, history, and little surprises for visitors of all ages.</p>
+        <h2>Kandawgyi Park: Lakeside Serenity</h2>
+        <p>Kandawgyi Park is famous for its huge lake and the iconic Karaweik Palace. Walking along the lakeside paths, we spotted families enjoying picnics, joggers making the most of the morning breeze, and photographers capturing the scenic views. The mix of nature and city skyline makes it a perfect spot for relaxation.</p>
+
+        <h2>U Ottama Park: History Meets Greenery</h2>
+        <p>This park is named after the legendary monk and independence activist Sayadaw U Ottama. We explored the quiet corners, read plaques about his life, and appreciated how the park combines history with calm green spaces. Locals often practice Tai Chi or enjoy reading under the shady trees.</p>
+
+        <h2>Thakhin Mya Park: Community Vibes</h2>
+        <p>Thakhin Mya Park has smaller walking paths and playgrounds that make it perfect for weekend gatherings. We joined kids playing around fountains, watched elders chatting on benches, and even discovered hidden flower beds that smelled amazing. It was a reminder of how parks serve as community hubs.</p>
+
+        <div class="quote">
+            "Walking through these parks reminded us that urban greenery is more than just pretty scenery — it’s where culture, community, and nature meet." - Team Member
+        </div>
+
+        <h2>Our Takeaways</h2>
+        <ul>
+            <li>Parks are vital for city life — a mix of relaxation, recreation, and culture.</li>
+            <li>Even small parks like Thakhin Mya can make a huge difference for local communities.</li>
+            <li>Exploring on foot gives you a better appreciation of design, accessibility, and natural beauty.</li>
+        </ul>
+
+        <p>We left the parks inspired and full of ideas for future projects that connect people with green spaces in Yangon. 🌿✨</p>
+    `
+            },
+
+            'team-blog-4': {
+                category: 'Global Perspective Project',
+                title: 'Inclusive by Innovation : Revitalizing Parks Through Inclusive Technology',
+                author: 'Beyond the Bench Team',
+                date: 'Dec 13, 2025',
+                image: 'image/gp_pic.jpg',
+                content: `
+
+                <h2>Driving Question </h2>
+                <p> <strong>DQ :</strong> How can Year 9 Fuchsia students raise awareness and motivate our community to take shared responsibility for revitalizing local parks in Myanmar into more inclusive and accessible public spaces that nurture the well-being of everyone in the community? </p>
+                
+                
+                <h2>Essential Question </h2>
+                <p> <strong>EQ :</strong>How can we promote the use of simple and accessible technologies for disabled individuals to overcome mobility and accessibility challenges and enhance inclusivity in the revitalization of Myanmar’s local parks? </p>
+                
+
+                    <h2>Issue</h2>
+                    <ul>
+                        <li>Many local parks in Myanmar lack assistive and accessible technologies for people with disabilities.</li>
+                        <li>Park facilities are often not designed to support mobility, independence, or ease of use.</li>
+                        <li>Simple technologies, such as touch-free systems or sensor-based features, are rarely used.</li>
+                        <li>This makes it difficult for people with disabilities to fully access and enjoy park spaces.</li>
+                        <li>The lack of inclusivity affects the whole community, as parks should be safe and welcoming for everyone.</li>
+                    </ul>
+
+
+                    <h2>Watch Our Interview Video </h2>
+                 <iframe width="100%" height="500" src="https://www.youtube.com/embed/0LmvaDXlDeg?si=zGfz1d360dhl7vCm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                <br><br>
+                  <h3>Direct Causes</h3>
+
+                    <ul>
+                        <li>
+                            <p>
+                                <strong>Low Awareness of Tech-Based Inclusion</strong><br>
+                                Many park authorities and community members are unaware of the benefits of accessible technologies.<br>
+                                <strong>Evidence:</strong> World Bank – Disability Inclusion Overview
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                <strong>Economic and Resource Constraints</strong><br>
+                                Budget limitations and prioritization of other infrastructure projects reduce the ability to invest in accessibility.<br>
+                                <strong>Evidence:</strong> MIMU Disability Analytical Brief (2021)
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                <strong>Lack of Consultation with Disabled Technology Users</strong><br>
+                                Projects often do not involve people with disabilities in planning or decision-making, resulting in unsuitable solutions.<br>
+                                <strong>Evidence:</strong> UNICEF – Disability Inclusion Report
+                            </p>
+                        </li>
+                    </ul>
+
+                    <h3>Indirect Causes</h3>
+
+                    <ul>
+                        <li>
+                            <p>
+                                <strong>Cultural and Social Perceptions of Disability</strong><br>
+                                There is sometimes a societal belief that people with disabilities require special care rather than accessible public solutions, which indirectly reduces demand for inclusive technologies.<br>
+                                <strong>Evidence:</strong> UNDP – Disability and Social Inclusion in Myanmar
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                <strong>Limited Awareness of International Best Practices</strong><br>
+                                Local planners may not know about simple, low-cost inclusive technologies used successfully in other countries, reducing innovation.<br>
+                                <strong>Evidence:</strong> UNESCO – Inclusive Education and Public Spaces
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                <strong>Limited Collaboration Between Sectors</strong><br>
+                                Lack of coordination between government, NGOs, tech developers, and community groups means inclusive technology projects are rarely integrated into park planning.<br>
+                                <strong>Evidence:</strong> UNCRPD – Article 9: Accessibility
+                            </p>
+                        </li>
+                    </ul>
+
+                    <h2>Watch Our Awareness Video </h2>
+                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/zw86dxKO_IQ?si=4Kkh2_FiQ47whrsM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                    <h2>Conclusion</h2>
+                    <p>In conclusion, implementing accessible technologies in public spaces is crucial because tech solutions — from simple assistive interfaces to smart navigation tools — help break down barriers and enable people with disabilities to participate fully in community life, improving independence, inclusion, and access to information and services for everyone.</p>
+                `
+            }
+
+          
+            ,
+
+            // Environment Blogs
+            'environment-blog-1': {
+                category: 'Burmese Birds',
+                title: 'Birdlife in Myanmar: Feathered Friends from Wetlands to Parks',
+                author: 'Beyond the Bench Team',
+                date: 'Dec 8, 2025',
+                image: 'https://dartfordwaffler.co.uk/wp-content/uploads/2020/02/House-crow.jpg',
+                content: `
+        <p>Myanmar is home to an amazing variety of bird species — from urban park songbirds to migratory visitors that travel thousands of kilometres to rest and feed in the country’s wetlands. Learning about these birds helps us appreciate how vibrant and important our natural spaces truly are. 🐦✨</p>
+        
+        <h2>Common Birds Around Yangon Parks</h2>
+        <p>Even in city parks like People’s Park and Kandawgyi, visitors can spot a range of everyday bird species. House Crows are super common and noisy, often seen in flocks around trees and walkways. Along water edges, you might see little water birds like Little Cormorants or Kingfishers perched by the water, watching for fish. Warblers, doves, and various mynas also add melodic vibes to these green spaces. These everyday sightings make Yangon parks feel alive with nature’s soundtrack.</p>
+        
+        <h2>Wetlands & Migratory Bird Hotspots</h2>
+        <p>Just outside Yangon, places like the Moeyungyi Wetland Wildlife Sanctuary are internationally recognized for birdlife. This Ramsar‑designated wetland draws over 100 migratory bird species during the cold season, coming from as far as Siberia, China and beyond. The lake and surrounding wetland habitat provide food and shelter for waterbirds like egrets, ibis, darters, ducks, and storks, making it a paradise for birdwatchers and nature lovers alike. </p>
+        
+        <h2>Special & Endemic Birds of Myanmar</h2>
+        <p>Myanmar also hosts some unique species found nowhere else, such as the <strong>White‑browed Nuthatch</strong> and the <strong>Burmese Bushlark</strong>. While these aren’t city park birds, they highlight the country’s rich avian diversity and remind us why protecting wild habitats throughout Myanmar matters. </p>
+
+        <h2>Why Birds Matter</h2>
+        <p>Birds aren’t just pretty to watch — they’re essential to healthy ecosystems. They help control insect populations, spread seeds, and pollinate plants. Their seasonal movements also tell us a lot about environmental changes and wetland health. As urbanisation and habitat loss increase, it’s more important than ever to protect green places where birds can thrive. </p>
+
+        <div class="quote">
+            “From the crow in the park to the migratory flocks at wetlands, birds connect us with nature’s rhythms — reminding us why conservation matters.” — Environmental Team
+        </div>
+
+        <h2>Tips for Bird‑Lovers in Yangon</h2>
+        <ul>
+            <li>Visit parks early in the morning — birds are most active at sunrise.</li>
+            <li>Bring binoculars to see smaller species like sunbirds or warblers.</li>
+            <li>Respect wildlife — keep a comfortable distance and don’t feed birds human food.</li>
+            <li>Support local green spaces so birds continue to thrive among us.</li>
+        </ul>
+    `
+            }
+            ,
+            'environment-blog-2': {
+                category: 'Wildlife & Nature',
+                title: 'Hlawga National Park: A Nature Escape Near Yangon',
+                author: 'Beyond the Bench Team',
+                date: 'Dec 10, 2025',
+                image: 'https://www.hlawgapark.com/wp-content/uploads/2020/12/camp1.jpg',
+                content: `
+        <p>Looking for a nature getaway close to Yangon? Hlawga National Park offers a refreshing mix of evergreen forests, wildlife encounters, and outdoor fun — all just a short trip from the city’s busy streets. 🌳🦌</p>
+
+        <h2>What Hlawga Park Offers</h2>
+        <p>Established in 1982, Hlawga Park preserves a variety of habitats including evergreen forest, mixed deciduous woodland, and swamp forests, giving visitors a taste of Myanmar’s wild side without leaving the Yangon region. </p>
+
+        <h2>Wildlife & Activities</h2>
+        <p>Animals like barking deer, hog deer, and even monkeys roam the park, while birdwatchers can enjoy spotting local and seasonal species in the natural setting. Visitors can take safari‑style bus rides, trek jungle trails, go boating on the lake, or picnic in shaded areas. </p>
+
+        <h2>Nature + Education</h2>
+        <p>Hlawga isn’t just for recreation — it also serves as an environmental education area where visitors learn about local plant species like dipterocarps, teak, and medicinal plants. The park’s picnic zones and butterfly park make it a fun, immersive way to experience nature up close. </p>
+
+        <div class="quote">
+            “Hlawga reminds us that being close to nature isn’t just about peace — it’s about learning how ecosystems work and how we can protect them.” — Environmental Team
+        </div>
+
+        <h2>Tips for Visiting</h2>
+        <ul>
+            <li>Come in the morning for cooler trekking and clearer wildlife sightings.</li>
+            <li>Bring binoculars for bird watching and wildlife spotting.</li>
+            <li>Pack snacks for a picnic under the trees — the shaded sites are perfect for chill hangs.</li>
+            <li>Support conservation by keeping trails clean and respecting wildlife distance.</li>
+        </ul>
+    `
+            }
+            ,
+            'environment-blog-3': {
+                category: 'Urban Nature',
+                title: 'Urban Green Spaces in Yangon: Why They Matter',
+                author: 'Beyond the Bench Team',
+                date: 'Dec 15, 2025',
+                image: 'https://i.pinimg.com/736x/0e/18/c4/0e18c47699736b7472f5a2805ba017a0.jpg',
+                content: `
+        <p>Yangon isn’t just a bustling city — it’s also home to a surprising network of parks, gardens, and green spaces that help balance the urban heat and give residents places to relax, breathe, and connect with nature. 🌳</p>
+
+        <h2>Parks & Green Areas Across the City</h2>
+        <p>Yangon City Development Committee manages over <strong>63 parks and 112 playgrounds</strong>, all aimed at increasing shaded spots for people to hang out and escape the concrete jungle. These green spaces help preserve air quality, reduce city temperatures, and protect water resources by keeping the ground cooler and slowing runoff. </p>
+
+        <h2>Why Parks Are Good for the City</h2>
+        <p>Experts argue that a city should aim for at least 30% green coverage to keep the environment healthy — and parks like Kandawgyi and Inya Lake greenery are some of Yangon’s most beloved examples. Not only do they soften the cityscape with trees and grass, but they also play a role in maintaining local biodiversity and offering peaceful spots for fitness, picnics, and family time. </p>
+
+        <div class="quote">
+            “Green spaces calm the city’s pace and remind us that breathability matters just as much as buildings and markets.” — Environmental Team
+        </div>
+
+        <h2>Conservation Efforts & Challenges</h2>
+        <p>As urban growth pushes outward, parks face pressure from development. To protect green areas, authorities have implemented bans on new construction in many parks and launched ongoing tree‑planting programs during monsoon seasons, growing hundreds of thousands of saplings across Yangon’s wards. </p>
+
+        <h2>Tips to Enjoy Yangon’s Greenery</h2>
+        <ul>
+            <li>Take afternoon walks in parks like People’s Square or Kandawgyi Lake for fresh air and scenic views.</li>
+            <li>Bring friends for a picnic on weekends at family‑friendly lawns.</li>
+            <li>Volunteer for tree‑planting events when they pop up each year.</li>
+            <li>Support community efforts to keep green spaces vibrant and clean.</li>
+        </ul>
+    `
+            }
+            ,
+
+            // Culture Blogs
+            'culture-blog-1': {
+                category: 'Cultural Importance',
+                title: 'The Cultural Importance of Our Local Parks',
+                author: 'Chaw Su',
+                date: 'Dec 16, 2025',
+                image: 'https://i.pinimg.com/736x/dc/c5/93/dcc593bf964c706264505c1f7bef7e80.jpg',
+                content: `
+                <h2>The Cultural Importance of Our Local Parks</h2>
+
+                <p> When you think of parks, you probably imagine hanging out with friends, tossing a frisbee, scrolling your phone by the lake, or soaking up the sun. In Myanmar, though, parks work as time machines, memory banks, and festival stages all in one place. </p>
+                <p> Parks like Bogyoke Aung San Park in Yangon bring us closer to our history, reminding us of national leaders and the journey to independence. Maha Bandula Park, with its Independence Monument, stands as a symbol of pride and freedom. U Ottama Park, Kandawgyi Park, and Thakin Mya Park also carry deep stories, with roots going back to the 1890s. </p>
+
+                <p> Seeing these parks as just chill spots misses their real role. They hold the stories of our people — moments of struggle, pride, and change. Walking through them feels like flipping through an open-air history book, where the past is still visible and meaningful. These places help us stay connected to where we come from. </p>
+                <p> Parks are also gathering points for life to happen. Families meet, friends celebrate, music plays, and festivals bring everyone together. These shared moments turn parks into spaces of belonging, where traditions are passed on and connections grow naturally. </p>
+                <p> Because parks reflect our culture and our people, young people begin to care about them in a real way. They don’t just visit — they protect, respect, and take pride in these spaces. Parks become places where the past and future meet, and where culture stays present in everyday life. </p>
+
+                <h2>Conclusion</h2>
+                <p> In the end, our local parks carry stories, identity, and community spirit. By spending time in them, learning their history, and celebrating together, we help keep these spaces meaningful and alive for everyone. </p>
+
+                `
+            },
+
+            'culture-blog-2': {
+                category: 'Tour Blog',
+                title: 'A tour to parks : 3 cultural-rich parks in Myanmar',
+                author: 'Chit Kyi',
+                date: 'Dec 16, 2025',
+                image: 'https://i.pinimg.com/736x/ef/de/8f/efde8f4ce6358fd86eb36eaba51eca37.jpg',
+                content: `
+
+            <h2>A Tapestry of Tranquility: Exploring Yangon's Cultural Parks</h2>
+            <p>
+            Yangon, Myanmar – a city where the past whispers from every corner, and the present hums with vibrant life. Often, the soul of a city is best found not in its busiest streets, but in its green, breathing lungs—its public parks. On a sweltering Tuesday, the 9th of December, we embarked on a whirlwind tour of three such havens, each offering a unique slice of Myanmar's cultural and historical tapestry. It was a day of double duty: soaking in serene landscapes while also racking up footage for a multi-subject project under the blazing sun. Exhausting? Absolutely. Unforgettable? Without a doubt. </p>
+
+            <h2>First Stop: The Heart of History at U Ottama Park (Kandaw Mingalar)</h2>
+            <p>
+            Our journey kicked off at the sprawling U Ottama Park, also known as Kandaw Mingalar Park. This isn't just a green space; it's a national stage. Framed by the iconic Shwedagon Pagoda glinting in the distance, the park teems with local life from dawn till dusk. Families spill out onto the lawns, friends share laughs on shaded benches, and the air is filled with a sense of community.
+            We ended up spending the bulk of our morning here, and for good reason. The vast lawns and majestic backdrops were the perfect open-air studio for our practical work. We captured reams of footage—panning shots of the hallowed grounds, candid moments of daily Yangon life, and plenty of material that would later serve our project's needs. It was more than a visit; it was a productive immersion. The park, named after a revered nationalist monk, pulses with a quiet, proud patriotism, making it a profound first chapter in our day's story. </p>
+
+            <h2>Second Stop: A Royal Respite at Kandawgyi Park & Karaweik Palace</h2>
+            <p>Located on Strand Road in Ahlone Township, Thakhin Mya Park is a peaceful pocket of greenery dotted with flowers, trees, a small lake, playgrounds, and exercise areas. First opened on Union Day in 1989, it has seen refurbishments over the years to welcome morning walkers, Tai Chi lovers, and playful kids on its swings and slides. It’s totally free to enter and a great example of community park life right in Yangon. </p>
+
+            <h2>Final Stop: Modern Homage at Tha Khin Mya Park</h2>
+            <p>Our cultural park trifecta concluded at the more contemporary Tha Khin Mya Park. Dedicated to a significant political figure, this park has a different, more structured vibe. With its clean lines, fountains, and dedicated exercise areas, it showcases Yangon's modern face while honoring its past. By this time, the afternoon sun was relentless, and our energy was running on fumes. We wrapped up our final shots here, capturing the park's orderly beauty before calling it a wrap on our footage marathon. </p>
+
+            <h2>Wrapping Up a Day Well-Spent</h2>
+            <p>We dug into our packed lunches from our own cars, a much-needed pit stop to recharge our batteries. After tying up loose ends at the final park, we headed back as the afternoon mellowed into evening, cameras full and spirits high, albeit thoroughly tired.
+            This tour was a masterclass in how urban parks are so much more than just grass and trees. They are living albums, cultural statements, and communal backyards. From the national symbolism of U Ottama, to the picturesque tradition of Kandawgyi, and the modern tribute of Tha Khin Mya, we witnessed the many layers of Yangon’s heart. It was a tall order to balance project work with pure enjoyment, but in the end, we pulled it off, returning home with not just assignments completed, but with a deeper, sweat-and-ice-cream-stained appreciation for our city's green sanctuaries. </p>
+
+            <p>Lastly , at the end of our blog , check out <strong>our Tour Vlog </strong> below !</p>    
+                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/oP9A41bcAC4?si=Xq_jNmI0Y3HM3D_y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                `
+            },
+            'culture-blog-3': {
+                category: 'Interview Blog',
+                title: 'Interviewing About the Cultural Value of our local parks in Myanmar',
+                author: 'Shoon Lae Maung',
+                date: 'Dec 16, 2025',
+                image: 'https://i.pinimg.com/736x/ea/37/d9/ea37d91e766335f1d305ec165818767a.jpg',
+                content: `
+                <h2>Voices for the Green: The Soul of Yangon's Parks, Through Local Eyes</h2>
+                <p>
+                Have you ever walked through a park and felt it was pulsing with more than just life, but with memory? Beyond the joggers and the picnickers, we sensed our green spaces were whispering stories uniquely our own. To truly listen, we sat down with a chorus of local voices—all Burmese, all deeply rooted in Myanmar—from everyday youths to seasoned advocates. Our mission? To unravel the hidden cultural soul of our public parks, straight from the hearts of those who know them best.
+                What we discovered was a powerful, homegrown vision. Here’s what we learned. </p>
+
+                <h2>The Youth Perspective: The Next Generation Looks Forward</h2>
+                <p>
+                We first touched base with two Burmese university students from Yangon. Their initial take was relatable: parks are places to chill out. But the concept of parks as living museums struck a chord. They dreamed of integrating our heritage directly into the landscape—Burmese poetry on plaques, local history accessible via QR codes, and social media challenges that frame our parks through a cultural lens. Their message was clear: Engage us, don’t lecture us. Make the history of these places something we can interact with and share in our own digital language. </p>
+
+                <h2>The Activist’s Angle: Mobilizing Community Pride</h2>
+                <p>Our conversation with a Yangon-based Youth City Shaper activist was charged with passion. For them, protection is born from ownership. They championed guerrilla storytelling—think pop-up performances of Burmese historical moments right where they happened, or community “heritage hunts” that piece together a park’s timeline. Their goal is to spark a sense of collective duty, transforming passive visitors into active guardians of our shared space. </p>
+
+                <h2>The Influencer’s Insight: Framing Our Narrative for the World</h2>
+                <p>The Burmese cultural influencer we spoke to offered a masterclass in modern storytelling. “It’s all about framing,” they said. A photo of Kandawgyi isn’t just a pretty picture; it’s a story of craftsmanship, tradition, and resilience. They advocated for creating aesthetic, digestible content in both Burmese and English that highlights the layers of meaning—the symbolism of a tree, the history behind a pathway. Their work is about curating pride and showing the world, and ourselves, the profound depth in our everyday surroundings. </p>
+
+                <h2>The Founder’s Vision: Weaving the Tapestry of Legacy</h2>
+                <p>Finally, the founder of a local Myanmar cultural organization provided the bird’s-eye view. They spoke of parks as palimpsests, layered with our collective history. Their vision involves deep, collaborative curation: supporting Burmese artists-in-residence to interpret a park’s spirit, or creating a “Park Lore Festival” that showcases traditional performance alongside contemporary debate. For them, reclamation is about breathing life into static history, ensuring these spaces remain dynamic chapters in our nation’s ongoing story. </p>
+
+                <p>Check out <strong>our interview with Youths, Youth Activist , Experts and Cultural Influencers </strong> below !</p>    
+                  <iframe width="100%" height="500" src="https://www.youtube.com/embed/GK1UuRLXjZM?si=yROScRhYZbaq-afW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                
+                `
+            }
+        };
+
+        function showBlogArticle(blogId) {
+            event.preventDefault();
+
+            // Hide all pages
+            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('team-blogs-page').style.display = 'none';
+            document.getElementById('environment-blogs-page').style.display = 'none';
+            document.getElementById('culture-blogs-page').style.display = 'none';
+
+            // Get blog data
+            const blog = blogArticles[blogId];
+            if (!blog) return;
+
+            // Create article HTML WITH COMMENT SECTION
+            const articleContainer = document.getElementById('blog-article-container');
+            articleContainer.innerHTML = `
+                <header>
+                    <div class="container">
+                        <div class="header-content">
+                            <div class="logo2">
+                                <div class="logo-text">
+                                    <h1>Blog Article</h1>
+                                    <p>In-depth Stories & Insights</p>
+                                </div>
+                            </div>
+                            <a href="#back" class="back-btn" onclick="goBackToCategory()">
+                                <i class="fas fa-arrow-left"></i> Back to Blogs
+                            </a>
+                        </div>
+                    </div>
+                </header>
+                
+                <div class="blog-article">
+                    <div class="article-header">
+                        <span class="article-category">${blog.category}</span>
+                        <h1>${blog.title}</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> ${blog.date}</span>
+                            <span><i class="far fa-user"></i> ${blog.author}</span>
+                        </div>
+                    </div>
+                    
+                    <img src="${blog.image}" alt="${blog.title}" class="article-image">
+                    
+                    <div class="article-content">
+                        ${blog.content}
+                    </div>
+                </div>
+                
+                <!-- COMMENT SECTION -->
+                <div class="comments-section" id="comments-section-${blogId}">
+                    <h3><i class="fas fa-comments"></i> Comments & Discussion</h3>
+                    
+                    <div class="comment-form">
+                        <div class="form-group">
+                            <label for="comment-name">Name (optional)</label>
+                            <input type="text" id="comment-name" placeholder="Enter your name or stay anonymous">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comment-text">Your Comment</label>
+                            <textarea id="comment-text" rows="4" placeholder="Share your thoughts on this article..."></textarea>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="comment-anonymous">
+                            <label for="comment-anonymous">Post as Anonymous</label>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button class="submit-btn" onclick="submitComment('${blogId}')">
+                                <i class="fas fa-paper-plane"></i> Post Comment
+                            </button>
+                            <button class="clear-btn" onclick="clearCommentForm()">
+                                <i class="fas fa-times"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="comments-list" id="comments-list-${blogId}">
+                        <!-- Comments will be loaded here -->
+                    </div>
+                </div>
+            `;
+
+            articleContainer.style.display = 'block';
+            window.scrollTo(0, 0);
+
+            // Load comments for this blog
+            loadComments(blogId);
+        }
+
+        function goBackToCategory() {
+            // Determine which category page to return to based on the blog ID
+            const currentBlogId = document.querySelector('.comments-section').id.replace('comments-section-', '');
+
+            if (currentBlogId.includes('team')) {
+                showCategory('team');
+            } else if (currentBlogId.includes('environment')) {
+                showCategory('environment');
+            } else if (currentBlogId.includes('culture')) {
+                showCategory('culture');
+            } else {
+                showLandingPage();
+            }
+        }
+
+        // Comment System Functions
+        function submitComment(blogId) {
+            const nameInput = document.getElementById('comment-name');
+            const commentInput = document.getElementById('comment-text');
+            const anonymousCheckbox = document.getElementById('comment-anonymous');
+
+            const name = anonymousCheckbox.checked ? 'Anonymous' : (nameInput.value.trim() || 'Anonymous');
+            const comment = commentInput.value.trim();
+
+            if (!comment) {
+                alert('Please enter a comment before posting.');
+                return;
+            }
+
+            // Create comment object
+            const commentObj = {
+                id: Date.now().toString(),
+                blogId: blogId,
+                author: name,
+                content: comment,
+                timestamp: new Date().toISOString(),
+                displayTime: new Date().toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            // Initialize comments array for this blog if it doesn't exist
+            if (!allComments[blogId]) {
+                allComments[blogId] = [];
+            }
+
+            // Add comment to array
+            allComments[blogId].push(commentObj);
+
+            // Save to localStorage
+            localStorage.setItem('inclusiveParksComments', JSON.stringify(allComments));
+
+            // Clear form
+            clearCommentForm();
+
+            // Reload comments
+            loadComments(blogId);
+
+            // Show success notification
+            showNotification('Comment posted successfully!');
+        }
+
+        function loadComments(blogId) {
+            const commentsList = document.getElementById(`comments-list-${blogId}`);
+            if (!commentsList) return;
+
+            // Clear current comments
+            commentsList.innerHTML = '';
+
+            // Get comments for this blog
+            const blogComments = allComments[blogId] || [];
+
+            if (blogComments.length === 0) {
+                commentsList.innerHTML = `
+                    <div class="no-comments">
+                        <i class="far fa-comment-dots" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                        <p>No comments yet. Be the first to share your thoughts!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort comments by timestamp (newest first)
+            blogComments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            // Add each comment
+            blogComments.forEach(comment => {
+                const template = document.getElementById('comment-template');
+                const commentElement = template.content.cloneNode(true);
+
+                // Fill in comment data
+                const commentDiv = commentElement.querySelector('.comment');
+                commentDiv.setAttribute('data-comment-id', comment.id);
+
+                const avatar = commentDiv.querySelector('.author-avatar');
+                avatar.textContent = comment.author.charAt(0).toUpperCase();
+
+                // Set avatar color based on author
+                const colors = ['#4285F4', '#34A853', '#9C27B0', '#FF9800', '#F44336'];
+                const colorIndex = comment.author.charCodeAt(0) % colors.length;
+                avatar.style.backgroundColor = colors[colorIndex];
+
+                commentDiv.querySelector('.author-name').textContent = comment.author;
+                commentDiv.querySelector('.comment-time').textContent = comment.displayTime;
+                commentDiv.querySelector('.comment-content').textContent = comment.content;
+
+                commentsList.appendChild(commentElement);
+            });
+        }
+
+        function deleteComment(button) {
+            if (confirm('Are you sure you want to delete this comment?')) {
+                const commentDiv = button.closest('.comment');
+                const commentId = commentDiv.getAttribute('data-comment-id');
+
+                // Find which blog this comment belongs to
+                const commentsSection = commentDiv.closest('.comments-section');
+                const blogId = commentsSection.id.replace('comments-section-', '');
+
+                // Remove comment from storage
+                if (allComments[blogId]) {
+                    allComments[blogId] = allComments[blogId].filter(comment => comment.id !== commentId);
+                    localStorage.setItem('inclusiveParksComments', JSON.stringify(allComments));
+
+                    // Remove from DOM
+                    commentDiv.remove();
+
+                    // Show notification
+                    showNotification('Comment deleted successfully!');
+
+                    // Reload comments if this was the last one
+                    const remainingComments = document.querySelectorAll(`#comments-list-${blogId} .comment`);
+                    if (remainingComments.length === 0) {
+                        loadComments(blogId);
+                    }
+                }
+            }
+        }
+
+        function clearCommentForm() {
+            document.getElementById('comment-name').value = '';
+            document.getElementById('comment-text').value = '';
+            document.getElementById('comment-anonymous').checked = false;
+        }
+
+        function showNotification(message) {
+            // Remove existing notification if present
+            const existingNotification = document.getElementById('comment-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Create notification
+            const notification = document.createElement('div');
+            notification.id = 'comment-notification';
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--primary);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            `;
+            notification.innerHTML = `
+                <i class="fas fa-check-circle"></i> 
+                ${message}
+            `;
+
+            document.body.appendChild(notification);
+
+            // Add CSS animations if not already present
+            if (!document.querySelector('#notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize landing page
+        showLandingPage();
+
+        // Get current page
+        const currentPage = window.location.pathname.split("/").pop();
+
+        // Loop over all nav links
+        document.querySelectorAll(".nav-link").forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+                link.classList.add("active");
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

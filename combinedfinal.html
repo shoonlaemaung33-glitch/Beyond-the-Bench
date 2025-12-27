@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes | Beyond the Bench </title>
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="combinedfinal.css">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="auth.css">
+    
+
+    <link rel="shortcut icon" href="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png"
+        type="image/x-icon">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet">
+
+
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Great+Vibes&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/89a27aa0d6.js" crossorigin="anonymous"></script>
+
+    <!--Animation on scroll-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+<body>
+
+   <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png" alt="Logo" class="logo">
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#navOffcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Offcanvas -->
+            <div class="offcanvas offcanvas-end" id="navOffcanvas">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold">Beyond The Bench</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto gap-lg-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="parkrevitilization.html">Park
+                                Revitalization</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown">
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="enviromental_awaraness.html">Environmental
+                                        Awareness</a></li>
+                                <li><a class="dropdown-item" href="culturalpreservation.html">Cultural Preservation</a>
+                                </li>
+                                <li><a class="dropdown-item" href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active" href="#" role="button" data-bs-toggle="dropdown">
+                                Community Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item active" href="combinedfinal.html">Fun Quizzes</a></li>
+                                <li><a class="dropdown-item" href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a class="dropdown-item" href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.html">About Us</a>
+                        </li>
+                    </ul>
+
+                    <!-- User Profile or Sign In Button -->
+                    <div id="userNavSection">
+                        <!-- This will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration/Login Modal -->
+    <div class="modal fade" id="NavModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Welcome to Beyond The Bench</h5>
+                    <button type="button" class="btn-close nav-btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Tabs for Login/Register -->
+                    <ul class="nav nav-tabs mb-4" id="authTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
+                                type="button" role="tab">Sign In</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register"
+                                type="button" role="tab">Register</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="authTabsContent">
+                        <!-- Login Tab -->
+                        <div class="tab-pane fade show active" id="login" role="tabpanel">
+                            <form id="loginForm" class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="loginEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword"
+                                        placeholder="Enter your password" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your password.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                            </form>
+                            <div class="text-center mt-3">
+                                <a href="#" class="text-decoration-none" id="forgotPassword">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <!-- Register Tab -->
+                        <div class="tab-pane fade" id="register" role="tabpanel">
+                            <form id="registerForm" class="needs-validation" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="John"
+                                            required minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid first name (min 2 characters).
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Doe" required
+                                            minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid last name (min 2 characters).
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Email address *</label>
+                                    <input type="email" class="form-control" id="registerEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">Password *</label>
+                                    <input type="password" class="form-control" id="registerPassword"
+                                        placeholder="At least 8 characters" required minlength="8">
+                                    <div class="password-strength">
+                                        <div class="strength-bar" id="passwordStrength"></div>
+                                    </div>
+                                    <div class="strength-text" id="strengthText">Password strength: None</div>
+                                    <small class="form-text text-muted">Must contain uppercase, lowercase, and
+                                        numbers</small>
+                                    <div class="invalid-feedback">
+                                        Password must be at least 8 characters with uppercase, lowercase, and numbers.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password *</label>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        placeholder="Re-enter password" required>
+                                    <div class="invalid-feedback">
+                                        Passwords do not match.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Choose an Avatar *</label>
+                                    <div class="avatar-selection">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=b6e3f4"
+                                            class="avatar-option" data-avatar="avatar1" alt="Avatar 1">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jane&backgroundColor=c0aede"
+                                            class="avatar-option" data-avatar="avatar2" alt="Avatar 2">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mike&backgroundColor=d1d4f9"
+                                            class="avatar-option" data-avatar="avatar3" alt="Avatar 3">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah&backgroundColor=ffd5dc"
+                                            class="avatar-option" data-avatar="avatar4" alt="Avatar 4">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&backgroundColor=ffdfbf"
+                                            class="avatar-option" data-avatar="avatar5" alt="Avatar 5">
+                                    </div>
+                                    <input type="hidden" id="selectedAvatar" required>
+                                    <div class="invalid-feedback">
+                                        Please select an avatar.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="termsAgreement" required>
+                                    <label class="form-check-label" for="termsAgreement">
+                                        I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and
+                                        <a href="#" class="text-decoration-none">Privacy Policy</a> *
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree to the terms and conditions.
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                                <p class="text-muted small mt-3">* Required fields</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reset Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotPasswordForm">
+                        <div class="mb-3">
+                            <label for="resetEmail" class="form-label">Enter your email address</label>
+                            <input type="email" class="form-control" id="resetEmail" placeholder="name@example.com"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Reset Link</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title"> LEARN & PLAY </h1>
+            <p class="hero-subtitle">Take our interactive quizzes to explore cultural connections, environmental
+                knowledge, and bird identification skills in our local parks ! </p>
+        </div>
+    </section>
+
+    <!-- Main Quiz Section -->
+   <div class="container py-5">
+
+    <!-- Section Title -->
+    <div class="section-title text-center mb-5">
+        <h2>Choose Your Quiz Adventure</h2>
+        <p>Each quiz offers a unique way to connect with parks and nature.</p>
+    </div>
+
+    <!-- Quiz Cards -->
+    <div class="row justify-content-center g-4">
+
+        <!-- Quiz 1 -->
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex justify-content-center">
+            <div class="quiz-card w-100">
+                <div class="quiz-header text-center">
+                    <div class="quiz-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h2 class="quiz-title">Cultural Park Personality Test</h2>
+                    <p class="quiz-subtitle">Discover Your Park Persona and about Myanmar Local parks' culture!</p>
+                </div>
+
+                <div class="quiz-content text-center">
+                    <p class="quiz-description">
+                        Uncover your unique relationship with cultural heritage in parks. This personality test reveals
+                        how you interact with historical sites and cultural preservation.
+                    </p>
+
+                    <div class="quiz-stats d-flex justify-content-center gap-4">
+                        <div class="stat-item">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Questions</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Park Personality Types</span>
+                        </div>
+                    </div>
+
+                    <a href="personalityquizz.html" class="play-btn">
+                        <i class="fas fa-play-circle"></i>
+                        Start Personality Test
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz 2 -->
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex justify-content-center">
+            <div class="quiz-card w-100">
+                <div class="quiz-header text-center">
+                    <div class="quiz-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h2 class="quiz-title">Environmental Awareness Quiz</h2>
+                    <p class="quiz-subtitle">Test Your Eco-Knowledge about local parks</p>
+                </div>
+
+                <div class="quiz-content text-center">
+                    <p class="quiz-description">
+                        How well do you understand environmental issues and sustainable practices in parks? Challenge
+                        yourself with questions about ecosystems and conservation.
+                    </p>
+
+                    <div class="quiz-stats d-flex justify-content-center gap-4">
+                        <div class="stat-item">
+                            <span class="stat-number">10</span>
+                            <span class="stat-label">Questions</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Minutes</span>
+                        </div>
+                    </div>
+
+                    <a href="environment.html" class="play-btn">
+                        <i class="fas fa-play-circle"></i>
+                        Start Environmental Quiz
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz 3 -->
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 d-flex justify-content-center">
+            <div class="quiz-card w-100">
+                <div class="quiz-header text-center">
+                    <div class="quiz-icon">
+                        <i class="fas fa-dove"></i>
+                    </div>
+                    <h2 class="quiz-title">Bird Audio Challenge Quiz</h2>
+                    <p class="quiz-subtitle">Identify Birds by Sound and be a master!</p>
+                </div>
+
+                <div class="quiz-content text-center">
+                    <p class="quiz-description">
+                        Can you identify common park birds by their songs and calls? This audio-based quiz trains your
+                        ear and helps you become a better birdwatcher. Be a bird master !
+                    </p>
+
+                    <div class="quiz-stats d-flex justify-content-center gap-4 flex-wrap">
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Audio Clips</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Minutes</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Bird Species</span>
+                        </div>
+                    </div>
+
+                    <a href="birdfinal.html" class="play-btn">
+                        <i class="fas fa-play-circle"></i>
+                        Start Bird Audio Quiz
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <br><br><br>
+    <!-- Info Section -->
+    <div class="info-section text-center mt-5">
+        <h3 class="info-title mb-4">Why Take Our Quizzes?</h3>
+
+        <div class="row justify-content-center g-4">
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>Educational & Fun</h4>
+                    <p>Learn about parks, nature, and culture in an engaging way.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Track Your Progress</h4>
+                    <p>See your improvement over time with clear results.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Share & Compete</h4>
+                    <p>Challenge friends and compare scores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+      <!--Footer-->
+    <footer class="bg-dark text-white py-5" id="contact">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="image/logo2.jpg" alt="Logo" class="footer-logo mb-3">
+                    <h3 class="h5 mb-3"><i class="fas fa-leaf me-2"></i>Beyond the Bench</h3>
+                    <p class="small">We inspire people to look beyond the bench — discovering the environmental, cultural, and social value of our parks while encouraging youth to care for and protect these shared spaces.</p>
+                    <div class="social-icons mt-4">
+                        <a href="https://www.facebook.com/" class="text-white me-3"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.x.com/" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/" class="text-white me-3"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <h3 class="h5 mb-3">Quick Links</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none  footer-link">
+                            <i class="fas fa-home me-2"></i>Home</a></li>
+                        <li class="mb-2"><a href="aboutus.html" class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-info-circle me-2"></i>About Us</a></li>
+
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="learning">
+                            <label for="learning" class="footer-label"><i class="bi bi-mortarboard-fill"></i>
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="enviromental_awaraness.html">Environmental Awareness</a></li>
+                                <li><a href="culturalpreservation.html">Cultural Preservation</a></li>
+                                <li><a href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="community">
+                            <label for="community" class="footer-label"><i class="bi bi-people-fill"></i>
+                                Community Hub
+                                <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="combinedfinal.html">Fun Quizzes</a></li>
+                                <li><a href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li><a href="https://docs.google.com/document/d/1KBs0JQOvbeFJuwe8dePoCFIE3pOzIx7nn3qXni5PmcY/edit?usp=sharing"
+                                class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-envelope me-2"></i>References</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4">
+                    <h3 class="h5 mb-3">Contact Us</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            No. 635/J, Yoe Ma Yeik Thar (Pyae Road), 2nd Ward, Kamayut Township, Yangon.
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            09-882224766
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            info@beyondthebench.org
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-4 opacity-25">
+
+            <div class="text-center small">
+                <p class="mb-0">&copy; 2025 Beyond the Bench. All rights reserved. | <a href="terms.html">Terms & Privacy</a></p>
+             
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="user-auth.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Simple hover effect for quiz cards
+        document.addEventListener('DOMContentLoaded', function () {
+            const quizCards = document.querySelectorAll('.quiz-card');
+
+            quizCards.forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    const playBtn = this.querySelector('.play-btn');
+                    if (playBtn) {
+                        playBtn.style.transform = 'translateY(-3px)';
+                    }
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    const playBtn = this.querySelector('.play-btn');
+                    if (playBtn) {
+                        playBtn.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+        });
+
+
+        
+    </script>
+
+    
+</body>
+
+</html>

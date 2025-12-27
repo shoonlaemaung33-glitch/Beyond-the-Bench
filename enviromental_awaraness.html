@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Environmental Awareness | Beyond the Bench </title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="shortcut icon" href="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png"
+        type="image/x-icon">
+
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- Google Fonts - Kurale -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet">
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png"
+        type="image/x-icon">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="auth.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="enviromental_awareness.css">
+    <link rel="stylesheet" href="footer.css">
+
+   
+</head>
+
+<body>
+   <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="image/Screenshot_2025-12-13_at_10.06.48_PM-removebg-preview.png" alt="Logo" class="logo">
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#navOffcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Offcanvas -->
+            <div class="offcanvas offcanvas-end" id="navOffcanvas">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold">Beyond The Bench</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto gap-lg-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="parkrevitilization.html">Park
+                                Revitalization</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active" href="#" role="button" data-bs-toggle="dropdown">
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item active" href="enviromental_awaraness.html">Environmental
+                                        Awareness</a></li>
+                                <li><a class="dropdown-item" href="culturalpreservation.html">Cultural Preservation</a>
+                                </li>
+                                <li><a class="dropdown-item" href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown">
+                                Community Hub <i class="bi bi-caret-down-fill"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="combinedfinal.html">Fun Quizzes</a></li>
+                                <li><a class="dropdown-item" href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a class="dropdown-item" href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.html">About Us</a>
+                        </li>
+                    </ul>
+
+                    <!-- User Profile or Sign In Button -->
+                    <div id="userNavSection">
+                        <!-- This will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration/Login Modal -->
+    <div class="modal fade" id="NavModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Welcome to Beyond The Bench</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Tabs for Login/Register -->
+                    <ul class="nav nav-tabs mb-4" id="authTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
+                                type="button" role="tab">Sign In</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register"
+                                type="button" role="tab">Register</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="authTabsContent">
+                        <!-- Login Tab -->
+                        <div class="tab-pane fade show active" id="login" role="tabpanel">
+                            <form id="loginForm" class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="loginEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword"
+                                        placeholder="Enter your password" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your password.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                            </form>
+                            <div class="text-center mt-3">
+                                <a href="#" class="text-decoration-none" id="forgotPassword">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <!-- Register Tab -->
+                        <div class="tab-pane fade" id="register" role="tabpanel">
+                            <form id="registerForm" class="needs-validation" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="John"
+                                            required minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid first name (min 2 characters).
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Doe" required
+                                            minlength="2">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid last name (min 2 characters).
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Email address *</label>
+                                    <input type="email" class="form-control" id="registerEmail"
+                                        placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">Password *</label>
+                                    <input type="password" class="form-control" id="registerPassword"
+                                        placeholder="At least 8 characters" required minlength="8">
+                                    <div class="password-strength">
+                                        <div class="strength-bar" id="passwordStrength"></div>
+                                    </div>
+                                    <div class="strength-text" id="strengthText">Password strength: None</div>
+                                    <small class="form-text text-muted">Must contain uppercase, lowercase, and
+                                        numbers</small>
+                                    <div class="invalid-feedback">
+                                        Password must be at least 8 characters with uppercase, lowercase, and numbers.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password *</label>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        placeholder="Re-enter password" required>
+                                    <div class="invalid-feedback">
+                                        Passwords do not match.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Choose an Avatar *</label>
+                                    <div class="avatar-selection">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=b6e3f4"
+                                            class="avatar-option" data-avatar="avatar1" alt="Avatar 1">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jane&backgroundColor=c0aede"
+                                            class="avatar-option" data-avatar="avatar2" alt="Avatar 2">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mike&backgroundColor=d1d4f9"
+                                            class="avatar-option" data-avatar="avatar3" alt="Avatar 3">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah&backgroundColor=ffd5dc"
+                                            class="avatar-option" data-avatar="avatar4" alt="Avatar 4">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&backgroundColor=ffdfbf"
+                                            class="avatar-option" data-avatar="avatar5" alt="Avatar 5">
+                                    </div>
+                                    <input type="hidden" id="selectedAvatar" required>
+                                    <div class="invalid-feedback">
+                                        Please select an avatar.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="termsAgreement" required>
+                                    <label class="form-check-label" for="termsAgreement">
+                                        I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and
+                                        <a href="#" class="text-decoration-none">Privacy Policy</a> *
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree to the terms and conditions.
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                                <p class="text-muted small mt-3">* Required fields</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reset Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotPasswordForm">
+                        <div class="mb-3">
+                            <label for="resetEmail" class="form-label">Enter your email address</label>
+                            <input type="email" class="form-control" id="resetEmail" placeholder="name@example.com"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Reset Link</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Hero Section -->
+    <section class="hero py-5" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-content pe-lg-4">
+                        <h1 class="display-5 fw-bold mb-4">The Importance of Environmental Awareness</h1>
+                        <p class="mb-4">Discover the transformative power of nature and therapy. Our comprehensive
+                            approach helps you on your journey toward health, growth, and self-discovery through
+                            environmental connection.</p>
+                        <div class="hero-buttons">
+                            <a href="#about" class="btn btn-primary me-3"><i class="fas fa-book-open me-2"></i>Learn
+                                More</a>
+                            <a href="#checklist" class="btn btn-outline-primary checklist-highlight">
+                                <i class="fas fa-clipboard-check me-2"></i>Start Eco Checklist
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="hero-image-container mt-4 mt-lg-0">
+                        <div class="hero-frame">
+                            <img src="https://i.pinimg.com/736x/93/97/24/9397247c6ca71d67bb7c6aa762a4a649.jpg"
+                                alt="U Ottama Park" class="img-fluid">
+                            <div class="hero-badge">
+                                <i class="fas fa-tree"></i>
+                                <span>Nature Preserve</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why It Matters Section -->
+    <section class="why-matters py-5" id="about">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Why Environmental Awareness Matters</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up" data-aos-delay="200">
+                    <div class="why-content text-center">
+                        <p class="mb-3">We believe in the transformative power of connecting with nature. Research shows
+                            that spending time in natural environments reduces stress, improves mental health, and
+                            increases physical wellbeing. Our parks and green spaces are essential for both
+                            environmental health and human wellness.</p>
+                        <p class="mb-4">Beyond individual benefits, environmental awareness fosters community engagement
+                            and ecological stewardship. When we understand our local ecosystems, we become better
+                            equipped to protect them for future generations.</p>
+                        <a href="#gallery" class="btn btn-primary"><i class="fas fa-binoculars me-2"></i>Explore
+                            Biodiversity</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="row mt-5 pt-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-card text-center p-4">
+                        <i class="fas fa-brain fa-3x mb-3"></i>
+                        <h3 class="h2 fw-bold text-primary">30%</h3>
+                        <p class="mb-0">Reduction in stress levels after spending 20 minutes in nature</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-card text-center p-4">
+                        <i class="fas fa-heart fa-3x mb-3"></i>
+                        <h3 class="h2 fw-bold text-primary">50%</h3>
+                        <p class="mb-0">Increase in creative problem-solving after nature exposure</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-card text-center p-4">
+                        <i class="fas fa-users fa-3x mb-3"></i>
+                        <h3 class="h2 fw-bold text-primary">40%</h3>
+                        <p class="mb-0">Higher community satisfaction in areas with accessible parks</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-card text-center p-4">
+                        <i class="fas fa-leaf fa-3x mb-3"></i>
+                        <h3 class="h2 fw-bold text-primary">70%</h3>
+                        <p class="mb-0">Of urban biodiversity depends on properly maintained parks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaf Border Section -->
+    <section class="leaf-border-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="leaf-image-container">
+                        <div class="leaf-border position-relative">
+                            <div class="leaf-border-brown"></div>
+                            <img src="https://i.pinimg.com/736x/bb/20/ef/bb20efeec3a781606864f074671c7aad.jpg"
+                                alt="U Ottama Park & Shwe Dagon Pagoda" class="img-fluid">
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="leaf-text mt-4 mt-lg-0">
+                        <h3 class="h2 fw-bold mb-4">Learn About Your Local Park's Nature</h3>
+                        <p class="mb-3">Parks are essential for environmental health, providing habitats for local flora
+                            and fauna. They offer spaces for recreation, mental wellness, and community building.
+                            Understanding the biodiversity in your local park helps you connect with nature and
+                            contribute to its preservation.</p>
+                        <p class="mb-4">Explore the variety of local plants, trees, birds, and insects that make your
+                            park unique. Learn about the threats to biodiversity and how you can help protect these
+                            precious ecosystems for future generations.</p>
+                        <a href="#gallery" class="btn btn-primary"><i class="fas fa-map-marked-alt me-2"></i>Explore
+                            Local Biodiversity</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section py-5" id="gallery">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Local Biodiversity Gallery</h2>
+            <p class="gallery-intro text-center mb-5" data-aos="fade-up" data-aos-delay="100">Click on any image to
+                explore detailed information about local species and environmental conservation.</p>
+            <div class="gallery-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="gallery-grid">
+                    <!-- Large image covering 3 images height -->
+                    <div class="gallery-main">
+                        <div class="gallery-item position-relative overflow-hidden rounded plants-gallery"
+                            data-gallery="plants">
+                            <img src="https://i.pinimg.com/736x/0e/53/b9/0e53b97e5889cbfbd58cf7ecab3e1dc5.jpg"
+                                alt="Kandawgyi Local Plants" class="img-fluid">
+                            <div class="gallery-caption">
+                                <h3 class="h5 mb-0">Local Plants & Trees</h3>
+                                <p class="mb-0 small">Discover native flora species</p>
+                            </div>
+                            <div class="gallery-hover">
+                                <i class="fas fa-arrow-right"></i>
+                                <span>Click to Explore</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Side images -->
+                    <div class="gallery-side">
+                        <div class="gallery-side-item">
+                            <div class="gallery-item position-relative overflow-hidden rounded birds-gallery"
+                                data-gallery="birds">
+                                <img src="https://i.pinimg.com/736x/33/79/c7/3379c7b82f4ab5b20cd5c8152a3ab952.jpg"
+                                    alt="Local Birds" class="img-fluid">
+                                <div class="gallery-caption">
+                                    <h3 class="h6 mb-0">Local Birds</h3>
+                                    <p class="mb-0 small">Explore avian species</p>
+                                </div>
+                                <div class="gallery-hover">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-side-item">
+                            <div class="gallery-item position-relative overflow-hidden rounded insects-gallery"
+                                data-gallery="insects">
+                                <img src="https://i.pinimg.com/736x/a3/6a/c7/a36ac747daef386c608d590d7cdd48f9.jpg"
+                                    alt="Local Insects" class="img-fluid">
+                                <div class="gallery-caption">
+                                    <h3 class="h6 mb-0">Local Insects</h3>
+                                    <p class="mb-0 small">Learn about pollinators</p>
+                                </div>
+                                <div class="gallery-hover">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-side-item">
+                            <div class="gallery-item position-relative overflow-hidden rounded threats-gallery"
+                                data-gallery="threats">
+                                <img src="https://i.pinimg.com/736x/11/9f/f5/119ff5dc07db69487f05f811fe5abce0.jpg"
+                                    alt="Deforestation" class="img-fluid">
+                                <div class="gallery-caption">
+                                    <h3 class="h6 mb-0">Conservation Efforts</h3>
+                                    <p class="mb-0 small">Understand protection</p>
+                                </div>
+                                <div class="gallery-hover">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flipbook Section -->
+    <section class="flipbook-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Interactive Learning Guides</h2>
+            <p class="flipbook-intro text-center mb-5" data-aos="fade-up" data-aos-delay="100">Hover over or tap each
+                book to explore detailed guides on local biodiversity.</p>
+            <div class="row justify-content-center g-4" data-aos="fade-up" data-aos-delay="200">
+                <!-- Flipbook 1 - WITH YOUR FIRST PDF -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="flipbook-wrapper">
+                        <div class="flipbook">
+                            <div class="flipbook-cover">
+                                <div class="flipbook-spine"></div>
+                                <div class="flipbook-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <div class="flipbook-title">Local Plants & Trees</div>
+                                <div class="flipbook-hint">
+                                    <i class="fas fa-hand-pointer"></i>
+                                    <span>Hover or Tap</span>
+                                </div>
+                            </div>
+                            <div class="flipbook-content">
+                                <div class="flipbook-content-inner">
+                                    <h3 class="h5"><i class="fas fa-seedling me-2"></i>Local Plants & Trees</h3>
+                                    <p class="mb-3">Discover the native flora in your area with detailed information
+                                        about each species, their benefits, and how to identify them.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check me-2"></i>Native tree species guide</li>
+                                        <li><i class="fas fa-check me-2"></i>Seasonal flowering plants</li>
+                                        <li><i class="fas fa-check me-2"></i>Medicinal plants in your region</li>
+                                        <li><i class="fas fa-check me-2"></i>Conservation status</li>
+                                        <li><i class="fas fa-check me-2"></i>Planting and care tips</li>
+                                        <li><i class="fas fa-check me-2"></i>Identification techniques</li>
+                                        <li><i class="fas fa-check me-2"></i>Seasonal changes and adaptations</li>
+                                        <li><i class="fas fa-check me-2"></i>Water requirements</li>
+                                        <li><i class="fas fa-check me-2"></i>Soil preferences</li>
+                                        <li><i class="fas fa-check me-2"></i>Sunlight needs</li>
+                                        <li><i class="fas fa-check me-2"></i>Growth patterns</li>
+                                        <li><i class="fas fa-check me-2"></i>Common diseases</li>
+                                    </ul>
+                                    <div class="flipbook-action mt-3">
+                                        <!-- YOUR FIRST PDF FILE -->
+                                        <a href="pdf/Myanmar_Trees_Plants.pdf"
+                                            class="btn btn-sm btn-primary" download>
+                                            <i class="fas fa-download me-1"></i>Download Guide
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flipbook 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="flipbook-wrapper">
+                        <div class="flipbook">
+                            <div class="flipbook-cover">
+                                <div class="flipbook-spine"></div>
+                                <div class="flipbook-icon">
+                                    <i class="fas fa-dove"></i>
+                                </div>
+                                <div class="flipbook-title">Local Birds & Insects</div>
+                                <div class="flipbook-hint">
+                                    <i class="fas fa-hand-pointer"></i>
+                                    <span>Hover or Tap</span>
+                                </div>
+                            </div>
+                            <div class="flipbook-content">
+                                <div class="flipbook-content-inner">
+                                    <h3 class="h5"><i class="fas fa-dove me-2"></i>Local Birds & Insects</h3>
+                                    <p class="mb-3">Explore the fascinating world of local wildlife with guides to
+                                        birds, insects, and their roles in the ecosystem.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check me-2"></i>Bird watching guide</li>
+                                        <li><i class="fas fa-check me-2"></i>Butterfly and pollinator species</li>
+                                        <li><i class="fas fa-check me-2"></i>Migration patterns</li>
+                                        <li><i class="fas fa-check me-2"></i>Habitat requirements</li>
+                                        <li><i class="fas fa-check me-2"></i>How to attract beneficial wildlife</li>
+                                        <li><i class="fas fa-check me-2"></i>Nesting and breeding habits</li>
+                                        <li><i class="fas fa-check me-2"></i>Conservation efforts</li>
+                                        <li><i class="fas fa-check me-2"></i>Feeding patterns</li>
+                                        <li><i class="fas fa-check me-2"></i>Behavioral characteristics</li>
+                                        <li><i class="fas fa-check me-2"></i>Seasonal appearances</li>
+                                        <li><i class="fas fa-check me-2"></i>Identification tips</li>
+                                        <li><i class="fas fa-check me-2"></i>Protection strategies</li>
+                                    </ul>
+                                    <div class="flipbook-action mt-3">
+                                        <!-- External link opening in new tab -->
+                                        <a href="https://ebird.org/region/MM-06/bird-list?yr=all&rank=lrec"
+                                            class="btn btn-sm btn-primary" target="_blank">
+                                            <i class="fas fa-external-link-alt me-1"></i>View Bird List
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flipbook 3 - READY FOR YOUR SECOND PDF -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="flipbook-wrapper">
+                        <div class="flipbook">
+                            <div class="flipbook-cover">
+                                <div class="flipbook-spine"></div>
+                                <div class="flipbook-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="flipbook-title">Conservation Guide</div>
+                                <div class="flipbook-hint">
+                                    <i class="fas fa-hand-pointer"></i>
+                                    <span>Hover or Tap</span>
+                                </div>
+                            </div>
+                            <div class="flipbook-content">
+                                <div class="flipbook-content-inner">
+                                    <h3 class="h5"><i class="fas fa-shield-alt me-2"></i>Conservation Guide</h3>
+                                    <p class="mb-3">Learn about the challenges facing local ecosystems and what you can
+                                        do to help protect and restore them.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check me-2"></i>Climate change impacts</li>
+                                        <li><i class="fas fa-check me-2"></i>Invasive species management</li>
+                                        <li><i class="fas fa-check me-2"></i>Habitat restoration techniques</li>
+                                        <li><i class="fas fa-check me-2"></i>Pollution reduction strategies</li>
+                                        <li><i class="fas fa-check me-2"></i>Community conservation programs</li>
+                                        <li><i class="fas fa-check me-2"></i>Sustainable park practices</li>
+                                        <li><i class="fas fa-check me-2"></i>Individual action plans</li>
+                                        <li><i class="fas fa-check me-2"></i>Policy recommendations</li>
+                                        <li><i class="fas fa-check me-2"></i>Long-term solutions</li>
+                                        <li><i class="fas fa-check me-2"></i>Education initiatives</li>
+                                        <li><i class="fas fa-check me-2"></i>Volunteer opportunities</li>
+                                        <li><i class="fas fa-check me-2"></i>Success stories</li>
+                                    </ul>
+                                    <div class="flipbook-action mt-3">
+                                        <!-- SECOND PDF FILE -->
+                                        <a href="pdf/Conservation_Guide.pdf" class="btn btn-sm btn-primary"
+                                            download>
+                                            <i class="fas fa-download me-1"></i>Download Guide
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Park Gallery Section -->
+    <section class="carousel-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-4" data-aos="fade-up">Park Highlights Gallery</h2>
+            <p class="carousel-description text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                Explore beautiful park scenes from around the region. Click the button below to view our curated
+                gallery.
+            </p>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <button class="btn btn-primary" id="openCarouselBtn">
+                    <i class="fas fa-images me-2"></i>View Park Gallery
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eco-Friendly To-Do List Section -->
+    <section class="todo-section py-5" id="checklist">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Eco-Friendly Park Checklist</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="todo-container shadow rounded">
+                        <div class="todo-header mb-4">
+                            <h3 class="h5 mb-0"><i class="fas fa-clipboard-check me-2"></i>Complete these eco-friendly
+                                behaviors when visiting a park</h3>
+                            <span id="todo-count" class="badge bg-primary">0/7 completed</span>
+                        </div>
+
+                        <div class="progress mb-3">
+                            <div class="progress-bar environment-progress" id="progress-fill" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text text-end mb-4" id="progress-text">0% complete</div>
+
+                        <div class="todo-list mb-4">
+                            <div class="todo-item d-flex align-items-center p-3 border-bottom">
+                                <input type="checkbox" class="form-check-input me-3 todo-checkbox" id="todo1">
+                                <label for="todo1" class="form-check-label todo-label flex-grow-1" id="label1">
+                                    <i class="fas fa-camera me-3"></i>Take only photos, leave only footprints
+                                </label>
+                            </div>
+                            <div class="todo-item d-flex align-items-center p-3 border-bottom">
+                                <input type="checkbox" class="form-check-input me-3 todo-checkbox" id="todo2">
+                                <label for="todo2" class="form-check-label todo-label flex-grow-1" id="label2">
+                                    <i class="fas fa-road me-3"></i>Stay on marked trails to protect plants
+                                </label>
+                            </div>
+                            <div class="todo-item d-flex align-items-center p-3 border-bottom">
+                                <input type="checkbox" class="form-check-input me-3 todo-checkbox" id="todo3">
+                                <label for="todo3" class="form-check-label todo-label flex-grow-1" id="label3">
+                                    <i class="fas fa-trash me-3"></i>Dispose of trash properly or take it with you
+                                </label>
+                            </div>
+                            <div class="todo-item d-flex align-items-center p-3 border-bottom">
+                                <input type="checkbox" class="form-check-input me-3 todo-checkbox" id="todo4">
+                                <label for="todo4" class="form-check-label todo-label flex-grow-1" id="label4">
+                                    <i class="fas fa-binoculars me-3"></i>Observe wildlife from a respectful distance
+                                </label>
+                            </div>
+                            <div class="todo-item d-flex align-items-center p-3 border-bottom">
+                                <input type="checkbox" class="form-check-input me-3 todo-checkbox" id="todo5">
+                                <label for="todo5" class="form-check-label todo-label flex-grow-1" id="label5">
+                                    <i class="fas fa-volume-mute me-3"></i>Respect quiet zones and other visitors
+                                </label>
+                            </div>
+                            <div class="todo-item d-flex align-items-center p-3 border-bottom">
+                                <input type="checkbox" class="form-check-input me-3 todo-checkbox" id="todo6">
+                                <label for="todo6" class="form-check-label todo-label flex-grow-1" id="label6">
+                                    <i class="fas fa-recycle me-3"></i>Use reusable water bottles and containers
+                                </label>
+                            </div>
+                            <div class="todo-item d-flex align-items-center p-3">
+                                <input type="checkbox" class="form-check-input me-3 todo-checkbox" id="todo7">
+                                <label for="todo7" class="form-check-label todo-label flex-grow-1" id="label7">
+                                    <i class="fas fa-flag me-3"></i>Report environmental concerns to park staff
+                                </label>
+                            </div>
+                        </div>
+
+                           <div class="celebration-message alert alert-success text-center mb-4" id="celebration-message"
+                    role="alert">
+                    <div class="celebration-icon">
+                        <i class="fas fa-smile-beam  fa-bounce "></i>
+                    </div>
+                    <h4 class="alert-heading mb-3">🎉 Well Done! 🎉</h4>
+                    <p class="mb-2">You've completed all eco-friendly behaviors! Keep up the great work and continue making a positive impact on the environment.</p>
+                </div>
+
+                        <div class="todo-actions d-flex gap-3">
+                            <button class="btn flex-grow-1" id="reset-btn">
+                                <i class="fas fa-redo me-2"></i>Reset Checklist
+                            </button>
+                            <!-- here !-->
+                            <button class="btn btn-primary flex-grow-1" id="certificate-btn">
+                                <i class="fas fa-certificate me-2"></i>Download Certificate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Image Modal - STATIC VERSION -->
+    <div class="modal fade" id="galleryModal">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="galleryModalTitle">Gallery Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Static Content for Plants Gallery -->
+                    <div class="gallery-modal-content" id="plantsModalContent">
+                        <h4 class="modal-gallery-heading">Local Plants & Trees</h4>
+                        <div class="modal-gallery-grid">
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/ea/90/40/ea904013d4d7658083c6a2cffaf545d2.jpg"
+                                    alt="Golden Shower Tree" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Neem (Tama)</h5>
+                                    <p class="small">Gives wide shade; good for community areas</p>
+                                    <p class="small info-text"><strong>Habitat:</strong> Tropical to subtropical</p>
+                                    <p class="small info-text"><strong>Uses:</strong> Traditional medicine (Ayurveda,
+                                        Unani) for skin, dental, fever, and inflammation issues</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/ca/c1/df/cac1df5d4c91344c5b34702cde445837.jpg"
+                                    alt="Lotus & Water Lily" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Lotus & Water Lily</h5>
+                                    <p class="small">Distinct aquatic plants</p>
+                                    <p class="small info-text"><strong>Edibility:</strong> Lotus roots and seeds are
+                                        widely eaten in Asia</p>
+                                    <p class="small info-text"><strong>Water Lily:</strong> Possess unique daily
+                                        opening/closing habits linked to weather memory</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/24/3f/d9/243fd9335467bd1d28ccfeb0144fb066.jpg"
+                                    alt="Rain Tree (Yin Mar)" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Rain Tree (Yin Mar)</h5>
+                                    <p class="small">Provides ample shade with wide canopy, leaves close during rain to
+                                        reduce water absorption.</p>
+                                    <p class="small info-text"><strong>Canopy:</strong> Up to 30m wide</p>
+                                    <p class="small info-text"><strong>Flowers:</strong> Pink and white clusters</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/92/ea/78/92ea78ac032a9bddf67ace46e15a3566.jpg"
+                                    alt="Padauk" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Padauk</h5>
+                                    <p class="small">Myanmar's beloved national flower</p>
+                                    <p class="small info-text"><strong>Scent:</strong> A distinct sweet, woody fragranc
+                                    </p>
+                                    <p class="small info-text"><strong>Appearance:</strong> Tiny, fragrant,
+                                        golden-yellow blossoms that cover the tree</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Static Content for Birds Gallery -->
+                    <div class="gallery-modal-content" id="birdsModalContent">
+                        <h4 class="modal-gallery-heading">Local Birds</h4>
+                        <div class="modal-gallery-grid">
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/03/c1/04/03c104ead2c7841fd6a94f97a58168ca.jpg"
+                                    alt="Burmese Bushlark" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Burmese Bushlark</h5>
+                                    <p class="small">Migratory bird with distinctive call, known for brood parasitism
+                                        (laying eggs in other birds' nests).</p>
+                                    <p class="small info-text"><strong>Diet:</strong> Primarily insects and seeds,
+                                        gleaned from the ground</p>
+                                    <p class="small info-text"><strong>Habitet:</strong> Open areas with scattered
+                                        bushes and trees, including sandy fields, grasslands, and cultivated land</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/dd/3f/a1/dd3fa104964cf1aa7f74d264a8ba4779.jpg"
+                                    alt="Tree Sparrow" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Tree Sparrow</h5>
+                                    <p class="small">Found across Eurasia in farmland, edges of woods, and villages</p>
+                                    <p class="small info-text"><strong>Appearance:</strong> A small, brown bird with a
+                                        distinctive chestnut-brown cap, white cheeks with a black spot, and buff
+                                        undersides</p>
+                                    <p class="small info-text"><strong>Behavior:</strong> Nests in tree holes/boxes,
+                                        less tied to humans than House Sparrows, often in flocks</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/ec/ca/2c/ecca2cb8af200f76e56b685d84001905.jpg"
+                                    alt="Common Myna" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Common Myna</h5>
+                                    <p class="small">A bold, adaptable Asian bird known for its brown body, black head,
+                                        yellow bill, and white wing patches visible in flight</p>
+                                    <p class="small info-text"><strong>Movement:</strong> Moves on the ground instead of
+                                        hopping</p>
+                                    <p class="small info-text"><strong>Diet:</strong> Omnivorous</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/eb/75/e9/eb75e9f12e9ef664c5c6546a892898ee.jpg"
+                                    alt="Asian Koel" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Asian Koel</h5>
+                                    <p class="small"> Males sing a loud "ko-o-o" to attract mates and signal nesting
+                                        time for hosts; females have a "kik-kik-kik"</p>
+                                    <p class="small info-text"><strong>Appearance:</strong> Males are shiny bluish-black
+                                        with red eyes; females are brown with white/buff spots and streaks</p>
+                                    <p class="small info-text"><strong>Behavior:</strong> Shy but heard more than seen,
+                                        often hiding in canopies</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Static Content for Insects Gallery -->
+                    <div class="gallery-modal-content" id="insectsModalContent">
+                        <h4 class="modal-gallery-heading">Local Insects</h4>
+                        <div class="modal-gallery-grid">
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/9d/9b/15/9d9b15fc45089e491f9bb7c0b8f6782e.jpg"
+                                    alt="Common Mormon" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Butterfly Species</h5>
+                                    <p class="small">A widespread Asian swallowtail known for female mimicry, where
+                                        females adopt patterns of distasteful butterflies to avoid predators</p>
+                                    <p class="small info-text"><strong>Appearance:</strong> Males are black with white
+                                        spots; females have varied patterns</p>
+                                    <p class="small info-text"><strong>Significance:</strong> A key pollinator,
+                                        contributing to local ecosystems</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/3f/eb/3c/3feb3ca9a268f5d74dec34447ea384b3.jpg"
+                                    alt="Dragon Flies" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Dragon Flies</h5>
+                                    <p class="small">Ancient, highly skilled aerial predators with huge eyes for 360°
+                                        vision, allowing them to catch 90%+ of their insect prey</p>
+                                    <p class="small info-text"><strong>Ablities:</strong> Super hunters, can fly in any
+                                        direction, hover, and change direction instantly</p>
+                                    <p class="small info-text"><strong>Color:</strong> They come in vibrant metallic
+                                        colors and vary greatly in size</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/d7/3b/d4/d73bd452a84489b31b547d0423349086.jpg"
+                                    alt="Fire Ants" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Fire Ants</h5>
+                                    <p class="small">Aggressive, invasive insects known for painful, venomous stings
+                                        that form pustules</p>
+                                    <p class="small info-text"><strong>Structure:</strong> Colonies have a queen (or
+                                        multiple), fertile males, and sterile female workers/soldiers</p>
+                                    <p class="small info-text"><strong>Lifespan:</strong> Queens lives for years while
+                                        workers live 4-6 weeks</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/72/84/c1/7284c139cc28bb37ab48b39802349249.jpg"
+                                    alt="Mosquitos" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Mosquitos</h5>
+                                    <p class="small">Tiny, flying insects known as the world's deadliest animals due to
+                                        disease transmission</p>
+                                    <p class="small info-text"><strong>Diet:</strong> Blood meals, Only female
+                                        mosquitoes bite humans and animals for the protein needed to develop eggs; males
+                                        feed on nectar</p>
+                                    <p class="small info-text"><strong>Lifespan:</strong> Adult mosquitoes live for
+                                        about 2 to 4 weeks, females often live longer than males</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Static Content for Threats Gallery -->
+                    <div class="gallery-modal-content" id="threatsModalContent">
+                        <h4 class="modal-gallery-heading">Conservation Efforts</h4>
+                        <div class="modal-gallery-grid">
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/e3/d6/8e/e3d68e6d0f14d9e410c32a9b8be1b85c.jpg"
+                                    alt="Plant more Natives trees" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Plant more Natives trees</h5>
+                                    <p class="small">Use local species like Rain Tree, Padauk, Neem, and Bamboo</p>
+                                    <p class="small info-text"><strong>Why?:</strong> Native plants support local
+                                        insects and birds better than imported species</p>
+                                    <p class="small info-text"><strong>Goal:</strong> Ecosystem preservation</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/44/62/fc/4462fcb21ae5ec19a3c6f42d33db0ad3.jpg"
+                                    alt="Invasive Species Management" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Invasive Species Management</h5>
+                                    <p class="small">Controlling non-native species that threaten local ecosystems
+                                        through monitoring and removal programs.</p>
+                                    <p class="small info-text"><strong>Approach:</strong> Monitoring programs</p>
+                                    <p class="small info-text"><strong>Tools:</strong> Biological controls</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/0e/2a/0f/0e2a0f2174d6019a2f1727fbc7f602b7.jpg"
+                                    alt="Pollution Control" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Pollution Control</h5>
+                                    <p class="small">Reducing air, water, and soil contamination through sustainable
+                                        practices and community education.</p>
+                                    <p class="small info-text"><strong>Focus:</strong> Clean technologies</p>
+                                    <p class="small info-text"><strong>Community:</strong> Education programs</p>
+                                </div>
+                            </div>
+                            <div class="modal-gallery-item">
+                                <img src="https://i.pinimg.com/736x/f1/2d/e3/f12de3bd5feb1f8e2566403556665e73.jpg"
+                                    alt="Climate Action" class="modal-gallery-img">
+                                <div class="modal-gallery-caption">
+                                    <h5>Climate Action</h5>
+                                    <p class="small">Addressing climate change impacts through carbon reduction, habitat
+                                        restoration, and adaptation strategies.</p>
+                                    <p class="small info-text"><strong>Strategy:</strong> Carbon reduction</p>
+                                    <p class="small info-text"><strong>Adaptation:</strong> Resilience planning</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Modal for Carousel -->
+    <div class="modal fade" id="carouselModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Park Highlights Gallery</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div id="parkCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://i.pinimg.com/736x/93/97/24/9397247c6ca71d67bb7c6aa762a4a649.jpg"
+                                    class="d-block w-100" alt="U Ottama Park">
+                                <div class="carousel-caption d-block">
+                                    <h5 class="mb-1">U Ottama Park</h5>
+                                    <p class="mb-0">A serene park in Yangon perfect for relaxation and connecting with
+                                        nature.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://i.pinimg.com/736x/bb/20/ef/bb20efeec3a781606864f074671c7aad.jpg"
+                                    class="d-block w-100" alt="U Ottama Park & Shwe Dagon Pagoda">
+                                <div class="carousel-caption d-block">
+                                    <h5 class="mb-1">Park with Shwe Dagon Pagoda View</h5>
+                                    <p class="mb-0">Enjoy the beautiful scenery with a view of the iconic golden pagoda.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://i.pinimg.com/474x/c4/77/e9/c477e985629fe01cce4631e28c9be45c.jpg"
+                                    class="d-block w-100" alt="Kandawgyi Park">
+                                <div class="carousel-caption d-block">
+                                    <h5 class="mb-1">Kandawgyi Park</h5>
+                                    <p class="mb-0">Located east of the Shwedagon Pagoda, the lake is artificial; water
+                                        from Inya Lake is channelled through a series of pipes to Kandawgyi Lake.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://i.pinimg.com/736x/8b/7d/ea/8b7dea70773bdb1d1db3b3255c9e4612.jpg"
+                                    class="d-block w-100" alt="Maha Bandula Park">
+                                <div class="carousel-caption d-block">
+                                    <h5 class="mb-1">Maha Bandula Park</h5>
+                                    <p class="mb-0">Maha Bandula looms large in Burmese history for his courage to take
+                                        on the British.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://i.pinimg.com/736x/cc/46/ad/cc46ad97e3992c84b395fc8d6c804f95.jpg"
+                                    class="d-block w-100" alt="Thakhin Mya Park">
+                                <div class="carousel-caption d-block">
+                                    <h5 class="mb-1">Thakhin Mya Park</h5>
+                                    <p class="mb-0">A popular green space in Yangon, Myanmar, known for its lush
+                                        greenery, walking paths, playgrounds, build to honour The Minister of Burmese
+                                        Home Affairs "U Thakhin Mya".</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://i.pinimg.com/736x/a2/c4/3c/a2c43c5433db20f62f9581cd4041072b.jpg"
+                                    class="d-block w-100" alt="Inya Lake Park">
+                                <div class="carousel-caption d-block">
+                                    <h5 class="mb-1">Inya Lake Park</h5>
+                                    <p class="mb-0">Breathtaking sunset views over a huge lake with park landscapes,
+                                        perfect for photography and a lesiure evening..</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Previous/Next buttons -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#parkCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#parkCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                        <!-- Oval dots indicator -->
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#parkCarousel" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#parkCarousel" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#parkCarousel" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#parkCarousel" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#parkCarousel" data-bs-slide-to="4"
+                                aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#parkCarousel" data-bs-slide-to="5"
+                                aria-label="Slide 6"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!--Footer-->
+    <footer class="bg-dark text-white py-5" id="contact">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="image/logo2.jpg" alt="Logo" class="footer-logo mb-3">
+                    <h3 class="h5 mb-3"><i class="fas fa-leaf me-2"></i>Beyond the Bench</h3>
+                    <p class="small">We inspire people to look beyond the bench — discovering the environmental, cultural, and social value of our parks while encouraging youth to care for and protect these shared spaces.</p>
+                    <div class="social-icons mt-4">
+                        <a href="https://www.facebook.com/" class="text-white me-3"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.x.com/" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/" class="text-white me-3"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <h3 class="h5 mb-3">Quick Links</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none  footer-link">
+                            <i class="fas fa-home me-2"></i>Home</a></li>
+                        <li class="mb-2"><a href="aboutus.html" class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-info-circle me-2"></i>About Us</a></li>
+
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="learning">
+                            <label for="learning" class="footer-label"><i class="bi bi-mortarboard-fill"></i>
+                                Learning Hub <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="enviromental_awaraness.html">Environmental Awareness</a></li>
+                                <li><a href="culturalpreservation.html">Cultural Preservation</a></li>
+                                <li><a href="project.html">Projects & Resources</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="mb-1 footer-accordion">
+                            <input type="checkbox" id="community">
+                            <label for="community" class="footer-label"><i class="bi bi-people-fill"></i>
+                                Community Hub
+                                <i class="bi bi-caret-down-fill"></i>
+                            </label>
+
+                            <ul class="footer-sublist">
+                                <li><a href="combinedfinal.html">Fun Quizzes</a></li>
+                                <li><a href="blogpage.html">Blogs & Youth Storytelling</a></li>
+                                <li><a href="events.html">Special Events</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li><a href="https://docs.google.com/document/d/1KBs0JQOvbeFJuwe8dePoCFIE3pOzIx7nn3qXni5PmcY/edit?usp=sharing"
+                                class="text-white text-decoration-none footer-link"><i
+                                    class="fas fa-envelope me-2"></i>References</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4">
+                    <h3 class="h5 mb-3">Contact Us</h3>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            No. 635/J, Yoe Ma Yeik Thar (Pyae Road), 2nd Ward, Kamayut Township, Yangon.
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            09-882224766
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            info@beyondthebench.org
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-4 opacity-25">
+
+            <div class="text-center small">
+                <p class="mb-0">&copy; 2025 Beyond the Bench. All rights reserved. | <a href="terms.html">Terms & Privacy</a></p>
+             
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="user-auth.js"></script>
+
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Initialize AOS & JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 700,
+            once: true,
+            offset: 80
+        });
+
+        // Eco-Friendly To-Do List Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('.todo-checkbox');
+            const todoCount = document.getElementById('todo-count');
+            const progressFill = document.getElementById('progress-fill');
+            const progressText = document.getElementById('progress-text');
+            const celebrationMessage = document.getElementById('celebration-message');
+            const resetBtn = document.getElementById('reset-btn');
+            const certificateBtn = document.getElementById('certificate-btn');
+            const totalTasks = checkboxes.length;
+
+            // Initialize checklist
+            function updateChecklist() {
+                let completed = 0;
+
+                checkboxes.forEach((checkbox, index) => {
+                    const label = document.getElementById(`label${index + 1}`);
+
+                    if (checkbox.checked) {
+                        completed++;
+                        label.classList.add('completed');
+                    } else {
+                        label.classList.remove('completed');
+                    }
+                });
+
+                // Update count and progress
+                todoCount.textContent = `${completed}/${totalTasks} completed`;
+
+                const percentage = (completed / totalTasks) * 100;
+                progressFill.style.width = `${percentage}%`;
+                progressFill.setAttribute('aria-valuenow', percentage);
+                progressText.textContent = `${Math.round(percentage)}% complete`;
+
+                // Update progress bar color based on completion
+                if (percentage >= 100) {
+                    progressFill.classList.add('bg-success');
+                    progressFill.classList.remove('bg-primary');
+                } else {
+                    progressFill.classList.add('bg-primary');
+                    progressFill.classList.remove('bg-success');
+                }
+
+                // Check if all tasks are completed
+                if (completed === totalTasks) {
+                    celebrationMessage.classList.add('show');
+                    celebrationMessage.style.display = 'block';
+                    certificateBtn.disabled = false;
+                    certificateBtn.innerHTML = '<i class="fas fa-certificate me-2"></i>Download Certificate';
+                } else {
+                    celebrationMessage.classList.remove('show');
+                    celebrationMessage.style.display = 'none';
+                    certificateBtn.disabled = true;
+                    certificateBtn.innerHTML = '<i class="fas fa-certificate me-2"></i>Complete Checklist First';
+                }
+            }
+
+            // Add event listeners to checkboxes
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateChecklist);
+            });
+
+            // Reset button functionality
+            resetBtn.addEventListener('click', () => {
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                updateChecklist();
+            });
+
+         document.addEventListener('DOMContentLoaded', function () {
+    const checkboxes = document.querySelectorAll('.todo-checkbox');
+    const todoCount = document.getElementById('todo-count');
+    const progressFill = document.getElementById('progress-fill');
+    const progressText = document.getElementById('progress-text');
+    const celebrationMessage = document.getElementById('celebration-message');
+    const resetBtn = document.getElementById('reset-btn');
+    const certificateBtn = document.getElementById('certificate-btn');
+    const totalTasks = checkboxes.length;
+
+    function updateChecklist() {
+        let completed = 0;
+
+        checkboxes.forEach((checkbox, index) => {
+            const label = document.getElementById(`label${index + 1}`);
+            if (checkbox.checked) {
+                completed++;
+                label.classList.add('completed');
+            } else {
+                label.classList.remove('completed');
+            }
+        });
+
+        todoCount.textContent = `${completed}/${totalTasks} completed`;
+
+        const percentage = (completed / totalTasks) * 100;
+        progressFill.style.width = `${percentage}%`;
+        progressFill.setAttribute('aria-valuenow', percentage);
+        progressText.textContent = `${Math.round(percentage)}% complete`;
+
+        if (percentage >= 100) {
+            progressFill.classList.add('bg-success');
+            progressFill.classList.remove('bg-primary');
+        } else {
+            progressFill.classList.add('bg-primary');
+            progressFill.classList.remove('bg-success');
+        }
+
+        if (completed === totalTasks) {
+            celebrationMessage.classList.add('show');
+            celebrationMessage.style.display = 'block';
+            certificateBtn.disabled = false;
+            certificateBtn.innerHTML = '<i class="fas fa-certificate me-2"></i>Download Certificate';
+        } else {
+            celebrationMessage.classList.remove('show');
+            celebrationMessage.style.display = 'none';
+            certificateBtn.disabled = true;
+            certificateBtn.innerHTML = '<i class="fas fa-certificate me-2"></i>Complete Checklist First';
+        }
+    }
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateChecklist);
+    });
+
+    resetBtn.addEventListener('click', () => {
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
+        updateChecklist();
+    });
+}); // <-- Make sure this closing bracket exists
+
+
+            // Initialize checklist on page load
+            updateChecklist();
+
+            // Fix Flipbook Scrolling
+            function fixFlipbookScrolling() {
+                const flipbookContents = document.querySelectorAll('.flipbook-content-inner');
+
+                flipbookContents.forEach((content, index) => {
+                    // Reset scroll position
+                    content.scrollTop = 0;
+
+                    // Ensure scrolling is enabled
+                    content.style.overflowY = 'auto';
+                    content.style.webkitOverflowScrolling = 'touch';
+                    content.style.maxHeight = '240px';
+
+                    // Add scroll event listener to prevent parent scrolling when at boundaries
+                    content.addEventListener('wheel', function (e) {
+                        const isScrollingDown = e.deltaY > 0;
+                        const isAtTop = this.scrollTop === 0;
+                        const isAtBottom = this.scrollTop + this.clientHeight >= this.scrollHeight - 1;
+
+                        // Prevent parent scrolling when at content boundaries
+                        if ((isAtTop && !isScrollingDown) || (isAtBottom && isScrollingDown)) {
+                            e.preventDefault();
+                        }
+                    }, { passive: false });
+
+                    // Add touch event listeners for mobile
+                    content.addEventListener('touchstart', function (e) {
+                        this.startY = e.touches[0].clientY;
+                        this.scrollTopAtStart = this.scrollTop;
+                    }, { passive: true });
+
+                    content.addEventListener('touchmove', function (e) {
+                        const currentY = e.touches[0].clientY;
+                        const deltaY = this.startY - currentY;
+                        const isScrollingDown = deltaY < 0;
+                        const isAtTop = this.scrollTop === 0;
+                        const isAtBottom = this.scrollTop + this.clientHeight >= this.scrollHeight - 1;
+
+                        // Prevent parent scrolling when at content boundaries
+                        if ((isAtTop && !isScrollingDown) || (isAtBottom && isScrollingDown)) {
+                            e.preventDefault();
+                        }
+                    }, { passive: false });
+                });
+            }
+
+            // Fix flipbook scrolling on load
+            fixFlipbookScrolling();
+
+            // Also fix on window resize
+            window.addEventListener('resize', fixFlipbookScrolling);
+
+            // Gallery Modal Functionality
+            // Hide all gallery contents initially
+            document.querySelectorAll('.gallery-modal-content').forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // Gallery click events for static modal
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    // Determine which gallery was clicked
+                    let galleryType = '';
+                    if (this.classList.contains('plants-gallery') || this.getAttribute('data-gallery') === 'plants') {
+                        galleryType = 'plants';
+                    } else if (this.classList.contains('birds-gallery') || this.getAttribute('data-gallery') === 'birds') {
+                        galleryType = 'birds';
+                    } else if (this.classList.contains('insects-gallery') || this.getAttribute('data-gallery') === 'insects') {
+                        galleryType = 'insects';
+                    } else if (this.classList.contains('threats-gallery') || this.getAttribute('data-gallery') === 'threats') {
+                        galleryType = 'threats';
+                    }
+
+                    if (galleryType) {
+                        openGalleryModal(galleryType);
+                    }
+                });
+            });
+
+            // Function to open gallery modal with static content
+            function openGalleryModal(galleryType) {
+                // Hide all gallery contents
+                document.querySelectorAll('.gallery-modal-content').forEach(content => {
+                    content.style.display = 'none';
+                });
+
+                // Show the selected gallery content
+                const selectedContent = document.getElementById(galleryType + 'ModalContent');
+                if (selectedContent) {
+                    selectedContent.style.display = 'block';
+
+                    // Update modal title
+                    const modalTitle = document.getElementById('galleryModalTitle');
+                    const galleryHeading = selectedContent.querySelector('.modal-gallery-heading').textContent;
+                    modalTitle.textContent = galleryHeading;
+
+                    // Show the modal
+                    const galleryModal = new bootstrap.Modal(document.getElementById('galleryModal'));
+                    galleryModal.show();
+                }
+            }
+
+            // Initialize Bootstrap modal for carousel
+            const carouselModal = new bootstrap.Modal(document.getElementById('carouselModal'));
+            document.getElementById('openCarouselBtn').addEventListener('click', function () {
+                carouselModal.show();
+            });
+
+            // Add hover effects for gallery items
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                item.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-5px)';
+                });
+
+                item.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Ensure flipbooks work on all devices with hover
+            const flipbooks = document.querySelectorAll('.flipbook');
+            flipbooks.forEach(flipbook => {
+                // Add touch support for mobile hover
+                flipbook.addEventListener('touchstart', function () {
+                    // CSS hover will handle this
+                }, { passive: true });
+
+                // Add click support for mobile
+                flipbook.addEventListener('click', function () {
+                    this.classList.toggle('flipped');
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
