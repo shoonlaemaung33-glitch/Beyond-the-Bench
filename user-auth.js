@@ -29,7 +29,7 @@ class UserManager {
             }
         }
         this.updateNavbar();
-        this.setupDemoAccounts();
+       
     }
 
     // Get all users from localStorage
@@ -214,22 +214,7 @@ updateNavbar() {
                         <strong>${this.currentUser.firstName} ${this.currentUser.lastName}</strong>
                     </li>
                     <li><hr class="dropdown-divider"></li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bi bi-person"></i> My Profile
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bi bi-gear"></i> Settings
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bi bi-bookmark"></i> Saved Content
-                        </a>
-                    </li>
-                    <li><hr class="dropdown-divider"></li>
+                    
                     <li>
                         <a class="dropdown-item" href="#" id="logoutBtn">
                             <i class="bi bi-box-arrow-right"></i> Logout
@@ -304,38 +289,6 @@ updateNavbar() {
         });
     }
 
-    // Setup demo accounts
-    setupDemoAccounts() {
-        const users = this.getUsers();
-        if (users.length === 0) {
-            const demoUsers = [
-                {
-                    id: 'demo1',
-                    firstName: 'John',
-                    lastName: 'Doe',
-                    email: 'john@example.com',
-                    password: this.hashPassword('Password123'),
-                    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=b6e3f4',
-                    createdAt: new Date().toISOString(),
-                    lastLogin: new Date().toISOString(),
-                    isActive: true
-                },
-                {
-                    id: 'demo2',
-                    firstName: 'Jane',
-                    lastName: 'Smith',
-                    email: 'jane@example.com',
-                    password: this.hashPassword('Password123'),
-                    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jane&backgroundColor=c0aede',
-                    createdAt: new Date().toISOString(),
-                    lastLogin: new Date().toISOString(),
-                    isActive: true
-                }
-            ];
-            
-            this.saveUsers(demoUsers);
-        }
-    }
 
     // Check if user is logged in
     isLoggedIn() {
